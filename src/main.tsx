@@ -6,11 +6,16 @@ import "./index.css";
 import Header from "./components/Header/Header.tsx";
 import NavBar from "./components/NavBar/NavBar.tsx";
 import Footer from "./components/Footer/Footer.tsx";
+import FeedBack from "./Feedback.tsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
+  },
+  {
+    path: "/FeedBack",
+    element: <FeedBack></FeedBack>,
   },
 ]);
 createRoot(document.getElementById("root")!).render(
