@@ -17,13 +17,16 @@ export default function NavBar() {
     isFirstShow(!firstMenu);
   };
   return (
-    <div className="w-full h-16 bg-white rounded-[30px] px-10 flex items-center ">
-      <ul className="flex gap-24 max-[1550px]:gap-12 max-[1220px]:gap-5">
+    <div className="w-full h-16 bg-white rounded-[30px] px-10 flex items-center text-[#004B2D] font-medium">
+      <ul className="flex gap-24 max-[1550px]:gap-6 max-[1230px]:gap-5 max-[1130px]:gap-3 max-[1800px]:gap-12 ">
         {links.map((link) => {
           return link.title === "МУФТИЯТ" ? (
-            <div className="flex justify-center items-center">
+            <div className="flex justify-center items-center ">
               <div>
-                <a href={link.href} className="font-medium">
+                <a
+                  href={link.href}
+                  className="font-medium max-[1550px]:items-center flex max-[1440px]:text-[14px] "
+                >
                   {link.title}
                 </a>
                 {firstMenu && <Menu Links={links}></Menu>}
@@ -35,7 +38,7 @@ export default function NavBar() {
               />
             </div>
           ) : (
-            <a href="#" className="font-medium">
+            <a href="#" className="font-medium max-[1440px]:text-[14px]">
               {link.title}
             </a>
           );

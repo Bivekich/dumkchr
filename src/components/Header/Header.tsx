@@ -12,10 +12,10 @@ const media = [
 ];
 export default function Header() {
   return (
-    <header className="w-full flex text-white py-4 items-center px-2">
-      <div className="flex">
-        <img src="лого.png" alt="Дум кчр"></img>
-        <p className="flex w-[45rem] font-bold leading-[45px] text-[30px]">
+    <header className="w-full flex text-white py-4 items-center px-2 flex-shrink-0">
+      <div className="flex h-32">
+        <img src="лого.png" alt="Дум кчр" className="flex-shrink-0 "></img>
+        <p className="flex w-[45rem] font-bold leading-[45px] text-[30px] max-[1440px]:w-[30rem] max-[1200px]:w-[20rem] max-[1440px]:text-[20px] max-[1200px]:text-[15px] max-[1440px]:leading-[20px] max-[1440px]:items-center">
           ДУХОВНОЕ УПРАВЛЕНИЕ МУСУЛЬМАН КАРАЧАЕВО-ЧЕРКЕССКОЙ РЕСПУБЛИКИ
         </p>
       </div>
@@ -36,7 +36,7 @@ export default function Header() {
         <ul className="flex gap-1 h-full justify-center items-center">
           {media.map((icon: ReactNode) => {
             return (
-              <div className="w-10 h-10 rounded-full flex justify-center items-center text-black bg-white">
+              <div className="size-12 rounded-full flex justify-center items-center text-[#004B2D] bg-[#FFFFFF]">
                 {icon}
               </div>
             );

@@ -2,7 +2,7 @@ export default function Hadis() {
   return (
     <div className="mt-60 w-full [&>img]:opacity-50">
       <img src="ornamentTop.png"></img>
-      <div className="bg-white h-96 w-80 rounded-[30px] flex flex-col text-[#177245] p-4">
+      <div className="bg-[#E3E3E3] rounded-[30px] flex flex-col text-[#177245] p-4">
         <p className="text-[24px] font-bold">ХАДИС</p>
         <p className="flex flex-wrap w-[85%]">
           «Умен тот, кто требует у своей души отчета (то есть: следит за своей

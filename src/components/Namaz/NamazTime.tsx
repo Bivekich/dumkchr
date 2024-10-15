@@ -10,9 +10,9 @@ export default function NamazTime() {
     { title: "ИША", time: "18:36" },
   ];
   return (
-    <div className="bg-white h-96 w-80 rounded-[30px] flex flex-col p-4">
+    <div className="bg-[#E3E3E3] w-80 rounded-[30px] flex flex-col p-4 max-[1440px]:w-full text-[#177245]  ">
       <p className="font-bold text-[24px]">ВРЕМЯ НАМАЗА</p>
-      <div className="w-full p-1 rounded-full px-2 flex items-center border-2 mb-10">
+      <div className="w-full p-1 rounded-full px-2 flex items-center border mb-10 text-[#177245] border-[#177245]">
         <p>ЧЕРКЕССК</p>
       </div>
       <div className="flex flex-col gap-1">
