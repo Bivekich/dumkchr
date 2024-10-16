@@ -7,6 +7,10 @@ import Header from "./components/Header/Header.tsx";
 import NavBar from "./components/NavBar/NavBar.tsx";
 import Footer from "./components/Footer/Footer.tsx";
 import FeedBack from "./Feedback.tsx";
+import EducationDepartament from "./EducationDepartment.tsx";
+import MuftiyaMainPage from "./MuftiyaMainPage.tsx";
+import MuftiyaDeputyMainPage from "./MuftiyaMainDeputyPage.tsx";
+import MuftiyaMainSupportPage from "./MuftiyaMainSupportPage.tsx";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +20,22 @@ const router = createBrowserRouter([
   {
     path: "/FeedBack",
     element: <FeedBack></FeedBack>,
+  },
+  {
+    path: "/EducationDepartament",
+    element: <EducationDepartament></EducationDepartament>,
+  },
+  {
+    path: "/MuftiyaCHR",
+    element: <MuftiyaMainPage></MuftiyaMainPage>,
+  },
+  {
+    path: "/MuftiyaDeputy",
+    element: <MuftiyaDeputyMainPage></MuftiyaDeputyMainPage>,
+  },
+  {
+    path: "/MuftiyaSupport",
+    element: <MuftiyaMainSupportPage></MuftiyaMainSupportPage>,
   },
 ]);
 createRoot(document.getElementById("root")!).render(

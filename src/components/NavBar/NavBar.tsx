@@ -8,7 +8,7 @@ export default function NavBar() {
     { title: "УКАЗЫ", href: "#" },
     { title: "НОВОСТИ", href: "#" },
     { title: "ОБРАЩЕНИЯ", href: "#" },
-    { title: "ОБРАТНАЯ СВЯЗЬ", href: "#" },
+    { title: "ОБРАТНАЯ СВЯЗЬ", href: "/FeedBack" },
     { title: "МЕДИАТЕКА", href: "#" },
     { title: "КОНТАКТЫ", href: "#" },
   ];
