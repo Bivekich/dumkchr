@@ -3,8 +3,8 @@ import Menu from "../Menu";
 import { useState } from "react";
 export default function NavBar() {
   const links: Array<{ title: string; href: string }> = [
-    { title: "ГЛАВНАЯ", href: "#" },
-    { title: "МУФТИЯТ", href: "#" },
+    { title: "ГЛАВНАЯ", href: "/" },
+    { title: "МУФТИЯТ", href: "/MuftiyaCHR" },
     { title: "УКАЗЫ", href: "#" },
     { title: "НОВОСТИ", href: "#" },
     { title: "ОБРАЩЕНИЯ", href: "#" },
@@ -12,16 +12,31 @@ export default function NavBar() {
     { title: "МЕДИАТЕКА", href: "#" },
     { title: "КОНТАКТЫ", href: "#" },
   ];
+  const firstMenuLinks: Array<{ title: string; href: string }> = [
+    { title: "РУКОВОДСТВО", href: "#" },
+    { title: "КОМИТЕТЫ", href: "#" },
+    { title: "МУФТИЙ", href: "/MuftiyaCHR" },
+    { title: "ЗАМЕСТИТЕЛЬ МУФТИЯ", href: "/MuftiyaDeputy" },
+    { title: "ДОКУМЕНТЫ", href: "#" },
+  ];
+  const secondMenuLinks: Array<{ title: string; href: string }> = [
+    { title: "ФОТО", href: "#" },
+    { title: "ВИДЕО", href: "#" },
+  ];
   const [firstMenu, isFirstShow] = useState<boolean>(false);
+  const [secondMenu, isSecondMenuShow] = useState<boolean>(false);
   const handleFirtsMenu = () => {
     isFirstShow(!firstMenu);
   };
+  const handleSecondMenu = () => {
+    isSecondMenuShow(!secondMenu);
+  };
   return (
     <div className="w-full h-16 bg-white rounded-[30px] px-10 flex items-center text-[#004B2D] font-medium">
-      <ul className="flex gap-24 max-[1550px]:gap-6 max-[1230px]:gap-5 max-[1130px]:gap-3 max-[1800px]:gap-12 ">
+      <ul className="flex gap-20 max-[1550px]:gap-6 max-[1230px]:gap-5 max-[1130px]:gap-3 max-[1800px]:gap-12  text-[20px] font-medium">
         {links.map((link) => {
-          return link.title === "МУФТИЯТ" ? (
-            <div className="flex justify-center items-center ">
+          return link.title === "МУФТИЯТ" || link.title === "МЕДИАТЕКА" ? (
+            <div className="flex justify-center items-center">
               <div>
                 <a
                   href={link.href}
@@ -29,12 +44,16 @@ export default function NavBar() {
                 >
                   {link.title}
                 </a>
-                {firstMenu && <Menu Links={links}></Menu>}
+                {link.title === "МУФТИЯТ"
+                  ? firstMenu && <Menu Links={firstMenuLinks}></Menu>
+                  : secondMenu && <Menu Links={secondMenuLinks}></Menu>}
               </div>
 
               <MdKeyboardArrowDown
                 className="size-5"
-                onClick={handleFirtsMenu}
+                onClick={
+                  link.title === "МУФТИЯТ" ? handleFirtsMenu : handleSecondMenu
+                }
               />
             </div>
           ) : (

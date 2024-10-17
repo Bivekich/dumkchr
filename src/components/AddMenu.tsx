@@ -1,18 +1,11 @@
-export default function AddMenu() {
-  const links: Array<{ title: string; href: string }> = [
-    { title: "ГЛАВНАЯ", href: "#" },
-    { title: "МУФТИЯТ", href: "#" },
-    { title: "УКАЗЫ", href: "#" },
-    { title: "НОВОСТИ", href: "#" },
-    { title: "ОБРАЩЕНИЯ", href: "#" },
-    { title: "ОБРАТНАЯ СВЯЗЬ", href: "#" },
-    { title: "МЕДИАТЕКА", href: "#" },
-    { title: "КОНТАКТЫ", href: "#" },
-  ];
+interface AddMenuProps {
+  Links: Array<{ title: string; href: string }>;
+}
+export default function AddMenu({ Links }: AddMenuProps) {
   return (
-    <div className="w-44  bg-white flex flex-col absolute transition-all text-white right-8">
-      <ul className="flex flex-col text-black">
-        {links.map((link) => {
+    <div className="w-96 p-4 bg-[#177245] flex transition-all text-white rounded-[15px] select-none h-fit">
+      <ul className="flex flex-col text-white gap-3">
+        {Links.map((link) => {
           return <a href={link.href}>{link.title}</a>;
         })}
       </ul>
