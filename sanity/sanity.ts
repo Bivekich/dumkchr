@@ -1,5 +1,6 @@
 // sanity.js
 import {createClient} from '@sanity/client'
+import News from './schems/News'
 // Import using ESM URL imports in environments that supports it:
 // import {createClient} from 'https://esm.sh/@sanity/client'
 
@@ -13,8 +14,18 @@ export const client = createClient({
 
 // uses GROQ to query content: https://www.sanity.io/docs/groq
 export default async function getSchedule() {
-  const schedule = await client.fetch('*[_type == "schedule"]{Citys}').then((Citys) => {
-    return Citys
-  })
+  const schedule = await client
+    .fetch('*[_type == "schedule"][0]{Month[]{Date,List[]{Title,Time}}}')
+    .then((schedule) => {
+      return schedule.Month
+    })
   return schedule
+}
+export async function getNews() {
+  const News = await client
+    .fetch('*[_type == "news"][0]{Items[]{Title,Date,Image{asset->{url}},MainText[]{children[]}}}')
+    .then((item) => {
+      return item.Items
+    })
+  return News
 }

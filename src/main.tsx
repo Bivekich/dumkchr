@@ -11,6 +11,11 @@ import EducationDepartament from "./EducationDepartment.tsx";
 import MuftiyaMainPage from "./MuftiyaMainPage.tsx";
 import MuftiyaDeputyMainPage from "./MuftiyaMainDeputyPage.tsx";
 import MuftiyaMainSupportPage from "./MuftiyaMainSupportPage.tsx";
+import NewsPage from "./NewsPage.tsx";
+import NewsReadPage from "./NewsReadPage.tsx";
+import LeftBar from "./components/LeftBar/LeftBar.tsx";
+import PhotoPage from "./PhotoPage.tsx";
+import VideoPage from "./VideoPage.tsx";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +42,22 @@ const router = createBrowserRouter([
     path: "/MuftiyaSupport",
     element: <MuftiyaMainSupportPage></MuftiyaMainSupportPage>,
   },
+  {
+    path: "/NewsPage",
+    element: <NewsPage></NewsPage>,
+  },
+  {
+    path: "/NewsPage/:NewsId",
+    element: <NewsReadPage></NewsReadPage>,
+  },
+  {
+    path: "/PhotoPage",
+    element: <PhotoPage></PhotoPage>,
+  },
+  {
+    path: "/VideoPage",
+    element: <VideoPage></VideoPage>,
+  },
 ]);
 
 createRoot(document.getElementById("root")!).render(
@@ -45,7 +66,10 @@ createRoot(document.getElementById("root")!).render(
       <div className="bg-[#004B2D] w-full h-full flex flex-col gap-3 px-14 ">
         <Header></Header>
         <NavBar></NavBar>
-        <RouterProvider router={router} />
+        <div className="flex mt-3 gap-3 mb-52">
+          <LeftBar></LeftBar>
+          <RouterProvider router={router} />
+        </div>
       </div>
       <Footer></Footer>
     </div>

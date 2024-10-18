@@ -63,7 +63,12 @@ export default function Menu({ Links }: PropsMenu) {
                   <div className="flex items-center w-fit select-none">
                     <li>
                       <a
-                        className="w-fit relative text-white flex items-center select-none"
+                        className={`w-fit relative text-white flex items-center select-none ${
+                          link.title === "РУКОВОДСТВО" ||
+                          link.title === "КОМИТЕТЫ"
+                            ? "pointer-events-none"
+                            : ""
+                        }`}
                         href={link.href}
                       >
                         {link.title}

@@ -1,16 +1,38 @@
-export default function News() {
+import { useEffect } from "react";
+import { PortableText } from "@portabletext/react";
+export default function News({ news }: any) {
+  useEffect(() => {
+    console.log(news[0].MainText[0].children);
+  }, []);
+  const myPortableTextComponents = {
+    types: {
+      image: ({ value }: any) => <img src={value.imageUrl} />,
+      span: ({ value }: any) => <span>{value.text}</span>,
+    },
+
+    marks: {
+      strong: ({ children }: any) => <strong>{children}</strong>,
+    },
+  };
   return (
-    <div className="flex max-[1800px]:w-[80%] w-[70%] h-full bg-[#E3E3E3] p-4 rounded-[30px] text-white flex-shrink-0">
-      <div className="max-[1800px]:w-[40rem] max-[2560px]:w-[55rem] max-[1920px]:w-[57rem] h-full rounded-[30px] bg-[#004B2D] w-[40rem]"></div>
-      <div className="w-[27rem] h-full max-[2560px]:w-[35rem] rounded-[30px] bg-[#177245] p-4 flex flex-col max-[1800px]:w-[20rem] ">
-        <p className="font-bold text-[24px]"> ЗАГОЛОВОК НОВОСТИ</p>
-        <p className="flex flex-wrap text-[17px] max-[1800px]:text-[14px] ">
-          «Умен тот, кто требует у своей души отчета (то есть: следит за своей
-          душой, не позволяя ей удовлетворять такие желания, которые могут
-          оказаться пагубными для его религии) и совершает (праведные) дела ради
-          того, что ожидает его после смерти. Слаб же тот, кто позволяет своей
-          душе следовать ее страстям».(ат-Тирмизи)
-        </p>
+    <div className="flex max-[1800px]:w-[80%] w-[70%] bg-[#E3E3E3] p-4 rounded-[30px] text-white">
+      <img
+        className="max-[1800px]:w-[90%]  max-[2560px]:w-[90%] max-[1920px]:w-[90%] h-full rounded-[30px] bg-[#004B2D] w-[10%] object-cover"
+        src={news[news.length - 1].Image.asset.url}
+      ></img>
+      <div className="w-[27rem] h-full max-[2560px]:w-[35rem] rounded-[30px] bg-[#177245] p-4 flex flex-col max-[1800px]:w-[20rem] max-[1920px]:w-[40%] ">
+        <p className="font-bold text-[24px]">{news[news.length - 1].Title}</p>
+        <div>
+          {news ? (
+            <PortableText
+              value={news[0].MainText[0].children}
+              components={myPortableTextComponents}
+            ></PortableText>
+          ) : (
+            <div>hello world</div>
+          )}
+        </div>
+
         <button className="w-full mt-auto border rounded-full h-7 max-[1800px]:h-12 ">
           ЧИТАТЬ ПОЛНОСТЬЮ
         </button>

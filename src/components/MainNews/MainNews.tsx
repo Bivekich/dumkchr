@@ -8,12 +8,9 @@ export default function MainNews() {
       </div>
 
       <div className="grid grid-cols-3 grid-rows-2 gap-3 w-full h-full">
-        <MainNewsCard />
-        <MainNewsCard />
-        <MainNewsCard />
-        <MainNewsCard />
-        <MainNewsCard />
-        <MainNewsCard />
+        {[1, 2, 3, 4, 5, 6].map((number) => {
+          return <MainNewsCard NewsId={number} />;
+        })}
       </div>
     </div>
   );

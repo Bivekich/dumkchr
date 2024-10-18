@@ -4,51 +4,36 @@ export default {
   type: 'document',
   fields: [
     {
-      name: 'Citys',
-      title: 'Города',
+      name: 'Month',
       type: 'array',
       of: [
         {
-          name: 'City',
+          name: 'Days',
           type: 'object',
           fields: [
             {
-              name: 'Name',
-              title: 'Имя Города',
-              type: 'string',
+              name: 'Date',
+              type: 'date',
             },
             {
-              name: 'Date',
-              title: 'Дата',
+              name: 'List',
+              title: 'Список',
               type: 'array',
               of: [
                 {
-                  name: 'hehe',
+                  name: 'Prays',
+                  title: 'Молитвы',
                   type: 'object',
                   fields: [
                     {
-                      name: 'dateName',
-                      type: 'date',
+                      name: 'Title',
+                      title: 'Название',
+                      type: 'string',
                     },
                     {
                       name: 'Time',
-                      type: 'array',
-                      of: [
-                        {
-                          name: 'Day',
-                          type: 'object',
-                          fields: [
-                            {
-                              name: 'Pray',
-                              type: 'string',
-                            },
-                            {
-                              name: 'Time',
-                              type: 'string',
-                            },
-                          ],
-                        },
-                      ],
+                      title: 'Время',
+                      type: 'string',
                     },
                   ],
                 },

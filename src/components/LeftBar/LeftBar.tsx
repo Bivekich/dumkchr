@@ -5,22 +5,20 @@ import PrayPlace from "../PrayPlace/PrayPlace";
 import getSchedule from "../../../sanity/sanity";
 
 export default function LeftBar() {
-  const [citysName, setCitysName] = useState<string[]>([]);
+  const [today, setToday] = useState([]);
   useEffect(() => {
+    const date = new Date();
+    const currentDate = date.toISOString().split("T")[0];
     const query = async () => {
-      const shedule = await getSchedule().then((Citys: any) => {
-        return Citys[0].Citys;
-      });
-      setCitysName((prev) => [...prev, shedule.map((item: any) => item.Name)]);
+      const schedule = await getSchedule();
+      const today = schedule.filter((item: any) => item.Date === currentDate);
+      setToday(today[0].List);
     };
     query();
   }, []);
-  useEffect(() => {
-    console.log(citysName);
-  });
   return (
     <div className="flex gap-3 flex-col w-96 max-[1440px]:w-64">
-      <NamazTime></NamazTime>
+      {today && <NamazTime time={today}></NamazTime>}
       <PrayPlace></PrayPlace>
       <Hadis></Hadis>
     </div>

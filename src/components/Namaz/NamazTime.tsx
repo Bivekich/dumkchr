@@ -1,14 +1,16 @@
 import TimeRow from "./TimeRow";
-
-export default function NamazTime() {
-  const Namaz: Array<{ title: string; time: string }> = [
+interface NamazProps {
+  time: { Title: string; Time: string }[];
+}
+export default function NamazTime({ time }: NamazProps) {
+  /*const Namaz: Array<{ title: string; time: string }> = [
     { title: "ФАДЖР", time: "04:25" },
     { title: "ВОСХОД", time: "05:53" },
     { title: "ЗУХР", time: "11:42" },
     { title: "АСР", time: "14:48" },
     { title: "МАГРИБ", time: "17:23" },
     { title: "ИША", time: "18:36" },
-  ];
+  ];*/
   return (
     <div className="bg-[#E3E3E3] w-80 rounded-[30px] flex flex-col p-4 max-[1440px]:w-full text-[#177245]  ">
       <p className="font-bold text-[24px]">ВРЕМЯ НАМАЗА</p>
@@ -16,8 +18,10 @@ export default function NamazTime() {
         <p>ЧЕРКЕССК</p>
       </div>
       <div className="flex flex-col gap-1">
-        {Namaz.map((item) => {
-          return <TimeRow title={item.title} time={item.time}></TimeRow>;
+        {time.map((item, index) => {
+          return (
+            <TimeRow key={index} title={item.Title} time={item.Time}></TimeRow>
+          );
         })}
       </div>
     </div>

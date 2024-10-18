@@ -1,16 +1,17 @@
 import { MdKeyboardArrowDown } from "react-icons/md";
 import Menu from "../Menu";
 import { useState } from "react";
+
 export default function NavBar() {
   const links: Array<{ title: string; href: string }> = [
     { title: "ГЛАВНАЯ", href: "/" },
     { title: "МУФТИЯТ", href: "/MuftiyaCHR" },
-    { title: "УКАЗЫ", href: "#" },
-    { title: "НОВОСТИ", href: "#" },
-    { title: "ОБРАЩЕНИЯ", href: "#" },
+    { title: "УКАЗЫ", href: "/" },
+    { title: "НОВОСТИ", href: "/NewsPage" },
+    { title: "ОБРАЩЕНИЯ", href: "/" },
     { title: "ОБРАТНАЯ СВЯЗЬ", href: "/FeedBack" },
-    { title: "МЕДИАТЕКА", href: "#" },
-    { title: "КОНТАКТЫ", href: "#" },
+    { title: "МЕДИАТЕКА", href: "/" },
+    { title: "КОНТАКТЫ", href: "/" },
   ];
   const firstMenuLinks: Array<{ title: string; href: string }> = [
     { title: "РУКОВОДСТВО", href: "#" },
@@ -20,8 +21,8 @@ export default function NavBar() {
     { title: "ДОКУМЕНТЫ", href: "#" },
   ];
   const secondMenuLinks: Array<{ title: string; href: string }> = [
-    { title: "ФОТО", href: "#" },
-    { title: "ВИДЕО", href: "#" },
+    { title: "ФОТО", href: "/PhotoPage" },
+    { title: "ВИДЕО", href: "/VideoPage" },
   ];
   const [firstMenu, isFirstShow] = useState<boolean>(false);
   const [secondMenu, isSecondMenuShow] = useState<boolean>(false);
@@ -57,7 +58,10 @@ export default function NavBar() {
               />
             </div>
           ) : (
-            <a href="#" className="font-medium max-[1440px]:text-[14px]">
+            <a
+              href={link.href}
+              className="font-medium max-[1440px]:text-[14px]"
+            >
               {link.title}
             </a>
           );
