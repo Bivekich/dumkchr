@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getNews } from "../sanity/sanity";
+import { getNews } from "./sanity/sanity";
 import { PortableText } from "@portabletext/react";
 
 export default function NewsReadPage() {

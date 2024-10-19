@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Hadis from "../Hadis/Hadis";
 import NamazTime from "../Namaz/NamazTime";
 import PrayPlace from "../PrayPlace/PrayPlace";
-import getSchedule from "../../../sanity/sanity";
+import getSchedule from "../../sanity/sanity";
 
 export default function LeftBar() {
   const [today, setToday] = useState([]);

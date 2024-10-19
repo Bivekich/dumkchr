@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Hero from "../Hero/Hero";
 import MainNews from "../MainNews/MainNews";
-import { getNews } from "../../../sanity/sanity";
+import { getNews } from "../../sanity/sanity";
 
 export default function RightBar() {
   const [news, setNews] = useState();

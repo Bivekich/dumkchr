@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import MainNewsCard from "./MainNewsCard.tsx/MainNewsCard";
-import { getNews } from "../../../sanity/sanity";
+import { getNews } from "../../sanity/sanity";
 
 export default function MainNews() {
   const [news, setNews] = useState<any>([]);
