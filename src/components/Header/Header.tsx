@@ -5,19 +5,24 @@ import { SlSocialVkontakte } from "react-icons/sl";
 import { AiOutlineYoutube } from "react-icons/ai";
 import { ReactNode } from "react";
 const media = [
-  <FaWhatsapp />,
-  <SlSocialVkontakte />,
-  <PiTelegramLogoLight />,
-  <AiOutlineYoutube />,
+  <FaWhatsapp size={24} />,
+  <SlSocialVkontakte size={24} />,
+  <PiTelegramLogoLight size={24} />,
+  <AiOutlineYoutube size={24} />,
 ];
 export default function Header() {
   return (
-    <header className="w-full flex text-white py-4 items-center px-2 flex-shrink-0">
-      <div className="flex h-32">
-        <img src="лого.png" alt="Дум кчр" className="flex-shrink-0 "></img>
-        <p className="flex w-[45rem] font-bold leading-[45px] text-[30px] max-[1440px]:w-[30rem] max-[1200px]:w-[20rem] max-[1440px]:text-[20px] max-[1200px]:text-[15px] max-[1440px]:leading-[20px] max-[1440px]:items-center">
-          ДУХОВНОЕ УПРАВЛЕНИЕ МУСУЛЬМАН КАРАЧАЕВО-ЧЕРКЕССКОЙ РЕСПУБЛИКИ
-        </p>
+    <header className="w-full flex text-white py-4 items-center px-2 flex-shrink-0 ">
+      <div className="flex">
+        <img src="лого.png" alt="Дум кчр" className="flex-shrink-0"></img>
+        <div className="flex flex-col w-[50rem] max-[1440px]:w-[30rem] max-[1600px]:w-[30rem] max-[1200px]:w-[20rem] justify-center">
+          <p className="flex max-[1920px]:w-full font-bold  text-[30px] max-[1440px]:text-[20px] max-[1200px]:text-[15px] max-[1600px]:text-[20px] max-[1440px]:items-center">
+            ДУХОВНОЕ УПРАВЛЕНИЕ МУСУЛЬМАН
+          </p>
+          <p className="flex max-[1920px]:w-full font-bold  text-[30px] max-[1440px]:text-[20px]  max-[1200px]:text-[15px] max-[1600px]:text-[20px]  max-[1440px]:items-center">
+            КАРАЧАЕВО-ЧЕРКЕССКОЙ РЕСПУБЛИКИ
+          </p>
+        </div>
       </div>
 
       <search className="w-[40%] flex justify-center items-center">
@@ -32,11 +37,14 @@ export default function Header() {
       </search>
 
       <div className="flex flex-col justify-center items-center ml-auto">
-        <p className="ml-auto">Мы в соц.сетях</p>
-        <ul className="flex gap-1 h-full justify-center items-center">
-          {media.map((icon: ReactNode) => {
+        <p className="ml-auto font-inter text-[20px]">Мы в соц.сетях</p>
+        <ul className="flex gap-1 justify-center items-center mb-5">
+          {media.map((icon: ReactNode, index) => {
             return (
-              <div className="size-12 rounded-full flex justify-center items-center text-[#004B2D] bg-[#FFFFFF]">
+              <div
+                key={index}
+                className="size-12 rounded-full flex justify-center items-center text-[#004B2D] bg-[#FFFFFF]"
+              >
                 {icon}
               </div>
             );

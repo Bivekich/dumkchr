@@ -1,9 +1,5 @@
-import { useEffect } from "react";
 import { PortableText } from "@portabletext/react";
 export default function News({ news }: any) {
-  useEffect(() => {
-    console.log(news[0].MainText[0].children);
-  }, []);
   const myPortableTextComponents = {
     types: {
       image: ({ value }: any) => <img src={value.imageUrl} />,
@@ -25,7 +21,7 @@ export default function News({ news }: any) {
         <div>
           {news ? (
             <PortableText
-              value={news[0].MainText[0].children}
+              value={news[news.length - 1].MainText[0].children}
               components={myPortableTextComponents}
             ></PortableText>
           ) : (

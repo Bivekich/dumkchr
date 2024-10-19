@@ -6,18 +6,18 @@ export default function Footer() {
           <div className="h-16 w-16 bg-[#004B2D] flex rounded-full flex-shrink-0">
             <img src="лого(1).png"></img>
           </div>
-          <p className="w-[55%] font-medium text-[18px]">
+          <p className="max-[1920px]:w-[100%] max-[1660px]:w-[100%] max-[1440px]:w-[25rem] w-[60%] font-medium text-[18px]">
             ДУХОВНОЕ УПРАВЛЕНИЕ МУСУЛЬМАН КАРАЧАЕВО-ЧЕРКЕССКОЙ РЕСПУБЛИКИ
           </p>
         </div>
         <div className="flex flex-col gap-5">
-          <p className="font-medium text-[18px]">Популярные разделы</p>
+          <p className="font-bold text-[20px] font-inter">Популярные разделы</p>
           <a href="#">Новости</a>
           <a href="#">Фетвы</a>
           <a href="#">Обращения</a>
         </div>
         <div className="flex flex-col gap-5">
-          <p className="font-medium text-[18px]">Наши контакты</p>
+          <p className="font-bold text-[20px]">Наши контакты</p>
           <p>+7 (878) 228-42-36</p>
           <p className="w-80">
             Россия, Карачаево-Черкесская Республика, Черкесск, проспект Ленина,
@@ -25,14 +25,11 @@ export default function Footer() {
           </p>
         </div>
         <div className="flex flex-col gap-5">
-          <p className="font-medium text-[18px]">Как нас найти</p>
+          <p className="font-bold text-[20px]">Как нас найти</p>
           <div className="w-64 h-52 bg-[#D9D9D9]"></div>
         </div>
       </div>
-      <div className="w-full h-10 border-t-2 border-[#004B2D] items-center flex justify-between text-[#004B2D]">
-        <p></p>
-        <p></p>
-      </div>
+      <div className="w-full h-10 border-t-2 border-[#004B2D] items-center flex justify-between text-[#004B2D]"></div>
     </div>
   );
 }

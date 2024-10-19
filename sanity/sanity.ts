@@ -1,6 +1,5 @@
 // sanity.js
 import {createClient} from '@sanity/client'
-import News from './schems/News'
 // Import using ESM URL imports in environments that supports it:
 // import {createClient} from 'https://esm.sh/@sanity/client'
 
@@ -28,4 +27,20 @@ export async function getNews() {
       return item.Items
     })
   return News
+}
+export async function getPhotos() {
+  const Photos = await client
+    .fetch('*[_type == "photo"][0]{Photos[]{asset->{url}}}')
+    .then((item) => {
+      return item.Photos
+    })
+  return Photos
+}
+export async function getVideo() {
+  const Photos = await client
+    .fetch('*[_type == "video"][0]{video[]{asset->{url}}}')
+    .then((item) => {
+      return item.Video
+    })
+  return Photos
 }

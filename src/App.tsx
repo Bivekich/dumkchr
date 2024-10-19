@@ -1,11 +1,10 @@
 import { useEffect } from "react";
 import RightBar from "./components/RightBar/RightBar";
-import getSchedule from "../sanity/sanity";
-
-function App() {
+import { getPhotos } from "../sanity/sanity";
+export default function App() {
   useEffect(() => {
     const query = async () => {
-      getSchedule();
+      getPhotos();
     };
     query();
   }, []);
@@ -15,5 +14,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

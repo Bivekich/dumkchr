@@ -35,9 +35,9 @@ export default function NavBar() {
   return (
     <div className="w-full h-16 bg-white rounded-[30px] px-10 flex items-center text-[#004B2D] font-medium">
       <ul className="flex gap-20 max-[1550px]:gap-6 max-[1230px]:gap-5 max-[1130px]:gap-3 max-[1800px]:gap-12  text-[20px] font-medium">
-        {links.map((link) => {
+        {links.map((link, index) => {
           return link.title === "МУФТИЯТ" || link.title === "МЕДИАТЕКА" ? (
-            <div className="flex justify-center items-center">
+            <div key={index} className="flex justify-center items-center">
               <div>
                 <a
                   href={link.href}
@@ -59,6 +59,7 @@ export default function NavBar() {
             </div>
           ) : (
             <a
+              key={index}
               href={link.href}
               className="font-medium max-[1440px]:text-[14px]"
             >

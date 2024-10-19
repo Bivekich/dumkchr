@@ -49,21 +49,24 @@ export default function Menu({ Links }: PropsMenu) {
   return (
     <div className="absolute w-[40%] mt-5 flex gap-3 select-none">
       <div className="w-52 p-4 bg-[#177245] flex transition-all text-white rounded-[15px] select-none h-fit">
-        <ul className="flex flex-col text-[20px] py-3 select-none">
+        <ul className="flex flex-col text-[20px] gap-3 select-none">
           {Links.map((link) => {
             return (
               <div className="select-none">
                 {link.title !== "КОМИТЕТЫ" && link.title !== "РУКОВОДСТВО" ? (
                   <li>
-                    <a href={link.href} className="select-none">
+                    <a
+                      href={link.href}
+                      className="select-none hover:text-green-300"
+                    >
                       {link.title}
                     </a>
                   </li>
                 ) : (
                   <div className="flex items-center w-fit select-none">
-                    <li>
+                    <li className="hover:text-green-300">
                       <a
-                        className={`w-fit relative text-white flex items-center select-none ${
+                        className={`w-fit relative text-white flex items-center select-none  ${
                           link.title === "РУКОВОДСТВО" ||
                           link.title === "КОМИТЕТЫ"
                             ? "pointer-events-none"
