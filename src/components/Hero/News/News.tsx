@@ -13,7 +13,7 @@ export default function News({ news }: any) {
   return (
     <div className="flex max-[1800px]:w-[80%] w-[70%] bg-[#E3E3E3] p-4 rounded-[30px] text-white">
       <img
-        className="max-[1800px]:w-[90%]  max-[2560px]:w-[90%] max-[1920px]:w-[90%] h-full rounded-[30px] bg-[#004B2D] w-[10%] object-cover "
+        className="max-[1800px]:w-[90%]  max-[2560px]:w-[90%] max-[1920px]:w-[90%] h-full rounded-[30px] bg-[#004B2D] object-center w-[90%] "
         src={news[news.length - 1].Image.asset.url}
       ></img>
       <div className="w-[27rem] h-full max-[2560px]:w-[35rem] rounded-[30px] bg-[#177245] p-4 flex flex-col max-[1800px]:w-[20rem] max-[1920px]:w-[40%] ">

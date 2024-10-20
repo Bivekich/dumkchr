@@ -16,6 +16,7 @@ import NewsReadPage from "./NewsReadPage.tsx";
 import LeftBar from "./components/LeftBar/LeftBar.tsx";
 import PhotoPage from "./PhotoPage.tsx";
 import VideoPage from "./VideoPage.tsx";
+import DecreePage from "./DecreePage.tsx";
 
 const router = createBrowserRouter([
   {
@@ -58,20 +59,28 @@ const router = createBrowserRouter([
     path: "/VideoPage",
     element: <VideoPage></VideoPage>,
   },
+  {
+    path: "/Decree",
+    element: <DecreePage />,
+  },
 ]);
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <div className="relative bg-[url('/Layer_7.png'),url('/Layer_8.png')] w-screen bg-contain bg-repeat-repeat px-14 font-inter ">
-      <div className="bg-[#004B2D] w-full h-full flex flex-col gap-3 px-14 ">
-        <Header></Header>
-        <NavBar></NavBar>
-        <div className="flex mt-3 gap-3 mb-52">
-          <LeftBar></LeftBar>
-          <RouterProvider router={router} />
+    <div className="relative bg-[url('/Layer_7.png'),url('/Layer_8.png')] w-screen bg-cover bg-repeat-repeat px-14 font-inter">
+      <div className="mx-auto max-w-[2560px] min-h-screen">
+        <div className="bg-[#004B2D] w-full min-h-screen flex flex-col gap-3 px-14">
+          <Header></Header>
+          <NavBar></NavBar>
+          <div className="flex mt-3 gap-3 mb-52 flex-shrink-0">
+            <LeftBar></LeftBar>
+            <RouterProvider router={router} />
+          </div>
+        </div>
+        <div className="w-full  flex">
+          <Footer></Footer>
         </div>
       </div>
-      <Footer></Footer>
     </div>
   </StrictMode>
 );

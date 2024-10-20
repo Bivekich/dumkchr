@@ -1,10 +1,16 @@
 import Area from "../Hero/Area/Area";
 import MuftiyaCHR from "./MuftiyaCHR/MuftiyaCHR";
-
-export default function Muftiya() {
+interface Props {
+  image: {
+    asset: {
+      url: string;
+    };
+  };
+}
+export default function Muftiya({ image }: Props) {
   return (
     <div className="w-full h-[37rem] rounded-[30px] flex gap-2 overflow-x-hidden ">
-      <MuftiyaCHR></MuftiyaCHR>
+      <MuftiyaCHR image={image}></MuftiyaCHR>
       <Area></Area>
     </div>
   );

@@ -1,34 +1,24 @@
 import Muftiya from "../Muftiya/Muftiya";
-
-export default function MuftiyaRightBar() {
+interface dataInterface {
+  data: {
+    Image: {
+      asset: {
+        url: string;
+      };
+    };
+    Name: string;
+    LeaderOf: string;
+    Description: string;
+  };
+}
+export default function MuftiyaRightBar({ data }: dataInterface) {
   return (
     <div className="w-full flex flex-col gap-y-3 overflow-x-hidden text-white text-[20px]">
-      <Muftiya></Muftiya>
+      <Muftiya image={data.Image}></Muftiya>
+
       <div className="px-4 flex flex-col gap-5">
-        <p>
-          Lorem ipsum odor amet, consectetuer adipiscing elit. Proin rutrum
-          natoque integer accumsan vestibu lum augue diam aliquam. Dictumst duis
-          nam laoreet penatibus odio mi. Rhoncus commodo iaculis nunc aptent
-          praesent, sapien imperdiet interdum. Dui amet quis tristique odio
-          tristique inceptos fusce. Curabitur nibh efficitur diam quis habitasse
-          quam ullamcorper vel tempus.
-        </p>
-        <p>
-          Lorem ipsum odor amet, consectetuer adipiscing elit. Proin rutrum
-          natoque integer accumsan vestibu lum augue diam aliquam. Dictumst duis
-          nam laoreet penatibus odio mi. Rhoncus commodo iaculis nunc aptent
-          praesent, sapien imperdiet interdum. Dui amet quis tristique odio
-          tristique inceptos fusce. Curabitur nibh efficitur diam quis habitasse
-          quam ullamcorper vel tempus.
-        </p>
-        <p>
-          Lorem ipsum odor amet, consectetuer adipiscing elit. Proin rutrum
-          natoque integer accumsan vestibu lum augue diam aliquam. Dictumst duis
-          nam laoreet penatibus odio mi. Rhoncus commodo iaculis nunc aptent
-          praesent, sapien imperdiet interdum. Dui amet quis tristique odio
-          tristique inceptos fusce. Curabitur nibh efficitur diam quis habitasse
-          quam ullamcorper vel tempus.
-        </p>
+        <p className="text-[20px] font-bold">{data.Name}</p>
+        <p>{data.Description}</p>
       </div>
     </div>
   );

@@ -9,18 +9,18 @@ export default function Menu({ Links }: PropsMenu) {
   const [showFirstMenu, setShowFirstMenu] = useState<boolean>(false);
   const [showSecondMenu, setShowSecondMenu] = useState<boolean>(false);
   const firstAddMenuLinks: Array<{ title: string; href: string }> = [
-    { title: "МУФТИЙ КЧР", href: "" },
+    { title: "МУФТИЙ КЧР", href: "/MuftiyaCHR" },
     { title: "РУКОВОДИТЕЛЬ АППАРАТА МУФТИЯ КЧР", href: "#" },
     { title: "КАДИЙ", href: "#" },
     {
       title: "ЗАМЕСТИТЕЛИ МУФТИЯ КЧР",
-      href: "#",
+      href: "/MuftiyaDeputy",
     },
     {
       title: "ФОНДЫ ДУМ КЧР",
       href: "#",
     },
-    { title: "СОВЕТНИК МУФТИЯ КЧР", href: "#" },
+    { title: "СОВЕТНИК МУФТИЯ КЧР", href: "/MuftiyaSupport" },
   ];
   const secondAddMenuLinks: Array<{ title: string; href: string }> = [
     { title: "ОТДЕЛ ПРИМИРЕНИЯ (МАСЛАХАТ)", href: "#" },

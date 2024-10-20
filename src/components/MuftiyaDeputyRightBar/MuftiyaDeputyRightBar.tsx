@@ -1,7 +1,19 @@
 import MuftiyaDeputy from "../MuftiyaDeputy/MuftiyaDeputy";
 import PersonInfo from "../PersonInfo/PersonInfo";
-
-export default function MuftiyaDeputyRightBar() {
+interface dataInterface {
+  data: {
+    Image: {
+      asset: {
+        url: string;
+      };
+    };
+    Name: string;
+    LeaderOf: string;
+    Description: string;
+  }[];
+}
+export default function MuftiyaDeputyRightBar({ data }: dataInterface) {
+  console.log(data);
   return (
     <div className="w-full flex flex-col gap-y-3 overflow-x-hidden text-white text-[20px]">
       <MuftiyaDeputy></MuftiyaDeputy>
@@ -32,9 +44,9 @@ export default function MuftiyaDeputyRightBar() {
         </p>
       </div>
       <div className="flex flex-col gap-10 px-4">
-        <PersonInfo></PersonInfo>
-        <PersonInfo></PersonInfo>
-        <PersonInfo></PersonInfo>
+        {data.map((item, index) => {
+          return <PersonInfo key={index} data={item}></PersonInfo>;
+        })}
       </div>
     </div>
   );

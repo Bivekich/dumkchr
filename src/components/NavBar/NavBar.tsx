@@ -6,7 +6,7 @@ export default function NavBar() {
   const links: Array<{ title: string; href: string }> = [
     { title: "ГЛАВНАЯ", href: "/" },
     { title: "МУФТИЯТ", href: "/MuftiyaCHR" },
-    { title: "УКАЗЫ", href: "/" },
+    { title: "УКАЗЫ", href: "/Decree" },
     { title: "НОВОСТИ", href: "/NewsPage" },
     { title: "ОБРАЩЕНИЯ", href: "/" },
     { title: "ОБРАТНАЯ СВЯЗЬ", href: "/FeedBack" },

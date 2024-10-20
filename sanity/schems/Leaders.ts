@@ -13,6 +13,11 @@ export default {
           type: 'object',
           fields: [
             {
+              name: 'Image',
+              title: 'Изображение',
+              type: 'image',
+            },
+            {
               name: 'Name',
               title: 'Имя',
               type: 'string',
@@ -23,12 +28,30 @@ export default {
               type: 'string',
               options: {
                 list: [
-                  'МУФТИЙ КЧР',
-                  'РУКОВОДИТЕЛЬ АППАРАТА МУФТИЯ КЧР',
-                  'КАДИЙ',
-                  'ЗАМЕСТИТЕЛИ МУФТИЯ КЧР',
-                  'ФОНДЫ ДУМ КЧР',
-                  'СОВЕТНИК МУФТИЯ КЧР',
+                  {
+                    title: 'МУФТИЙ КЧР',
+                    value: 'Muftiya',
+                  },
+                  {
+                    title: 'РУКОВОДИТЕЛЬ АППАРАТА МУФТИЯ КЧР',
+                    value: 'Manager',
+                  },
+                  {
+                    title: 'КАДИЙ',
+                    value: 'Kadi',
+                  },
+                  {
+                    title: 'ФОНД ДУМ КЧР',
+                    value: 'Foundation',
+                  },
+                  {
+                    title: 'СОВЕТНИК МУФТИЯ КЧР',
+                    value: 'Support',
+                  },
+                  {
+                    title: 'ЗАМЕСТИТЕЛЬ МУФТИЯ',
+                    value: 'Zam',
+                  },
                 ],
               },
             },
