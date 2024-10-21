@@ -18,7 +18,7 @@ export default function News({ news }: any) {
       ></img>
       <div className="w-[27rem] h-full max-[2560px]:w-[35rem] rounded-[30px] bg-[#177245] p-4 flex flex-col max-[1800px]:w-[20rem] max-[1920px]:w-[40%] ">
         <p className="font-bold text-[24px]">{news[news.length - 1].Title}</p>
-        <div>
+        <div className="flex flex-col overflow-hidden text-ellipsis h-[69%] text-[20px]">
           {news ? (
             <PortableText
               value={news[news.length - 1].MainText[0].children}

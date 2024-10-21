@@ -24,25 +24,25 @@ export default function NewsReadPage() {
       strong: ({ children }: any) => <strong>{children}</strong>,
     },
   };
-  useEffect(() => {
-    console.log(news);
-  }, [news]);
   return (
     <div className="flex gap-2 mb-52 w-full">
       <div className="w-full font-inter text-white text-[20px] flex flex-col">
         {news && (
           <img
-            className="bg-black rounded-[30px] h-[30rem] w-[50%] max-[2000px]:w-[75%] max-[1440px]:w-[80%] max-[1200px]:w-full"
+            className="bg-black rounded-[30px] h-[30rem] w-[45%] max-[2000px]:w-[75%] max-[1440px]:w-[80%] max-[1200px]:w-full"
             src={news.Image.asset.url}
           ></img>
         )}
-        <div className="w-full flex">
-          {news && (
-            <PortableText
-              value={news.MainText[0].children}
-              components={myPortableTextComponents}
-            ></PortableText>
-          )}
+        <div className="w-full flex text-[25px] flex-col gap-3 mt-5">
+          {news &&
+            news.MainText.map((item: any) => {
+              return (
+                <PortableText
+                  value={item.children}
+                  components={myPortableTextComponents}
+                ></PortableText>
+              );
+            })}
         </div>
       </div>
     </div>

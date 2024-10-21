@@ -40,9 +40,9 @@ export async function getPhotos() {
 }
 export async function getVideo() {
   const Photos = await client
-    .fetch('*[_type == "video"][0]{video[]{asset->{url}}}')
+    .fetch('*[_type == "video"][0]{Videos[]{"url":asset->url}}')
     .then((item) => {
-      return item.Video;
+      return item.Videos;
     });
   return Photos;
 }

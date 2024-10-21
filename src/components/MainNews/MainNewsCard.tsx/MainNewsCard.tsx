@@ -40,15 +40,21 @@ export default function MainNewsCard({
       <p className="font-bold w-full text-[20px] max-[1200px]:text-[16px]">
         {title}
       </p>
-      <div className="flex flex-col h-52 overflow-hidden gap-2 mb-5">
-        <p className="w-full font-medium text-[18px]">{NewDate}</p>
-        <div className="h-full w-full">
-          <PortableText
-            value={mainText[0].children[0]}
-            components={myPortableTextComponents}
-          ></PortableText>
+      {mainText.length > 0 && (
+        <div className="flex flex-col h-[19rem] overflow-hidden gap-2 mb-5">
+          <p className="w-full font-medium text-[18px]">{NewDate}</p>
+          <div className="flex flex-col h-full w-full text-[20px] font-medium overflow-hidden">
+            {mainText.map((item: any) => {
+              return (
+                <PortableText
+                  value={item.children}
+                  components={myPortableTextComponents}
+                ></PortableText>
+              );
+            })}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
