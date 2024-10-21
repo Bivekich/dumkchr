@@ -12,6 +12,9 @@ export default {
           name: 'Photo',
           title: 'Фотография',
           type: 'image',
+          options: {
+            storeOriginalFilename: true,
+          },
         },
       ],
     },

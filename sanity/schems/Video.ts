@@ -14,6 +14,7 @@ export default {
           type: 'file',
           options: {
             accept: 'video/*',
+            storeOriginalFilename: true,
           },
         },
       ],
