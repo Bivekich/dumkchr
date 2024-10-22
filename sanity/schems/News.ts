@@ -19,7 +19,8 @@ export default {
             {
               name: 'Image',
               title: 'Изобржение Новости',
-              type: 'image',
+              type: 'file',
+              accept: 'image/*, video/*',
             },
             {
               name: 'Date',
@@ -31,6 +32,12 @@ export default {
               name: 'MainText',
               type: 'array',
               of: [{type: 'block'}],
+            },
+            {
+              name: 'isMain',
+              title: 'Главная новость',
+              type: 'boolean',
+              initialValue: false,
             },
           ],
         },

@@ -11,7 +11,6 @@ export default function MainNews() {
     };
     query();
   }, []);
-  console.log(news);
   return (
     <div className="w-full rounded-[30px] bg-[#E3E3E3] mb-52">
       <div className="w-full h-16 bg-[#177245] rounded-tl-[30px] rounded-tr-[30px] flex items-center justify-center">

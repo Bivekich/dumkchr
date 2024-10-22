@@ -23,7 +23,7 @@ export default async function getSchedule() {
 export async function getNews() {
   const News = await client
     .fetch(
-      '*[_type == "news"][0]{Items[]{Title,Date,Image{asset->{url}},MainText[]{children[]}}}'
+      '*[_type == "news"][0]{Items[]{Title,Date,Image{asset->{url}},MainText[]{children[]}, isMain}}'
     )
     .then((item) => {
       return item.Items;
