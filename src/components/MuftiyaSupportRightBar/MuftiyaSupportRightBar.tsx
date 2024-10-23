@@ -12,7 +12,6 @@ interface dataInterface {
   };
 }
 export default function MuftiyaSupportRightBar({ data }: dataInterface) {
-  console.log(data);
   return (
     <div className="w-full flex flex-col gap-y-3 overflow-x-hidden text-white text-[20px]">
       <MuftiyaSupport image={data.Image.asset.url} />

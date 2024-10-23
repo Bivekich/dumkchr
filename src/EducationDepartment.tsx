@@ -2,7 +2,7 @@ import EducationDepartamentRightBar from "./components/EducationDepartamentRight
 
 export default function EducationDepartament() {
   return (
-    <div className="flex gap-2 mb-52">
+    <div className="flex gap-2 mb-52 w-full">
       <EducationDepartamentRightBar />
     </div>
   );

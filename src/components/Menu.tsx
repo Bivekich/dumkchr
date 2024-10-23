@@ -10,8 +10,8 @@ export default function Menu({ Links }: PropsMenu) {
   const [showSecondMenu, setShowSecondMenu] = useState<boolean>(false);
   const firstAddMenuLinks: Array<{ title: string; href: string }> = [
     { title: "МУФТИЙ КЧР", href: "/MuftiyaCHR" },
-    { title: "РУКОВОДИТЕЛЬ АППАРАТА МУФТИЯ КЧР", href: "#" },
-    { title: "КАДИЙ", href: "#" },
+    { title: "РУКОВОДИТЕЛЬ АППАРАТА МУФТИЯ КЧР", href: "/ChiffOfStaff" },
+    { title: "КАДИЙ", href: "/Kadie" },
     {
       title: "ЗАМЕСТИТЕЛИ МУФТИЯ КЧР",
       href: "/MuftiyaDeputy",

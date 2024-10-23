@@ -23,7 +23,7 @@ export default function MuftiyaDeputyMainPage() {
     query();
   }, []);
   return (
-    <div className="flex gap-2 mb-52">
+    <div className="flex gap-2 mb-52 w-full">
       {data.length > 0 && <MuftiyaDeputyRightBar data={data} />}
     </div>
   );

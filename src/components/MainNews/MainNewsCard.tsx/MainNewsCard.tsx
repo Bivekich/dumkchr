@@ -1,4 +1,3 @@
-import { PortableText } from "@portabletext/react";
 import { Link } from "react-router-dom";
 
 export default function MainNewsCard({
@@ -15,18 +14,8 @@ export default function MainNewsCard({
     hour: "numeric",
     minute: "numeric",
   });
-  const myPortableTextComponents = {
-    types: {
-      image: ({ value }: any) => <img src={value.imageUrl} />,
-      span: ({ value }: any) => <span>{value.text}</span>,
-    },
-    marks: {
-      strong: ({ children }: any) => (
-        <div className="font-bold">{children}</div>
-      ),
-    },
-  };
-  const format = image.asset.url.split(".")[3];
+  console.log(mainText);
+  const format = image?.asset.url.split(".")[3];
   return (
     <div className="w-full flex flex-col p-9 text-[#177245] gap-3">
       <Link
@@ -54,18 +43,13 @@ export default function MainNewsCard({
         </p>
       </div>
 
-      {mainText.length > 0 && (
+      {mainText?.length > 0 && (
         <div className="flex flex-col h-[19rem] overflow-hidden gap-2 mb-5">
           <p className="w-full font-medium text-[18px]">{NewDate}</p>
           <div className="flex flex-col h-full w-full text-[20px] font-medium overflow-hidden">
-            {mainText.map((item: any) => {
-              return (
-                <PortableText
-                  value={item.children}
-                  components={myPortableTextComponents}
-                ></PortableText>
-              );
-            })}
+            <pre className="text-wrap text-ellipsis font-inter text-[20px] font-medium ">
+              {mainText}
+            </pre>
           </div>
         </div>
       )}

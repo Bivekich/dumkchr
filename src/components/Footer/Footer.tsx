@@ -1,4 +1,10 @@
+import { Map, YMaps } from "@pbe/react-yandex-maps";
+
 export default function Footer() {
+  const mapState = {
+    center: [44.195662, 42.036152],
+    zoom: 17,
+  };
   return (
     <div className="h-96 bg-white w-screen left-0 rounded-tl-[30px] -mx-14 rounded-tr-[30px] px-14 py-7 flex flex-col gap-5 text-[#004B2D] justify-center items-center">
       <div className="flex gap-48 w-full max-[1800px]:gap-40 max-[1700px]:gap-20 max-[1400px]:gap-5 max-[1300px]:gap-10 justify-between">
@@ -26,7 +32,11 @@ export default function Footer() {
         </div>
         <div className="flex flex-col gap-5">
           <p className="font-bold text-[20px]">Как нас найти</p>
-          <div className="w-64 h-52 bg-[#D9D9D9]"></div>
+          <div className="w-64 h-52 bg-[#D9D9D9]">
+            <YMaps>
+              <Map defaultState={mapState} className="w-full h-full"></Map>
+            </YMaps>
+          </div>
         </div>
       </div>
       <div className="w-full h-10 border-t-2 border-[#004B2D] items-center flex justify-between text-[#004B2D]"></div>

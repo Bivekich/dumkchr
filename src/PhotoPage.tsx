@@ -6,7 +6,6 @@ export default function PhotoPage() {
   useEffect(() => {
     const query = async () => {
       const photos = await getPhotos();
-      console.log(photos);
       const urls = photos.map((item: any) => {
         return {
           url: item.url,

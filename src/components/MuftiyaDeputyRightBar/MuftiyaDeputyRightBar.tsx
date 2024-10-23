@@ -13,7 +13,6 @@ interface dataInterface {
   }[];
 }
 export default function MuftiyaDeputyRightBar({ data }: dataInterface) {
-  console.log(data);
   return (
     <div className="w-full flex flex-col gap-y-3 overflow-x-hidden text-white text-[20px]">
       <MuftiyaDeputy></MuftiyaDeputy>

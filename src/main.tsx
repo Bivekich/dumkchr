@@ -17,6 +17,8 @@ import LeftBar from "./components/LeftBar/LeftBar.tsx";
 import PhotoPage from "./PhotoPage.tsx";
 import VideoPage from "./VideoPage.tsx";
 import DecreePage from "./DecreePage.tsx";
+import ChiffOfStaffPage from "./ChiffOfStaffPage.tsx";
+import Kadie from "./Kadie.tsx";
 
 const router = createBrowserRouter([
   {
@@ -62,6 +64,14 @@ const router = createBrowserRouter([
   {
     path: "/Decree",
     element: <DecreePage />,
+  },
+  {
+    path: "/ChiffOfStaff",
+    element: <ChiffOfStaffPage></ChiffOfStaffPage>,
+  },
+  {
+    path: "/Kadie",
+    element: <Kadie></Kadie>,
   },
 ]);
 

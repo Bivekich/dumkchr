@@ -8,6 +8,7 @@ export default function MainNews() {
     const query = async () => {
       const News = await getNews();
       setNews(News);
+      console.log(News);
     };
     query();
   }, []);

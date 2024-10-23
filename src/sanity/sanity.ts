@@ -23,7 +23,7 @@ export default async function getSchedule() {
 export async function getNews() {
   const News = await client
     .fetch(
-      '*[_type == "news"][0]{Items[]{Title,Date,Image{asset->{url}},MainText[]{children[]}, isMain}}'
+      '*[_type == "news"][0]{Items[]{Title,Date,Image{asset->{url}},MainText, isMain}}'
     )
     .then((item) => {
       return item.Items;
@@ -70,4 +70,8 @@ export async function getDecree() {
     });
 
   return Decree;
+}
+export async function getHadis() {
+  const Hadis = await client.fetch('*[_type == "Hadis"]{text}');
+  return Hadis;
 }
