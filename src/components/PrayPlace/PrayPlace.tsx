@@ -9,10 +9,9 @@ const date = new Date()
   .split(" ");
 const today = new Date();
 const gregorianYear = today.getFullYear();
-const gregorianMonth = today.getMonth() + 1; // Месяцы начинаются с 0
+const gregorianMonth = today.getMonth() + 1;
 const gregorianDay = today.getDate();
 function gregorianToHijri(gYear: any, gMonth: any, gDay: any) {
-  // Константы для расчетов
   const GREGORIAN_EPOCH = 1721425.5;
   const HIJRI_EPOCH = 1948439.5;
 
