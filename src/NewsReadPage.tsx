@@ -21,7 +21,11 @@ export default function NewsReadPage() {
     <div className="flex gap-2 mb-52 w-full">
       <div className="w-full font-inter text-white text-[20px] flex flex-col">
         {news &&
-          (format !== "mp4" ? (
+          (format !== "mp4" &&
+          format !== "mov" &&
+          format !== "wmv" &&
+          format !== "avi" &&
+          format !== "webm" ? (
             <img
               className="bg-black rounded-[30px] h-[30rem] w-[40%] max-[2000px]:w-[60%] max-[1440px]:w-[80%] max-[1200px]:w-full border-[15px] "
               src={news.Image.asset.url}

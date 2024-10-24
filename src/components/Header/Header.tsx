@@ -41,12 +41,13 @@ export default function Header() {
         <ul className="flex gap-1 justify-center items-center mb-5">
           {media.map((icon: ReactNode, index) => {
             return (
-              <div
+              <a
+                href="#"
                 key={index}
                 className="size-12 rounded-full flex justify-center items-center text-[#004B2D] bg-[#FFFFFF]"
               >
                 {icon}
-              </div>
+              </a>
             );
           })}
         </ul>

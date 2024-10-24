@@ -15,32 +15,14 @@ interface dataInterface {
 export default function MuftiyaDeputyRightBar({ data }: dataInterface) {
   return (
     <div className="w-full flex flex-col gap-y-3 overflow-x-hidden text-white text-[20px]">
-      <MuftiyaDeputy></MuftiyaDeputy>
+      {data && <MuftiyaDeputy data={data}></MuftiyaDeputy>}
       <div className="px-4 flex flex-col gap-5">
-        <p>
-          Lorem ipsum odor amet, consectetuer adipiscing elit. Proin rutrum
-          natoque integer accumsan vestibu lum augue diam aliquam. Dictumst duis
-          nam laoreet penatibus odio mi. Rhoncus commodo iaculis nunc aptent
-          praesent, sapien imperdiet interdum. Dui amet quis tristique odio
-          tristique inceptos fusce. Curabitur nibh efficitur diam quis habitasse
-          quam ullamcorper vel tempus.
-        </p>
-        <p>
-          Lorem ipsum odor amet, consectetuer adipiscing elit. Proin rutrum
-          natoque integer accumsan vestibu lum augue diam aliquam. Dictumst duis
-          nam laoreet penatibus odio mi. Rhoncus commodo iaculis nunc aptent
-          praesent, sapien imperdiet interdum. Dui amet quis tristique odio
-          tristique inceptos fusce. Curabitur nibh efficitur diam quis habitasse
-          quam ullamcorper vel tempus.
-        </p>
-        <p>
-          Lorem ipsum odor amet, consectetuer adipiscing elit. Proin rutrum
-          natoque integer accumsan vestibu lum augue diam aliquam. Dictumst duis
-          nam laoreet penatibus odio mi. Rhoncus commodo iaculis nunc aptent
-          praesent, sapien imperdiet interdum. Dui amet quis tristique odio
-          tristique inceptos fusce. Curabitur nibh efficitur diam quis habitasse
-          quam ullamcorper vel tempus.
-        </p>
+        <pre className="text-[20px] font-inter text-wrap w-[70%]">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Exercitationem fugit autem iusto nulla, rem adipisci explicabo a
+          dolorum eaque facere ipsum! Obcaecati quae officia ullam at,
+          cupiditate amet quod totam.
+        </pre>
       </div>
       <div className="flex flex-col gap-10 px-4">
         {data.map((item, index) => {

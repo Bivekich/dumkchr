@@ -18,7 +18,7 @@ export default function NavBar() {
     { title: "КОМИТЕТЫ", href: "#" },
     { title: "МУФТИЙ", href: "/MuftiyaCHR" },
     { title: "ЗАМЕСТИТЕЛЬ МУФТИЯ", href: "/MuftiyaDeputy" },
-    { title: "ДОКУМЕНТЫ", href: "#" },
+    { title: "ДОКУМЕНТЫ", href: "/Documents" },
   ];
   const secondMenuLinks: Array<{ title: string; href: string }> = [
     { title: "ФОТО", href: "/PhotoPage" },

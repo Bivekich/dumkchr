@@ -75,3 +75,14 @@ export async function getHadis() {
   const Hadis = await client.fetch('*[_type == "Hadis"]{text}');
   return Hadis;
 }
+export async function getDocuments() {
+  const Documents = await client
+    .fetch(
+      '*[_type == "documents"][0]{Array[]{"url": asset->url, "fileName": asset->originalFilename}}'
+    )
+    .then((item) => {
+      return item.Array;
+    });
+
+  return Documents;
+}

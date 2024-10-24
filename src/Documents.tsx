@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getDecree } from "./sanity/sanity";
+import { getDocuments } from "./sanity/sanity";
 import { pdfjs } from "react-pdf";
 import Document from "react-pdf/dist/cjs/Document.js";
 import Page from "react-pdf/dist/cjs/Page.js";
@@ -7,11 +7,11 @@ import "react-pdf/dist/Page/TextLayer.css";
 import "react-pdf/dist/Page/AnnotationLayer.css";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
-export default function DecreePage() {
+export default function DocumentPage() {
   const [data, setData] = useState<{ url: string; fileName: string }[]>([]);
   useEffect(() => {
     const query = async () => {
-      const documents = await getDecree();
+      const documents = await getDocuments();
       setData(documents);
     };
 

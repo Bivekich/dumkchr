@@ -13,10 +13,10 @@ interface dataInterface {
 }
 export default function PersonInfo({ data }: dataInterface) {
   return (
-    <div>
+    <div className="w-full text-white">
       <PersonIcon image={data.Image.asset.url}></PersonIcon>
       <p className="text-[20px] font-bold py-2">{data.Name}</p>
-      <p>{data.Description}</p>
+      <pre className="text-[20px] font-inter text-wrap">{data.Description}</pre>
     </div>
   );
 }

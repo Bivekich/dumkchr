@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { getLeaders } from "./sanity/sanity";
 import Area from "./components/Hero/Area/Area";
 
-export default function Kadie() {
+export default function Maslahat() {
   const [data, setData] = useState<any>([]);
   useEffect(() => {
     const query = async () => {

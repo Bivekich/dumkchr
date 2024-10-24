@@ -18,23 +18,22 @@ export default function Menu({ Links }: PropsMenu) {
     },
     {
       title: "ФОНДЫ ДУМ КЧР",
-      href: "#",
+      href: "/Foundation",
     },
     { title: "СОВЕТНИК МУФТИЯ КЧР", href: "/MuftiyaSupport" },
   ];
   const secondAddMenuLinks: Array<{ title: string; href: string }> = [
-    { title: "ОТДЕЛ ПРИМИРЕНИЯ (МАСЛАХАТ)", href: "#" },
-    { title: "КОМИТЕТ ПО ДЕЛАМ МОЛОДЕЖИ И ПРОСВЕЩЕНИЯ", href: "#" },
-    { title: "КОМИТЕТ ХАДЖА", href: "#" },
+    { title: "ОТДЕЛ ПРИМИРЕНИЯ (МАСЛАХАТ)", href: "/Maslahat" },
+    {
+      title: "КОМИТЕТ ПО ДЕЛАМ МОЛОДЕЖИ И ПРОСВЕЩЕНИЯ",
+      href: "/ComYouth",
+    },
+    { title: "КОМИТЕТ ХАДЖА", href: "/Hajj" },
     {
       title: "КОМИТЕТ ПО КОНТРОЛЮ ИСЛАМСКОГО РЕЛИГИОЗНОГО ОБРАЗОВАНИЯ",
-      href: "#",
+      href: "/EducationDepartament",
     },
-    {
-      title: "КОМИТЕТ ПО КОНТРОЛЮ ИСЛАМСКОГО РЕЛИГИОЗНОГО ОБРАЗОВАНИЯ",
-      href: "#",
-    },
-    { title: "КОМИТЕТ ИНФОРМАЦИИ, ОБЩЕСТВЕННЫХ СВЯЗЕЙ СМИ", href: "#" },
+    { title: "КОМИТЕТ ИНФОРМАЦИИ, ОБЩЕСТВЕННЫХ СВЯЗЕЙ СМИ", href: "/ComMedia" },
   ];
   const handleFirstMenu = (e: React.MouseEvent<SVGElement, MouseEvent>) => {
     if ((e.target as Element).id === "РУКОВОДСТВО") setShowFirstMenu(false);

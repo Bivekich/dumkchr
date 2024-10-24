@@ -19,6 +19,12 @@ import VideoPage from "./VideoPage.tsx";
 import DecreePage from "./DecreePage.tsx";
 import ChiffOfStaffPage from "./ChiffOfStaffPage.tsx";
 import Kadie from "./Kadie.tsx";
+import FoundationPage from "./FoundationPage.tsx";
+import Maslahat from "./Maslahat.tsx";
+import Hajj from "./Hajj.tsx";
+import CommitetMedia from "./CommitetMedia.tsx";
+import CommitetYouth from "./CommitetYouth.tsx";
+import DocumentPage from "./Documents.tsx";
 
 const router = createBrowserRouter([
   {
@@ -73,12 +79,40 @@ const router = createBrowserRouter([
     path: "/Kadie",
     element: <Kadie></Kadie>,
   },
+  {
+    path: "/Foundation",
+    element: <FoundationPage></FoundationPage>,
+  },
+  {
+    path: "/Maslahat",
+    element: <Maslahat></Maslahat>,
+  },
+  {
+    path: "/Maslahat",
+    element: <Maslahat></Maslahat>,
+  },
+  {
+    path: "/Hajj",
+    element: <Hajj></Hajj>,
+  },
+  {
+    path: "/ComMedia",
+    element: <CommitetMedia></CommitetMedia>,
+  },
+  {
+    path: "/ComYouth",
+    element: <CommitetYouth></CommitetYouth>,
+  },
+  {
+    path: "/Documents",
+    element: <DocumentPage></DocumentPage>,
+  },
 ]);
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <div className="relative bg-[url('/Layer_7.png'),url('/Layer_8.png')] w-screen bg-cover bg-repeat-repeat px-14 font-inter">
-      <div className="mx-auto max-w-[2560px] min-h-screen">
+    <div className="relative bg-[url('/Layer_7.png'),url('/Layer_8.png')] w-screen bg-[length:65rem_70rem] bg-repeat-round bg-clip-padding px-14 font-inter">
+      <div className="mx-auto max-w-[1920px] min-h-screen">
         <div className="bg-[#004B2D] w-full min-h-screen flex flex-col gap-3 px-14">
           <Header></Header>
           <NavBar></NavBar>

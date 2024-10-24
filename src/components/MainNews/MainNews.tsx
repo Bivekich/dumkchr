@@ -7,8 +7,12 @@ export default function MainNews() {
   useEffect(() => {
     const query = async () => {
       const News = await getNews();
-      setNews(News);
       console.log(News);
+      const filtredNews = News.sort(
+        (a: any, b: any) =>
+          new Date(b.Date).valueOf() - new Date(a.Date).valueOf()
+      );
+      setNews(filtredNews);
     };
     query();
   }, []);
