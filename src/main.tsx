@@ -111,17 +111,20 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <div className="relative bg-[url('/Layer_7.png'),url('/Layer_8.png')] w-screen bg-[length:65rem_70rem] bg-repeat-round bg-clip-padding px-14 font-inter">
+    <div className="relative min-[820px]:bg-[url('/Layer_7.png'),url('/Layer_8.png')] w-screen bg-[length:50rem_80rem] bg-repeat-round bg-clip-padding min-[820px]:px-14 font-inter">
       <div className="mx-auto max-w-[1920px] min-h-screen">
-        <div className="bg-[#004B2D] w-full min-h-screen flex flex-col gap-3 px-14">
+        <div className="bg-[#004B2D] w-full min-h-screen flex flex-col gap-3 min-[820px]:px-14 px-4">
           <Header></Header>
           <NavBar></NavBar>
-          <div className="flex mt-3 gap-3 mb-52 flex-shrink-0">
+          <div className="flex mt-3 gap-3 mb-52 max-[820px]:hidden">
             <LeftBar></LeftBar>
             <RouterProvider router={router} />
           </div>
+          <div className="flex mt-3 gap-0 mb-52 min-[820px]:hidden">
+            <RouterProvider router={router} />
+          </div>
         </div>
-        <div className="w-full  flex">
+        <div className="w-full flex">
           <Footer></Footer>
         </div>
       </div>

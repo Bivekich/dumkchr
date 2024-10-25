@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { getNews } from "./sanity/sanity";
 
 export default function NewsReadPage() {
@@ -9,16 +9,29 @@ export default function NewsReadPage() {
   useEffect(() => {
     const query = async () => {
       const News = await getNews();
-      const pageNews = News[id === undefined ? 0 : id];
+      const filtredNews = News.sort(
+        (a: any, b: any) =>
+          new Date(b.Date).valueOf() - new Date(a.Date).valueOf()
+      );
+      const pageNews = filtredNews[id === undefined ? 0 : id];
       const form = pageNews.Image.asset.url.split(".")[3];
       setFormat(form);
       setNews(pageNews);
     };
     query();
   }, []);
+  function ScrollToTop() {
+    const { pathname } = useLocation();
 
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, [pathname]);
+
+    return null;
+  }
   return (
     <div className="flex gap-2 mb-52 w-full">
+      <ScrollToTop></ScrollToTop>
       <div className="w-full font-inter text-white text-[20px] flex flex-col">
         {news &&
           (format !== "mp4" &&
