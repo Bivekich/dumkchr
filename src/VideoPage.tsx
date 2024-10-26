@@ -6,7 +6,6 @@ export default function VideoPage() {
   useEffect(() => {
     const query = async () => {
       const videos = await getVideo();
-      console.log(videos[0].fileName);
       const urls = videos.map((video: any) => {
         return { url: video.url, name: video.fileName };
       });

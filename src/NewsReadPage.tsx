@@ -40,7 +40,7 @@ export default function NewsReadPage() {
           format !== "avi" &&
           format !== "webm" ? (
             <img
-              className="bg-black rounded-[30px] h-[30rem] w-[40%] max-[2000px]:w-[60%] max-[1440px]:w-[80%] max-[1200px]:w-full border-[15px] "
+              className="bg-black rounded-[30px] h-[40rem] w-[50rem] border-[15px] "
               src={news.Image.asset.url}
             ></img>
           ) : (

@@ -17,7 +17,7 @@ export default function Header() {
         <img
           src="лого.png"
           alt="Дум кчр"
-          className="flex-shrink-0 w-20 h-16 min-[820px]:w-auto min-[820px]:h-auto"
+          className="flex-shrink-0 w-20 h-16 min-[1280px]:w-auto min-[1280px]:h-auto"
         ></img>
         <div className="flex flex-col w-[50rem] max-[1440px]:w-[30rem] max-[1600px]:w-[30rem] max-[1200px]:w-[20rem] justify-center">
           <p className="flex max-[1920px]:w-full font-bold  text-[30px] max-[1440px]:text-[20px] max-[1200px]:text-[15px] max-[1600px]:text-[20px] max-[1440px]:items-center">
@@ -29,7 +29,7 @@ export default function Header() {
         </div>
       </div>
 
-      <search className="w-[40%] min-[820px]:flex justify-center items-center hidden">
+      <search className="w-[40%] min-[1280px]:flex justify-center items-center hidden">
         <div className="flex relative justify-center items-center max-[1280px]:w-full w-full max-[2560px]:w-full">
           <input
             type="search"
@@ -40,8 +40,8 @@ export default function Header() {
         </div>
       </search>
 
-      <div className="flex flex-col justify-center items-center ml-auto">
-        <p className="ml-auto font-inter min-[820px]:text-[20px] text-[14px]">
+      <div className="flex flex-col justify-center items-center ml-auto max-[428px]:hidden">
+        <p className="ml-auto font-inter min-[1280px]:text-[20px] text-[14px]">
           Мы в соц.сетях
         </p>
         <ul className="flex gap-1 justify-center items-center mb-5">
@@ -50,7 +50,7 @@ export default function Header() {
               <a
                 href="#"
                 key={index}
-                className="min-[820px]:size-12 size-9 rounded-full flex justify-center items-center text-[#004B2D] bg-[#FFFFFF]"
+                className="min-[1280px]:size-12 size-9   rounded-full flex justify-center items-center text-[#004B2D] bg-[#FFFFFF]"
               >
                 {icon}
               </a>

@@ -11,7 +11,7 @@ export default function Hadis() {
     query();
   }, []);
   return (
-    <div className="mt-36 w-full [&>img]:opacity-50 max-[820px]:hidden">
+    <div className="mt-36 w-full [&>img]:opacity-50 max-[1280px]:hidden">
       <img src="ornamentTop.png"></img>
       {text && (
         <div className="bg-[#E3E3E3] rounded-[30px] flex flex-col text-[#177245] p-4">

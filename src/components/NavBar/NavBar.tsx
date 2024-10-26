@@ -1,6 +1,6 @@
 import { MdKeyboardArrowDown } from "react-icons/md";
 import Menu from "../Menu";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaBars } from "react-icons/fa6";
 import MobileMenu from "../MobileMenu/MobileMenu";
 
@@ -37,12 +37,15 @@ export default function NavBar() {
 
   const [height, setHeight] = useState<string>("0");
   const handleHeight = () => {
-    setHeight(height === "0" ? "fit" : "0");
+    height === "0" ? setHeight("fit") : setHeight("0");
   };
+  useEffect(() => {
+    console.log(height);
+  }, [height]);
   return (
     <div className="w-full text-[#004B2D] font-medium">
-      <div className="w-full bg-white flex items-center rounded-[30px] px-10  h-16">
-        <ul className="min-[820px]:flex gap-20 max-[1550px]:gap-6 max-[1230px]:gap-5 max-[1130px]:gap-3 max-[1800px]:gap-12 text-[20px] font-medium hidden">
+      <div className="w-full bg-white flex items-center rounded-[30px] px-10 h-16">
+        <ul className="min-[900px]:flex gap-20 max-[1550px]:gap-6 max-[1230px]:gap-5 max-[1130px]:gap-3 max-[1800px]:gap-12 text-[20px] font-medium hidden">
           {links.map((link, index) => {
             return link.title === "МУФТИЯТ" || link.title === "МЕДИАТЕКА" ? (
               <div key={index} className="flex justify-center items-center">
@@ -78,10 +81,9 @@ export default function NavBar() {
             );
           })}
         </ul>
-
-        <ul className="min-[820px]:hidden">
-          <FaBars size={24} onClick={handleHeight}></FaBars>
-        </ul>
+        <div onClick={handleHeight}>
+          <FaBars size={24} className="min-[900px]:hidden"></FaBars>
+        </div>
       </div>
       <MobileMenu height={height}></MobileMenu>
     </div>

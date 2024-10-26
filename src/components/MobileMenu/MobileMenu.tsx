@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { MdKeyboardArrowDown } from "react-icons/md";
 export default function MobileMenu({ height }: { height: string }) {
   const links: Array<{ title: string; href: string }> = [
     { title: "ГЛАВНАЯ", href: "/" },
@@ -9,7 +11,7 @@ export default function MobileMenu({ height }: { height: string }) {
     { title: "МЕДИАТЕКА", href: "" },
     { title: "КОНТАКТЫ", href: "/" },
   ];
-  /*const firstMenuLinks: Array<{ title: string; href: string }> = [
+  const firstMenuLinks: Array<{ title: string; href: string }> = [
     { title: "РУКОВОДСТВО", href: "#" },
     { title: "КОМИТЕТЫ", href: "#" },
     { title: "МУФТИЙ", href: "/MuftiyaCHR" },
@@ -19,23 +21,84 @@ export default function MobileMenu({ height }: { height: string }) {
   const secondMenuLinks: Array<{ title: string; href: string }> = [
     { title: "ФОТО", href: "/PhotoPage" },
     { title: "ВИДЕО", href: "/VideoPage" },
-  ];*/
+  ];
+  const [firstMenuOpen, isFirstMenuOpen] = useState<boolean>(false);
+  const [secondMenuOpen, isSecondMenuOpen] = useState<boolean>(false);
+  const handleFirstMenu = () => {
+    isFirstMenuOpen(!firstMenuOpen);
+    isSecondMenuOpen(false);
+  };
+
+  const handleSecondMenu = () => {
+    isSecondMenuOpen(!secondMenuOpen);
+    isFirstMenuOpen(false);
+  };
   return (
     <div
-      className={`w-[49rem] bg-white h-${height} py-${
-        height === "0" ? "0" : "5"
-      }  min-[820px]:hidden mt-5 rounded-[30px] duration-500 ease-in-out transition-[height]`}
+      className={`w-full bg-white
+      min-[1281px]:hidden mt-5 rounded-[30px] duration-500 ease-in-out transition-[height] `}
+      style={{
+        height: height === "fit" ? "fit-content" : "0",
+        padding: height === "fit" ? "10px" : "0",
+      }}
     >
-      <ul className="w-full flex flex-col justify-center items-center gap-4 ">
+      <ul className="w-full flex flex-col justify-center items-center gap-4">
         {links.map((link, index) => {
           return (
-            <div key={index}>
-              <a
-                href={link.href}
-                className="font-medium max-[1550px]:items-center flex text-[20px]"
-              >
-                {link.title}
-              </a>
+            <div key={index} className="flex flex-col items-center">
+              <div className="flex items-center">
+                <a
+                  href={link.href}
+                  className="font-medium max-[1550px]:items-center flex text-[20px] flex-shrink-0"
+                >
+                  {link.title}
+                </a>
+
+                {link.title === "МУФТИЯТ" || link.title === "МЕДИАТЕКА" ? (
+                  <MdKeyboardArrowDown
+                    size={20}
+                    onClick={
+                      link.title === "МЕДИАТЕКА"
+                        ? handleSecondMenu
+                        : handleFirstMenu
+                    }
+                  />
+                ) : (
+                  ""
+                )}
+              </div>
+
+              {link.title === "МЕДИАТЕКА" && secondMenuOpen && (
+                <div className="flex flex-col py-4 items-center">
+                  {secondMenuLinks.map((link, index) => {
+                    return (
+                      <a
+                        key={index}
+                        href={link.href}
+                        className="text-[18px] py-1"
+                      >
+                        {link.title}
+                      </a>
+                    );
+                  })}
+                </div>
+              )}
+
+              {link.title === "МУФТИЯТ" && firstMenuOpen && (
+                <div className="flex flex-col py-4 items-center">
+                  {firstMenuLinks.map((link, index) => {
+                    return (
+                      <a
+                        key={index}
+                        href={link.href}
+                        className="text-[18px] py-1"
+                      >
+                        {link.title}
+                      </a>
+                    );
+                  })}
+                </div>
+              )}
             </div>
           );
         })}

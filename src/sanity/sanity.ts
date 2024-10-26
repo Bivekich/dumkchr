@@ -62,9 +62,7 @@ export async function getLeaders() {
 }
 export async function getDecree() {
   const Decree = await client
-    .fetch(
-      '*[_type == "decree"][0]{Array[]{"url": asset->url, "fileName": asset->originalFilename}}'
-    )
+    .fetch('*[_type == "decree"][0]{Array[]{DecreeName, Decree{asset->{url}}}}')
     .then((item) => {
       return item.Array;
     });
@@ -78,11 +76,31 @@ export async function getHadis() {
 export async function getDocuments() {
   const Documents = await client
     .fetch(
-      '*[_type == "documents"][0]{Array[]{"url": asset->url, "fileName": asset->originalFilename}}'
+      '*[_type == "documents"][0]{Array[]{DecreeName, Decree{asset->{url}}}}'
     )
     .then((item) => {
       return item.Array;
     });
 
   return Documents;
+}
+export async function getSections() {
+  const Sections = await client
+    .fetch(
+      '*[_type == "Sections"][0]{Array[]{"image":image{asset->{url}}, "info":info}}'
+    )
+    .then((item) => {
+      return item.Array;
+    });
+  return Sections;
+}
+export async function getRegions() {
+  const Sections = await client
+    .fetch(
+      '*[_type == "Regions"][0]{Array[]{"name": RegionName, "image":image{asset->{url}}, "info":info}}'
+    )
+    .then((item) => {
+      return item.Array;
+    });
+  return Sections;
 }

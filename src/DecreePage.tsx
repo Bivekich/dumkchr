@@ -8,7 +8,9 @@ import "react-pdf/dist/Page/AnnotationLayer.css";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 export default function DecreePage() {
-  const [data, setData] = useState<{ url: string; fileName: string }[]>([]);
+  const [data, setData] = useState<
+    { DecreeName: string; Decree: { asset: { url: string } } }[]
+  >([]);
   useEffect(() => {
     const query = async () => {
       const documents = await getDecree();
@@ -17,9 +19,6 @@ export default function DecreePage() {
 
     query();
   }, []);
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
   return (
     <div className="flex gap-2 mb-52 w-full">
       <div className="w-full grid grid-cols-3 grid-rows-1 gap-1 overflow-x-hidden text-white text-[20px]">
@@ -29,17 +28,17 @@ export default function DecreePage() {
               <div className="flex-wrap flex">
                 <div>
                   <Document
-                    file={document.url}
+                    file={document.Decree.asset.url}
                     onLoadError={console.error}
                     className="w-fit"
                   >
                     <Page pageNumber={1} scale={0.6}></Page>
                   </Document>
                   <a
-                    href={document.url}
+                    href={document.Decree.asset.url}
                     className="flex w-fit text-[20px] font-bold hover:text-blue-600"
                   >
-                    {document.fileName.split(".pdf")[0]}
+                    {document.DecreeName}
                   </a>
                 </div>
               </div>

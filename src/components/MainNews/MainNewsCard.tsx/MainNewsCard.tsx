@@ -15,13 +15,9 @@ export default function MainNewsCard({
     minute: "numeric",
   });
   const format = image?.asset.url.split(".")[3];
-  console.log(format);
   return (
     <div className="w-full flex flex-col p-7 text-[#177245] gap-3">
-      <Link
-        className="w-full max-[1300px]:w-64 max-[1300px]:h-fit max-[1440px]:w-80 max-[1920px]:w-full max-[1700px]:w-[20rem] max-[1700px]:h-fit max-[1920px]:h-96 max-[1440px]:h-fit h-fit rounded-[30px] border-none self-center"
-        to={`/NewsPage/${NewsId}`}
-      >
+      <Link className="w-full " to={`/NewsPage/${NewsId}`}>
         {image !== null ? (
           format !== "mp4" &&
           format !== "mov" &&
@@ -30,22 +26,22 @@ export default function MainNewsCard({
           format !== "webm" ? (
             <img
               src={image.asset.url}
-              className="w-full max-[1700px]:w-full max-[1700px]:h-[20rem] max-[1300px]:w-64 max-[1300px]:h-[15rem] max-[1440px]:w-80 max-[1920px]:w-full max-[1920px]:h-96 max-[1440px]:h-[20rem] h-[25rem] rounded-[30px] self-center"
+              className="w-full max-[640px]:w-[25rem] max-[640px]:h-[25rem] h-[25rem] rounded-[30px] self-center max-[1280px]:h-[15rem] max-[1650px]:h-[15rem] max-[1920px]:h-[20rem] object-center"
             ></img>
           ) : (
             <video
-              className="w-full max-[1700px]:w-full max-[1700px]:h-[20rem] max-[1300px]:w-64 max-[1300px]:h-[15rem] max-[1440px]:w-80 max-[1920px]:w-full max-[1920px]:h-96 max-[1440px]:h-[20rem] h-[25rem] rounded-[30px] self-center object-fill"
+              className="w-full h-[25rem] max-[640px]:h-[25rem] max-[640px]:w-[25rem] rounded-[30px] self-center max-[1280px]:h-[15rem] max-[1650px]:h-[15rem] max-[1920px]:h-[20rem] object-fill"
               poster={image.asset.url}
             >
               <source src={image.asset.url}></source>
             </video>
           )
         ) : (
-          <img className="w-full max-[1200px]:w-64 max-[1440px]:w-72 max-[1920px]:w-full max-[1920px]:h-64 h-96 rounded-[30px] bg-[#177245] self-center"></img>
+          <img className="w-full rounded-[30px] self-center max-[1280px]:h-[15rem] max-[1920px]:h-[20rem]"></img>
         )}
       </Link>
       <div>
-        <p className="font-bold w-fit text-[20px] max-[1200px]:text-[16px]">
+        <p className="font-bold w-fit text-[20px] max-[1200px]:text-[16px] text-ellipsis line-clamp-3">
           {title}
         </p>
         <p className="w-full font-medium text-[18px]">{NewDate}</p>

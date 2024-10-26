@@ -21,7 +21,7 @@ export default function MainNews() {
         <p className="text-white font-bold text-[24px]">НОВОСТИ</p>
       </div>
 
-      <div className="grid grid-cols-3 grid-rows-2 gap-3 w-full h-full">
+      <div className="grid grid-cols-3 grid-rows-2 gap-3 w-full h-full max-[640px]:flex max-[640px]:flex-col">
         {news &&
           news.map((item: any, index: number) => {
             return (

@@ -14,7 +14,7 @@ export default function RightBar() {
   }, []);
 
   return (
-    <div className="w-full flex flex-col gap-y-3 overflow-x-hidden">
+    <div className="w-full flex flex-col gap-y-3 overflow-x-hidden ">
       {news && <Hero news={news}></Hero>}
       {news && <MainNews></MainNews>}
     </div>
