@@ -40,7 +40,7 @@ export default function NewsReadPage() {
           format !== "avi" &&
           format !== "webm" ? (
             <img
-              className="bg-black rounded-[30px] h-[40rem] w-[50rem] border-[15px] "
+              className="bg-black rounded-[30px] h-[40rem] w-[40rem] max-[1650px]:h-[35rem] max-[1650px]:w-[35rem] max-[1440px]:h-[30rem] max-[1440px]:w-[30rem] max-[1280px]:h-[25rem] max-[1280px]:h-[25rem] border-[15px] "
               src={news.Image.asset.url}
             ></img>
           ) : (
@@ -54,7 +54,7 @@ export default function NewsReadPage() {
         <div className="w-full flex text-[25px] flex-col gap-3 mt-5">
           {news && (
             <pre className="text-[25px] font-inter text-wrap w-[69%]">
-              {news.MainText}
+              {news.MainText.trim()}
             </pre>
           )}
         </div>

@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
 export default function MainNewsCard({
@@ -7,6 +8,7 @@ export default function MainNewsCard({
   image,
   mainText,
 }: any) {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
   const NewDate = new Date(date).toLocaleString("ru", {
     year: "numeric",
     month: "long",
@@ -14,6 +16,30 @@ export default function MainNewsCard({
     hour: "numeric",
     minute: "numeric",
   });
+
+  useEffect(() => {
+    const handleLoadedMetadata = () => {
+      if (videoRef.current) {
+        videoRef.current.currentTime = 15;
+      }
+    };
+
+    const videoElement = videoRef.current;
+
+    if (videoElement) {
+      videoElement.addEventListener("loadedmetadata", handleLoadedMetadata);
+    }
+
+    return () => {
+      if (videoElement) {
+        videoElement.removeEventListener(
+          "loadedmetadata",
+
+          handleLoadedMetadata
+        );
+      }
+    };
+  }, []);
   const format = image?.asset.url.split(".")[3];
   return (
     <div className="w-full flex flex-col p-7 text-[#177245] gap-3">
@@ -30,6 +56,7 @@ export default function MainNewsCard({
             ></img>
           ) : (
             <video
+              ref={videoRef}
               className="w-full h-[25rem] max-[640px]:h-[25rem] max-[640px]:w-[25rem] rounded-[30px] self-center max-[1280px]:h-[15rem] max-[1650px]:h-[15rem] max-[1920px]:h-[20rem] object-fill"
               poster={image.asset.url}
             >

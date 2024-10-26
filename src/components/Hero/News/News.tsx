@@ -6,7 +6,7 @@ export default function News({ news }: any) {
     <div className="flex max-[1800px]:w-[80%] w-[70%] max-[1280px]:w-[45rem] max-[640px]:w-full max-[1280px]:h-[45rem] bg-[#E3E3E3] p-4 rounded-[30px] text-white max-[1280px]:flex-col">
       {mainNews.Image !== null ? (
         <img
-          className="max-[1800px]:w-[90%] max-[2560px]:w-[90%] max-[1920px]:w-[90%] h-full min-[1280px]:rounded-[30px] object-center w-[90%] max-[1280px]:w-full max-[1280px]:h-[20rem] max-[1280px]:rounded-tr-[30px] max-[1280px]:rounded-tl-[30px]"
+          className="w-full max-[1280px]:w-full max-[1280px]:h-[20rem] max-[1280px]:rounded-tr-[30px] max-[1280px]:rounded-tl-[30px] rounded-[30px]"
           src={mainNews.Image.asset.url}
         ></img>
       ) : (
