@@ -40,7 +40,7 @@ export default function Header() {
         </div>
       </search>
 
-      <div className="flex flex-col justify-center items-center ml-auto max-[428px]:hidden">
+      <div className="flex flex-col justify-center items-center ml-auto max-[500px]:hidden">
         <p className="ml-auto font-inter min-[1280px]:text-[20px] text-[14px]">
           Мы в соц.сетях
         </p>
