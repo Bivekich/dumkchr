@@ -104,3 +104,11 @@ export async function getRegions() {
     });
   return Sections;
 }
+export async function getContacts() {
+  const Contacts = await client
+    .fetch('*[_type == "Contacts"][0]{info}')
+    .then((item) => {
+      return item;
+    });
+  return Contacts;
+}

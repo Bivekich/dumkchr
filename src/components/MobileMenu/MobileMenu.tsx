@@ -36,20 +36,23 @@ export default function MobileMenu({ height }: { height: string }) {
   return (
     <div
       className={`w-full bg-white
-      min-[1281px]:hidden mt-5 rounded-[30px] duration-500 ease-in-out transition-[height] `}
+      min-[1281px]:hidden mt-5 rounded-[30px] duration-500 ease-in-out transition-[height] items-center justify-center `}
       style={{
         height: height === "fit" ? "fit-content" : "0",
-        padding: height === "fit" ? "10px" : "0",
+        padding: height === "fit" ? "10px 5px 10px 5px" : "0",
       }}
     >
       <ul className="w-full flex flex-col justify-center items-center gap-4">
         {links.map((link, index) => {
           return (
-            <div key={index} className="flex flex-col items-center">
-              <div className="flex items-center">
+            <div
+              key={index}
+              className="flex flex-col items-center w-full justify-center"
+            >
+              <div className="flex items-center w-full justify-center gap-1">
                 <a
                   href={link.href}
-                  className="font-medium max-[1550px]:items-center flex text-[20px] flex-shrink-0"
+                  className="font-medium max-[1550px]:items-center flex text-[20px] flex-shrink-0 items-center justify-center"
                 >
                   {link.title}
                 </a>
@@ -69,7 +72,7 @@ export default function MobileMenu({ height }: { height: string }) {
               </div>
 
               {link.title === "МЕДИАТЕКА" && secondMenuOpen && (
-                <div className="flex flex-col py-4 items-center">
+                <div className="flex flex-col py-4 items-center bg-[#177245] justify-center w-full text-white rounded-[15px]">
                   {secondMenuLinks.map((link, index) => {
                     return (
                       <a
@@ -85,7 +88,7 @@ export default function MobileMenu({ height }: { height: string }) {
               )}
 
               {link.title === "МУФТИЯТ" && firstMenuOpen && (
-                <div className="flex flex-col py-4 items-center">
+                <div className="flex flex-col py-4 items-center bg-[#177245] justify-center w-full text-white rounded-[15px]">
                   {firstMenuLinks.map((link, index) => {
                     return (
                       <a

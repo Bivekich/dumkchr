@@ -1,6 +1,6 @@
 import { MdKeyboardArrowDown } from "react-icons/md";
 import Menu from "../Menu";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaBars } from "react-icons/fa6";
 import MobileMenu from "../MobileMenu/MobileMenu";
 
@@ -10,10 +10,10 @@ export default function NavBar() {
     { title: "МУФТИЯТ", href: "/MuftiyaCHR" },
     { title: "УКАЗЫ", href: "/Decree" },
     { title: "НОВОСТИ", href: "/NewsPage" },
-    { title: "ОБРАЩЕНИЯ", href: "/" },
+    { title: "ОБРАЩЕНИЯ", href: "/Decree" },
     { title: "ОБРАТНАЯ СВЯЗЬ", href: "/FeedBack" },
     { title: "МЕДИАТЕКА", href: "" },
-    { title: "КОНТАКТЫ", href: "/" },
+    { title: "КОНТАКТЫ", href: "/Contacts" },
   ];
   const firstMenuLinks: Array<{ title: string; href: string }> = [
     { title: "РУКОВОДСТВО", href: "#" },
@@ -39,23 +39,49 @@ export default function NavBar() {
   const handleHeight = () => {
     height === "0" ? setHeight("fit") : setHeight("0");
   };
+  const firstRef = useRef<HTMLDivElement>(null);
+  const secondRef = useRef<HTMLDivElement>(null);
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (firstRef.current && !firstRef.current.contains(event.target as Node)) {
+      isFirstShow(false);
+    }
+    if (
+      secondRef.current &&
+      !secondRef.current.contains(event.target as Node)
+    ) {
+      isSecondMenuShow(false);
+    }
+  };
   useEffect(() => {
-    console.log(height);
-  }, [height]);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
     <div className="w-full text-[#004B2D] font-medium">
       <div className="w-full bg-white flex items-center rounded-[30px] px-10 h-16">
         <ul className="min-[900px]:flex gap-20 max-[1550px]:gap-6 max-[1230px]:gap-5 max-[1130px]:gap-3 max-[1800px]:gap-12 text-[20px] font-medium hidden">
           {links.map((link, index) => {
             return link.title === "МУФТИЯТ" || link.title === "МЕДИАТЕКА" ? (
-              <div key={index} className="flex justify-center items-center">
+              <div
+                key={index}
+                className="flex justify-center items-center"
+                ref={link.title === "МУФТИЯТ" ? firstRef : secondRef}
+              >
                 <div>
-                  <a
-                    href={link.href}
-                    className="font-medium max-[1550px]:items-center flex max-[1440px]:text-[14px] "
+                  <div
+                    onClick={
+                      link.title === "МУФТИЯТ"
+                        ? handleFirtsMenu
+                        : handleSecondMenu
+                    }
+                    className="font-medium max-[1550px]:items-center flex max-[1440px]:text-[14px] cursor-pointer select-none"
                   >
                     {link.title}
-                  </a>
+                  </div>
                   {link.title === "МУФТИЯТ"
                     ? firstMenu && <Menu Links={firstMenuLinks}></Menu>
                     : secondMenu && <Menu Links={secondMenuLinks}></Menu>}

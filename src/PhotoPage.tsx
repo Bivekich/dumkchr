@@ -25,7 +25,7 @@ export default function PhotoPage() {
             <div className="text-[20px] text-white font-bold gap-10 flex flex-col">
               <div
                 key={index}
-                className="bg-black rounded-[30px] h-[40rem] w-[60%] max-[2000px]:w-[90%] max-[1440px]:w-[90%] max-[1200px]:w-full"
+                className="bg-black rounded-[30px] h-[35rem] w-[35rem]"
               >
                 <img
                   src={url.url}

@@ -14,11 +14,14 @@ export default function Header() {
   return (
     <header className="w-full flex text-white py-4 items-center  flex-shrink-0">
       <div className="flex">
-        <img
-          src="лого.png"
-          alt="Дум кчр"
-          className="flex-shrink-0 w-20 h-16 min-[1280px]:w-auto min-[1280px]:h-auto"
-        ></img>
+        <a href="/" className="cursor-pointer">
+          <img
+            src="лого.png"
+            alt="Дум кчр"
+            className="flex-shrink-0 w-20 h-16 min-[1280px]:w-auto min-[1280px]:h-auto"
+          ></img>
+        </a>
+
         <div className="flex flex-col w-[50rem] max-[1440px]:w-[30rem] max-[1600px]:w-[30rem] max-[1200px]:w-[20rem] justify-center">
           <p className="flex max-[1920px]:w-full font-bold  text-[30px] max-[1440px]:text-[20px] max-[1200px]:text-[15px] max-[1600px]:text-[20px] max-[1440px]:items-center">
             ДУХОВНОЕ УПРАВЛЕНИЕ МУСУЛЬМАН

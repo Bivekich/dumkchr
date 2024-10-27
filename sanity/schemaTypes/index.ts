@@ -1,3 +1,4 @@
+import Contacts from '../schems/Contacts'
 import Decree from '../schems/Decree'
 import Documents from '../schems/Documents'
 import Hadis from '../schems/Hadis'
@@ -20,4 +21,5 @@ export const schemaTypes = [
   Documents,
   Section,
   Regions,
+  Contacts,
 ]

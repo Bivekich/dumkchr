@@ -27,6 +27,7 @@ import CommitetYouth from "./CommitetYouth.tsx";
 import DocumentPage from "./Documents.tsx";
 import SectionsPage from "./Sections.tsx";
 import RegionPage from "./RegionPage.tsx";
+import Contact from "./ContactsPage.tsx";
 
 const router = createBrowserRouter([
   {
@@ -116,6 +117,10 @@ const router = createBrowserRouter([
   {
     path: "/Regions/:RegionName",
     element: <RegionPage></RegionPage>,
+  },
+  {
+    path: "Contacts",
+    element: <Contact></Contact>,
   },
 ]);
 

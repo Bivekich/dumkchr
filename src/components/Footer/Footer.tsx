@@ -30,7 +30,7 @@ export default function Footer() {
           <p className="font-bold text-[20px] font-inter">Популярные разделы</p>
           <a href="/NewsPage">Новости</a>
           <a href="/Decree">Указы</a>
-          <a href="#">Обращения</a>
+          <a href="/Decree">Обращения</a>
         </div>
         <div className="flex flex-col gap-5 max-[1279px]:gap-1">
           <p className="font-bold text-[20px]">Наши контакты</p>

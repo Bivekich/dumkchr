@@ -8,6 +8,7 @@ import { useState } from "react";
 export default function Menu({ Links }: PropsMenu) {
   const [showFirstMenu, setShowFirstMenu] = useState<boolean>(false);
   const [showSecondMenu, setShowSecondMenu] = useState<boolean>(false);
+
   const firstAddMenuLinks: Array<{ title: string; href: string }> = [
     { title: "МУФТИЙ КЧР", href: "/MuftiyaCHR" },
     { title: "РУКОВОДИТЕЛЬ АППАРАТА МУФТИЯ КЧР", href: "/ChiffOfStaff" },
@@ -35,18 +36,27 @@ export default function Menu({ Links }: PropsMenu) {
     },
     { title: "КОМИТЕТ ИНФОРМАЦИИ, ОБЩЕСТВЕННЫХ СВЯЗЕЙ СМИ", href: "/ComMedia" },
   ];
-  const handleFirstMenu = (e: React.MouseEvent<SVGElement, MouseEvent>) => {
+
+  const handleFirstMenu = (
+    e:
+      | React.MouseEvent<SVGElement, MouseEvent>
+      | React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
     if ((e.target as Element).id === "РУКОВОДСТВО") setShowFirstMenu(false);
     setShowFirstMenu(!showFirstMenu);
     setShowSecondMenu(false);
   };
-  const handleSecondMenu = (e: React.MouseEvent<SVGElement, MouseEvent>) => {
+  const handleSecondMenu = (
+    e:
+      | React.MouseEvent<SVGElement, MouseEvent>
+      | React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
     if ((e.target as Element).id === "КОМИТЕТЫ") setShowSecondMenu(false);
     setShowSecondMenu(!showSecondMenu);
     setShowFirstMenu(false);
   };
   return (
-    <div className="absolute w-[40%] mt-5 flex gap-3 select-none">
+    <div className="absolute w-[40%] mt-5 flex gap-3 select-none z-50">
       <div className="w-52 p-4 bg-[#177245] flex transition-all text-white rounded-[15px] select-none h-fit">
         <ul className="flex flex-col text-[20px] gap-3 select-none">
           {Links.map((link) => {
@@ -64,17 +74,21 @@ export default function Menu({ Links }: PropsMenu) {
                 ) : (
                   <div className="flex items-center w-fit select-none">
                     <li className="hover:text-green-300">
-                      <a
-                        className={`w-fit relative text-white flex items-center select-none  ${
-                          link.title === "РУКОВОДСТВО" ||
-                          link.title === "КОМИТЕТЫ"
-                            ? "pointer-events-none"
-                            : ""
-                        }`}
-                        href={link.href}
+                      <div
+                        className={`w-fit relative text-white flex items-center select-none cursor-pointer`}
+                        onClick={
+                          link.title === "РУКОВОДСТВО"
+                            ? (e) => handleFirstMenu(e)
+                            : (e) => handleSecondMenu(e)
+                        }
+                        id={
+                          link.title === "РУКОВОДСТВО"
+                            ? "РУКОВОДСТВО"
+                            : "КОМИТЕТЫ"
+                        }
                       >
                         {link.title}
-                      </a>
+                      </div>
                     </li>
 
                     <div>

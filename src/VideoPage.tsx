@@ -18,7 +18,7 @@ export default function VideoPage() {
       {videos.length > 0 &&
         videos.map((item: any, index: number) => {
           return (
-            <div className="rounded-[30px] h-[40rem] w-[60%] max-[2000px]:w-[90%] max-[1440px]:w-[90%] max-[1200px]:w-full object-cover text-[20px] text-white font-bold gap-3">
+            <div className="rounded-[30px] h-[35rem] w-[50rem] max-[850px]:w-[90%] object-cover text-[20px] text-white font-bold gap-3">
               <div className="flex flex-col gap-3">
                 <video key={index} className="rounded-[30px]" controls={true}>
                   <source src={item.url} type="video/mp4"></source>

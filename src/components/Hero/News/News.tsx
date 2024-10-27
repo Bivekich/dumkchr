@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 export default function News({ news }: any) {
-  const mainIndex = news.findIndex((news: any) => news.isMain === true);
-  const mainNews = news[mainIndex];
+  const filtredNews = news.sort(
+    (a: any, b: any) => new Date(b.Date).valueOf() - new Date(a.Date).valueOf()
+  );
+  const mainIndex = filtredNews.findIndex((news: any) => news.isMain === true);
+  const mainNews = filtredNews[mainIndex];
   return (
     <div className="flex max-[1800px]:w-[80%] w-full max-[1280px]:w-[45rem] max-[640px]:w-full max-[1280px]:h-[45rem] bg-[#E3E3E3] p-4 rounded-[30px] text-white max-[1280px]:flex-col">
       {mainNews.Image !== null ? (
