@@ -3,14 +3,77 @@ import { FaWhatsapp } from "react-icons/fa";
 import { PiTelegramLogoLight } from "react-icons/pi";
 import { SlSocialVkontakte } from "react-icons/sl";
 import { AiOutlineYoutube } from "react-icons/ai";
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useState } from "react";
+import { client, getNews } from "../../sanity/sanity";
+import { useDebounce } from "use-debounce";
+
 const media = [
-  <FaWhatsapp className="size-[24px]" />,
-  <SlSocialVkontakte className="size-[24px]" />,
-  <PiTelegramLogoLight className="size-[24px]" />,
-  <AiOutlineYoutube className="size-[24px]" />,
+  {
+    node: <FaWhatsapp className="size-7"></FaWhatsapp>,
+    href: "https://chat.whatsapp.com/Krl4SDwxYJr9GFbOYM5sjI",
+  },
+  {
+    node: <SlSocialVkontakte className="size-7" />,
+    href: "https://vk.com/dumkchr",
+  },
+  {
+    node: <PiTelegramLogoLight className="size-7"></PiTelegramLogoLight>,
+    href: "https://t.me/dum_kchr",
+  },
+  {
+    node: <AiOutlineYoutube className="size-7"></AiOutlineYoutube>,
+    href: "https://youtube.com/@dumkchr?si=VHmY3BiZGzg7f0Hh",
+  },
 ];
+const fetchTitleSuggestions = async (query: any, setResults: any) => {
+  const fetchQuery = `*[_type == "news"]{
+    Items[@.Title match $titleQuery]{
+      Date,
+      Title,
+      MainText
+    }
+  }`;
+
+  try {
+    let allNews = await getNews();
+    allNews = allNews.map((item: any, index: number) => ({
+      ...item,
+      id: index,
+    }));
+    const dateNews = allNews.sort(
+      (a: any, b: any) =>
+        new Date(b.Date).valueOf() - new Date(a.Date).valueOf()
+    );
+    const findNews = await client.fetch(fetchQuery, {
+      titleQuery: `${query}*` as any,
+    });
+    const filteredNewsTitles = new Set(
+      findNews.map((news: any) => news.Items[0].Title)
+    );
+    const resultNews = dateNews.filter((news: any) =>
+      filteredNewsTitles.has(news.Title)
+    );
+    console.log(resultNews);
+    setResults(resultNews);
+  } catch (err) {
+    console.error("Ошибка при поиске:", err);
+    setResults([]);
+  }
+};
+
 export default function Header() {
+  const [query, setQuery] = useState("");
+  const [debouncedQuery] = useDebounce(query, 300);
+  const [suggestions, setSuggestions] = useState([]);
+
+  useEffect(() => {
+    if (debouncedQuery.length >= 2) {
+      fetchTitleSuggestions(debouncedQuery, setSuggestions);
+    } else {
+      setSuggestions([]);
+    }
+  }, [debouncedQuery]);
+
   return (
     <header className="w-full flex text-white py-4 items-center  flex-shrink-0">
       <div className="flex">
@@ -32,30 +95,43 @@ export default function Header() {
         </div>
       </div>
 
-      <search className="w-[40%] min-[1280px]:flex justify-center items-center hidden">
+      <div className="relative w-[40%] min-[1280px]:flex justify-center items-center hidden flex-col gap-2">
         <div className="flex relative justify-center items-center max-[1280px]:w-full w-full max-[2560px]:w-full">
           <input
             type="search"
             placeholder="Поиск"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
             className="px-4 w-[90%] bg-inherit outline-none border-2 border-white flex items-center rounded-full h-12 text-[1.2rem] placeholder-white"
           ></input>
           <IoMdSearch className="absolute max-[1280px]:right-6 max-[2560px]:right-20 max-[1920px]:right-12 right-12 w-8 h-8" />
         </div>
-      </search>
+        {suggestions.length > 0 && (
+          <ul className="z-10 text-white mt-2 w-[90%] top-full rounded-lg overflow-hidden flex flex-col absolute">
+            {suggestions.map((item: any) => {
+              return (
+                <li className="text-white font-inter text-[20px] text-wrap px-4 rounded-[30px] py-2 bg-[#1a7e56] hover:text-[#c9ffd7]">
+                  <a href={`NewsPage/${item.id}`}>{item.Title}</a>
+                </li>
+              );
+            })}
+          </ul>
+        )}
+      </div>
 
       <div className="flex flex-col justify-center items-center ml-auto max-[500px]:hidden">
         <p className="ml-auto font-inter min-[1280px]:text-[20px] text-[14px]">
           Мы в соц.сетях
         </p>
         <ul className="flex gap-1 justify-center items-center mb-5">
-          {media.map((icon: ReactNode, index) => {
+          {media.map((item: { node: ReactNode; href: string }, index) => {
             return (
               <a
-                href="#"
+                href={item.href}
                 key={index}
-                className="min-[1280px]:size-12 size-9   rounded-full flex justify-center items-center text-[#004B2D] bg-[#FFFFFF]"
+                className="min-[1280px]:size-12 size-9 rounded-full flex justify-center items-center text-[#004B2D] bg-[#FFFFFF]"
               >
-                {icon}
+                {item.node}
               </a>
             );
           })}

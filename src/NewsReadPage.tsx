@@ -30,7 +30,7 @@ export default function NewsReadPage() {
     return null;
   }
   return (
-    <div className="flex gap-2 mb-52 w-full">
+    <div className="flex gap-2 mb-52 w-full ml-10">
       <ScrollToTop></ScrollToTop>
       <div className="w-full font-inter text-white text-[20px] flex flex-col">
         {news &&
@@ -40,7 +40,7 @@ export default function NewsReadPage() {
           format !== "avi" &&
           format !== "webm" ? (
             <img
-              className="bg-black rounded-[30px] h-[40rem] w-[40rem] max-[1650px]:h-[35rem] max-[1650px]:w-[35rem] max-[1440px]:h-[30rem] max-[1440px]:w-[30rem] max-[1280px]:h-[25rem] max-[1280px]:h-[25rem] border-[15px] "
+              className="bg-black rounded-[30px] h-[40rem] w-[40rem] max-[1650px]:h-[35rem] max-[1650px]:w-[35rem] max-[1440px]:h-[30rem] max-[1440px]:w-[30rem] border-[15px] "
               src={news.Image.asset.url}
             ></img>
           ) : (
@@ -51,9 +51,9 @@ export default function NewsReadPage() {
               <source src={news.Image.asset.url}></source>
             </video>
           ))}
-        <div className="w-full flex text-[25px] flex-col gap-3 mt-5">
+        <div className="prose md:prose-lg lg:prose-xl font-inter w-full flex text-[25px] flex-col mt-5">
           {news && (
-            <pre className="text-[25px] font-inter text-wrap w-[69%]">
+            <pre className="text-[25px] leading-8 font-inter text-wrap w-[70%] pl-[10px]">
               {news.MainText.trim()}
             </pre>
           )}
