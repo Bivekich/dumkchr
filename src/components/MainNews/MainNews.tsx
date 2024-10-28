@@ -11,6 +11,7 @@ export default function MainNews() {
         (a: any, b: any) =>
           new Date(b.Date).valueOf() - new Date(a.Date).valueOf()
       );
+
       setNews(filtredNews);
     };
     query();

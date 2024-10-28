@@ -18,7 +18,7 @@ export default function MuftiyaRightBar({ data }: dataInterface) {
 
       <div className="px-4 flex flex-col gap-5">
         <p className="text-[20px] font-bold">{data.Name}</p>
-        <p>{data.Description}</p>
+        <pre className="font-inter text-wrap">{data.Description}</pre>
       </div>
     </div>
   );

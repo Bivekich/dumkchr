@@ -1,4 +1,6 @@
+import { PortableText } from "@portabletext/react";
 import { Link } from "react-router-dom";
+
 export default function News({ news }: any) {
   const filtredNews = news.sort(
     (a: any, b: any) => new Date(b.Date).valueOf() - new Date(a.Date).valueOf()
@@ -21,9 +23,19 @@ export default function News({ news }: any) {
         </p>
         <div className="flex flex-col overflow-hidden text-ellipsis h-[69%] text-[20px]">
           {mainNews ? (
-            <pre className="text-[20px] font-inter text-wrap text-ellipsis line-clamp-6 max-[1280px]:text-[14px] max-[1280px]:mt-3">
-              {mainNews.MainText}
-            </pre>
+            <div className="text-[20px] font-inter text-wrap text-ellipsis line-clamp-6 max-[1280px]:text-[14px] max-[1280px]:mt-3">
+              <PortableText
+                value={mainNews.MainText}
+                components={{
+                  types: {
+                    span: ({ value }: any) => <span>{value}</span>,
+                  },
+                  marks: {
+                    strong: ({ children }: any) => <strong>{children}</strong>,
+                  },
+                }}
+              ></PortableText>
+            </div>
           ) : (
             <div>hello world</div>
           )}

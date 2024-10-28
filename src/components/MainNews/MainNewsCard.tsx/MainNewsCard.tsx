@@ -1,3 +1,4 @@
+import { PortableText } from "@portabletext/react";
 import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
@@ -77,9 +78,19 @@ export default function MainNewsCard({
       {mainText?.length > 0 && (
         <div className="flex flex-col h-[19rem] overflow-hidden gap-2 mb-5">
           <div className="flex flex-col h-full w-full text-[20px] font-medium overflow-hidden">
-            <pre className="text-wrap text-ellipsis font-inter text-[20px] font-medium whitespace-nowrap line-clamp-[8]">
-              {mainText}
-            </pre>
+            <div className="text-wrap text-ellipsis font-inter text-[20px] font-medium whitespace-nowrap line-clamp-[8]">
+              <PortableText
+                value={mainText}
+                components={{
+                  types: {
+                    span: ({ value }: any) => <span>{value}</span>,
+                  },
+                  marks: {
+                    strong: ({ children }) => <strong>{children}</strong>,
+                  },
+                }}
+              ></PortableText>
+            </div>
           </div>
         </div>
       )}

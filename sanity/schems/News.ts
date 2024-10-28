@@ -30,7 +30,8 @@ export default {
             {
               title: 'Основной текст новости',
               name: 'MainText',
-              type: 'text',
+              type: 'array',
+              of: [{type: 'block'}, {type: 'image'}],
             },
             {
               name: 'isMain',

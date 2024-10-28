@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
-import { getNews } from "./sanity/sanity";
+import { client, getNews } from "./sanity/sanity";
+import Area from "./components/Hero/Area/Area";
+import { PortableText } from "@portabletext/react";
+import urlBuilder from "@sanity/image-url";
 
 export default function NewsReadPage() {
   const id = useParams().NewsId;
@@ -30,32 +33,62 @@ export default function NewsReadPage() {
     return null;
   }
   return (
-    <div className="flex gap-2 mb-52 w-full ml-10">
+    <div className="flex gap-2 mb-52 w-full max-[1280px]:ml-0 ml-10 flex-col text-white">
       <ScrollToTop></ScrollToTop>
-      <div className="w-full font-inter text-white text-[20px] flex flex-col">
-        {news &&
-          (format !== "mp4" &&
-          format !== "mov" &&
-          format !== "wmv" &&
-          format !== "avi" &&
-          format !== "webm" ? (
-            <img
-              className="bg-black rounded-[30px] h-[40rem] w-[40rem] max-[1650px]:h-[35rem] max-[1650px]:w-[35rem] max-[1440px]:h-[30rem] max-[1440px]:w-[30rem] border-[15px] "
-              src={news.Image.asset.url}
-            ></img>
-          ) : (
-            <video
-              className="bg-black rounded-[30px] h-[30rem] w-[40%] max-[2000px]:w-[60%] max-[1440px]:w-[80%] max-[1200px]:w-full object-cover"
-              controls={true}
-            >
-              <source src={news.Image.asset.url}></source>
-            </video>
-          ))}
-        <div className="prose md:prose-lg lg:prose-xl font-inter w-full flex text-[25px] flex-col mt-5">
+      {news && (
+        <p className="font-bold text-[70px] max-[1280px]:text-[60px] max-[660px]:w-[90%] max-[660px]:text-[40px] text-wrap text-center mb-10">
+          {news.Title}
+        </p>
+      )}
+
+      <div className="relative w-full max-[660px]:w-[90%] font-inter text-white text-[20px] flex flex-col">
+        <div className="relative flex w-full h-[37rem] justify-between">
+          {news &&
+            (format !== "mp4" &&
+            format !== "mov" &&
+            format !== "wmv" &&
+            format !== "avi" &&
+            format !== "webm" ? (
+              <img
+                className="object-cover w-[60%] rounded-[30px]"
+                src={news.Image.asset.url}
+              ></img>
+            ) : (
+              <video className="object-contain w-[59%]" controls={true}>
+                <source src={news.Image.asset.url}></source>
+              </video>
+            ))}
+          <div className="">
+            <Area></Area>
+          </div>
+        </div>
+
+        <div className="md:prose-lg lg:prose-xl font-inter flex flex-col mt-5 text-wrap">
           {news && (
-            <pre className="text-[25px] leading-8 font-inter text-wrap w-[70%] pl-[10px]">
-              {news.MainText.trim()}
-            </pre>
+            <div className="text-[20px] leading-8 font-inter text-wrap w-[90%]">
+              <PortableText
+                value={news.MainText}
+                components={{
+                  types: {
+                    span: ({ value }: any) => <span>{value}</span>,
+                    image: ({ value, isInline }) => (
+                      <img
+                        className="w-[50%]"
+                        src={urlBuilder(client)
+                          .image(value)
+                          .width(isInline ? 1000 : 10000)
+                          .fit("max")
+                          .auto("format")
+                          .url()}
+                      />
+                    ),
+                  },
+                  marks: {
+                    strong: ({ children }: any) => <strong>{children}</strong>,
+                  },
+                }}
+              ></PortableText>
+            </div>
           )}
         </div>
       </div>

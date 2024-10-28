@@ -36,24 +36,26 @@ const fetchTitleSuggestions = async (query: any, setResults: any) => {
 
   try {
     let allNews = await getNews();
-    allNews = allNews.map((item: any, index: number) => ({
-      ...item,
-      id: index,
-    }));
-    const dateNews = allNews.sort(
+    let dateNews = allNews.sort(
       (a: any, b: any) =>
         new Date(b.Date).valueOf() - new Date(a.Date).valueOf()
     );
+    dateNews = dateNews.map((item: any, index: number) => ({
+      ...item,
+      id: index,
+    }));
+
     const findNews = await client.fetch(fetchQuery, {
       titleQuery: `${query}*` as any,
     });
+
     const filteredNewsTitles = new Set(
       findNews.map((news: any) => news.Items[0].Title)
     );
+    console.log();
     const resultNews = dateNews.filter((news: any) =>
       filteredNewsTitles.has(news.Title)
     );
-    console.log(resultNews);
     setResults(resultNews);
   } catch (err) {
     console.error("Ошибка при поиске:", err);

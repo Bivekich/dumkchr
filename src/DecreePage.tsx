@@ -20,8 +20,8 @@ export default function DecreePage() {
     query();
   }, []);
   return (
-    <div className="flex gap-2 mb-52 w-full">
-      <div className="w-full grid grid-cols-3 grid-rows-1 max-[1650px]:grid-cols-2 max-[800px]:flex max-[800px]:flex-col max-[800px]:items-center gap-1 overflow-x-hidden text-white text-[20px]">
+    <div className="flex mb-52 w-full">
+      <div className="w-full grid grid-cols-3 grid-rows-1 max-[1650px]:grid-cols-2 max-[800px]:flex max-[800px]:flex-col max-[800px]:items-center gap-y-20 overflow-x-hidden text-white text-[20px]">
         {data &&
           data.map((document) => {
             return (
