@@ -34,7 +34,7 @@ export default function NewsReadPage() {
 
     return null;
   }
-  const swiperWrapperClasses = "relative flex w-full h-fit scale-103 mt-10";
+  const swiperWrapperClasses = "relative flex w-full h-fit scale-103";
   return (
     <div className="flex gap-2 mb-52 w-full max-[1280px]:ml-0 ml-10  text-white max-[850px]:items-center flex-col">
       <ScrollToTop></ScrollToTop>
@@ -92,7 +92,7 @@ export default function NewsReadPage() {
               )}
               <div className="font-inter flex flex-col mt-5 text-wrap items-center">
                 {news && (
-                  <div className="text-[25px] leading-8 font-inter text-wrap w-[82%] max-[850px]:w-[90%] ">
+                  <div className="text-[25px] leading-8 font-inter text-wrap w-[82%] max-[850px]:w-[90%]">
                     <PortableText
                       value={news.MainText}
                       components={{
