@@ -24,17 +24,20 @@ export default function Menu({ Links }: PropsMenu) {
     { title: "СОВЕТНИК МУФТИЯ КЧР", href: "/MuftiyaSupport" },
   ];
   const secondAddMenuLinks: Array<{ title: string; href: string }> = [
-    { title: "ОТДЕЛ ПРИМИРЕНИЯ (МАСЛАХАТ)", href: "/Maslahat" },
+    { title: "ОТДЕЛ ПРИМИРЕНИЯ (МАСЛАХАТ)", href: "/Sections/Maslahat" },
     {
       title: "КОМИТЕТ ПО ДЕЛАМ МОЛОДЕЖИ И ПРОСВЕЩЕНИЯ",
-      href: "/ComYouth",
+      href: "/Sections/Young",
     },
-    { title: "КОМИТЕТ ХАДЖА", href: "/Hajj" },
+    { title: "КОМИТЕТ ХАДЖА", href: "/Sections/Hajj" },
     {
       title: "КОМИТЕТ ПО КОНТРОЛЮ ИСЛАМСКОГО РЕЛИГИОЗНОГО ОБРАЗОВАНИЯ",
-      href: "/EducationDepartament",
+      href: "/Sections/Education",
     },
-    { title: "КОМИТЕТ ИНФОРМАЦИИ, ОБЩЕСТВЕННЫХ СВЯЗЕЙ СМИ", href: "/ComMedia" },
+    {
+      title: "КОМИТЕТ ИНФОРМАЦИИ, ОБЩЕСТВЕННЫХ СВЯЗЕЙ СМИ",
+      href: "/Sections/SmiCom",
+    },
   ];
 
   const handleFirstMenu = (

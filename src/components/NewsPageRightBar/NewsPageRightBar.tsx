@@ -7,7 +7,11 @@ export default function NewsPageRightBar() {
   useEffect(() => {
     const query = async () => {
       const News = await getNews();
-      setNews(News);
+      const filtredNews = News.sort(
+        (a: any, b: any) =>
+          new Date(b.Date).valueOf() - new Date(a.Date).valueOf()
+      );
+      setNews(filtredNews);
     };
     query();
   }, []);
@@ -18,7 +22,7 @@ export default function NewsPageRightBar() {
           <p className="text-white font-bold text-[24px]">НОВОСТИ</p>
         </div>
 
-        <div className="grid grid-cols-3 grid-rows-2 gap-3 w-full">
+        <div className="grid grid-cols-3 max-[1650px]:grid-cols-2 max-[800px]:grid-cols-1 grid-rows-2 gap-3 w-full">
           {news.map((item: any, index: number) => {
             return (
               <MainNewsCard

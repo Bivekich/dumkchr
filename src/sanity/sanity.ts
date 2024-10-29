@@ -23,7 +23,7 @@ export default async function getSchedule() {
 export async function getNews() {
   const News = await client
     .fetch(
-      '*[_type == "news"][0]{Items[]{Title,Date,Image{asset->{url}},MainText, isMain}}'
+      '*[_type == "news"][0]{Items[]{Title,Date,Image{asset->{url}},MainText, isMain, Other[]{asset->{url}} }}'
     )
     .then((item) => {
       return item.Items;
@@ -84,10 +84,19 @@ export async function getDocuments() {
 
   return Documents;
 }
+export async function getAppeals() {
+  const Documents = await client
+    .fetch('*[_type == "appeal"][0]{Array[]{AppealName, Appeal{asset->{url}}}}')
+    .then((item) => {
+      return item.Array;
+    });
+
+  return Documents;
+}
 export async function getSections() {
   const Sections = await client
     .fetch(
-      '*[_type == "Sections"][0]{Array[]{"image":image{asset->{url}}, "info":info}}'
+      '*[_type == "Sections"][0]{Array[]{"image":image{asset->{url}}, "info":info, "sectionType":sectionType}}'
     )
     .then((item) => {
       return item.Array;

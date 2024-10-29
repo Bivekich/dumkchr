@@ -1,26 +1,64 @@
 import { useState } from "react";
 import { MdKeyboardArrowDown } from "react-icons/md";
 export default function MobileMenu({ height }: { height: string }) {
+  const [firstSubMenu, setFirstSubMenu] = useState(false);
+  const [secondSubMenu, setSecondSubMenu] = useState(false);
+  const handeleFirstSubMenu = () => {
+    setFirstSubMenu(!firstSubMenu);
+    setSecondSubMenu(false);
+  };
+  const handleSecondSubMenu = () => {
+    setSecondSubMenu(!secondSubMenu);
+    setFirstSubMenu(false);
+  };
   const links: Array<{ title: string; href: string }> = [
     { title: "ГЛАВНАЯ", href: "/" },
     { title: "МУФТИЯТ", href: "/MuftiyaCHR" },
     { title: "УКАЗЫ", href: "/Decree" },
     { title: "НОВОСТИ", href: "/NewsPage" },
-    { title: "ОБРАЩЕНИЯ", href: "/" },
+    { title: "ОБРАЩЕНИЯ", href: "/Appeals" },
     { title: "ОБРАТНАЯ СВЯЗЬ", href: "/FeedBack" },
     { title: "МЕДИАТЕКА", href: "" },
-    { title: "КОНТАКТЫ", href: "/" },
+    { title: "КОНТАКТЫ", href: "/Contacts" },
   ];
   const firstMenuLinks: Array<{ title: string; href: string }> = [
-    { title: "РУКОВОДСТВО", href: "#" },
-    { title: "КОМИТЕТЫ", href: "#" },
-    { title: "МУФТИЙ", href: "/MuftiyaCHR" },
-    { title: "ЗАМЕСТИТЕЛЬ МУФТИЯ", href: "/MuftiyaDeputy" },
+    { title: "РУКОВОДСТВО", href: "" },
+    { title: "КОМИТЕТЫ", href: "" },
     { title: "ДОКУМЕНТЫ", href: "/Documents" },
   ];
   const secondMenuLinks: Array<{ title: string; href: string }> = [
     { title: "ФОТО", href: "/PhotoPage" },
     { title: "ВИДЕО", href: "/VideoPage" },
+  ];
+  const firstAddMenuLinks: Array<{ title: string; href: string }> = [
+    { title: "МУФТИЙ КЧР", href: "/MuftiyaCHR" },
+    { title: "РУКОВОДИТЕЛЬ АППАРАТА МУФТИЯ КЧР", href: "/ChiffOfStaff" },
+    { title: "КАДИЙ", href: "/Kadie" },
+    {
+      title: "ЗАМЕСТИТЕЛИ МУФТИЯ КЧР",
+      href: "/MuftiyaDeputy",
+    },
+    {
+      title: "ФОНДЫ ДУМ КЧР",
+      href: "/Foundation",
+    },
+    { title: "СОВЕТНИК МУФТИЯ КЧР", href: "/MuftiyaSupport" },
+  ];
+  const secondAddMenuLinks: Array<{ title: string; href: string }> = [
+    { title: "ОТДЕЛ ПРИМИРЕНИЯ (МАСЛАХАТ)", href: "/Sections/Maslahat" },
+    {
+      title: "КОМИТЕТ ПО ДЕЛАМ МОЛОДЕЖИ И ПРОСВЕЩЕНИЯ",
+      href: "/Sections/Young",
+    },
+    { title: "КОМИТЕТ ХАДЖА", href: "/Sections/Hajj" },
+    {
+      title: "КОМИТЕТ ПО КОНТРОЛЮ ИСЛАМСКОГО РЕЛИГИОЗНОГО ОБРАЗОВАНИЯ",
+      href: "/Sections/Education",
+    },
+    {
+      title: "КОМИТЕТ ИНФОРМАЦИИ, ОБЩЕСТВЕННЫХ СВЯЗЕЙ СМИ",
+      href: "/Sections/SmiCom",
+    },
   ];
   const [firstMenuOpen, isFirstMenuOpen] = useState<boolean>(false);
   const [secondMenuOpen, isSecondMenuOpen] = useState<boolean>(false);
@@ -75,29 +113,84 @@ export default function MobileMenu({ height }: { height: string }) {
                 <div className="flex flex-col py-4 items-center bg-[#177245] justify-center w-full text-white rounded-[15px]">
                   {secondMenuLinks.map((link, index) => {
                     return (
-                      <a
-                        key={index}
-                        href={link.href}
-                        className="text-[18px] py-1"
-                      >
-                        {link.title}
-                      </a>
+                      <div className="w-full items-center justify-center">
+                        <div className="flex items-center justify-center">
+                          <a
+                            key={index}
+                            href={link.href}
+                            className="text-[18px] py-1 items-center self-center"
+                          >
+                            {link.title}
+                          </a>
+                          {link.title === "РУКОВОДСТВО" ||
+                          link.title === "КОМИТЕТЫ" ? (
+                            <MdKeyboardArrowDown
+                              size={20}
+                            ></MdKeyboardArrowDown>
+                          ) : (
+                            ""
+                          )}
+                        </div>
+                      </div>
                     );
                   })}
                 </div>
               )}
-
               {link.title === "МУФТИЯТ" && firstMenuOpen && (
                 <div className="flex flex-col py-4 items-center bg-[#177245] justify-center w-full text-white rounded-[15px]">
                   {firstMenuLinks.map((link, index) => {
                     return (
-                      <a
-                        key={index}
-                        href={link.href}
-                        className="text-[18px] py-1"
-                      >
-                        {link.title}
-                      </a>
+                      <div className="w-full items-center justify-center">
+                        <div className="flex items-center justify-center">
+                          <a
+                            key={index}
+                            href={link.href}
+                            className="text-[18px] py-1 items-center self-center"
+                          >
+                            {link.title}
+                          </a>
+                          {link.title === "РУКОВОДСТВО" ||
+                          link.title === "КОМИТЕТЫ" ? (
+                            <MdKeyboardArrowDown
+                              size={20}
+                              onClick={
+                                link.title === "РУКОВОДСТВО"
+                                  ? handeleFirstSubMenu
+                                  : handleSecondSubMenu
+                              }
+                            ></MdKeyboardArrowDown>
+                          ) : (
+                            ""
+                          )}
+                        </div>
+
+                        <div className="bg-[#1e6240] w-full flex h-fit flex-col items-center justify-center text-center gap-5">
+                          {link.title === "КОМИТЕТЫ" &&
+                          link.title === "КОМИТЕТЫ"
+                            ? secondSubMenu &&
+                              secondAddMenuLinks.map((item, index) => (
+                                <a
+                                  key={index}
+                                  href={item.href}
+                                  className="text-[18px] py-1 items-center self-center"
+                                >
+                                  {item.title}
+                                </a>
+                              ))
+                            : link.title === "РУКОВОДСТВО"
+                            ? firstSubMenu &&
+                              firstAddMenuLinks.map((item, index) => (
+                                <a
+                                  key={index}
+                                  href={item.href}
+                                  className="text-[18px] py-1 items-center self-center"
+                                >
+                                  {item.title}
+                                </a>
+                              ))
+                            : ""}
+                        </div>
+                      </div>
                     );
                   })}
                 </div>

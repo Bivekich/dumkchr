@@ -1,6 +1,6 @@
 export default function Form() {
   return (
-    <div className="flex max-[1800px]:w-[80%] w-[70%] h-full bg-[#E3E3E3] rounded-[30px] text-white flex-shrink-0 flex-col gap-5">
+    <div className="flex w-[68%] max-[800px]:w-full max-[1650px]:w-[60%] h-full bg-[#E3E3E3] rounded-[30px] text-white flex-shrink-0 flex-col gap-5">
       <div className="w-full bg-[#177245] text-[32px] flex items-center justify-center h-24 rounded-tl-[30px] rounded-tr-[30px] font-bold">
         <p>ОСТАЛИСЬ ВОПРОСЫ?</p>
       </div>
@@ -31,7 +31,7 @@ export default function Form() {
           ></input>
         </div>
 
-        <div className="w-[80%] mt-auto mb-10">
+        <div className="w-[80%] mt-auto max-[800px]:mb-10 max-[800px]:mt-10 mb-10">
           <button
             type="submit"
             className="bg-[#177245] border border-[#177245]  rounded-full text-[20px] w-full h-11 font-bold text-white"

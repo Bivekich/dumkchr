@@ -5,6 +5,8 @@ import Area from "./components/Hero/Area/Area";
 import { PortableText } from "@portabletext/react";
 import urlBuilder from "@sanity/image-url";
 
+import { Carousel } from "flowbite-react";
+
 export default function NewsReadPage() {
   const id = useParams().NewsId;
   const [news, setNews] = useState<any>(null);
@@ -32,8 +34,9 @@ export default function NewsReadPage() {
 
     return null;
   }
+  const swiperWrapperClasses = "relative flex w-full h-[37rem]";
   return (
-    <div className="flex gap-2 mb-52 w-full max-[1280px]:ml-0 ml-10 flex-col text-white">
+    <div className="flex gap-2 mb-52 w-full max-[1280px]:ml-0 ml-10 flex-col text-white max-[850px]:items-center">
       <ScrollToTop></ScrollToTop>
       {news && (
         <p className="font-bold text-[70px] max-[1280px]:text-[60px] max-[660px]:w-[90%] max-[660px]:text-[40px] text-wrap text-center mb-10">
@@ -42,23 +45,54 @@ export default function NewsReadPage() {
       )}
 
       <div className="relative w-full max-[660px]:w-[90%] font-inter text-white text-[20px] flex flex-col">
-        <div className="relative flex w-full h-[37rem] justify-between">
-          {news &&
-            (format !== "mp4" &&
-            format !== "mov" &&
-            format !== "wmv" &&
-            format !== "avi" &&
-            format !== "webm" ? (
-              <img
-                className="object-cover w-[60%] rounded-[30px]"
-                src={news.Image.asset.url}
-              ></img>
-            ) : (
-              <video className="object-contain w-[59%]" controls={true}>
-                <source src={news.Image.asset.url}></source>
-              </video>
-            ))}
-          <div className="">
+        <div className="min-[850px]:hidden">
+          <Area></Area>
+        </div>
+        <div className={swiperWrapperClasses}>
+          {news && (
+            <div className="w-full max-[850px]:mr-5  ">
+              {news.Other !== null ? (
+                <Carousel slide={false} leftControl=" " rightControl=" ">
+                  {format === "jpg" || format === "png" || format === "webp" ? (
+                    <img
+                      className="max-w-[50rem] w-[40rem] max-h-[35rem] rounded-[30px] items-center"
+                      src={news.Image.asset.url}
+                    ></img>
+                  ) : (
+                    <video
+                      controls={true}
+                      className="rounded-[30px] object-fill "
+                    >
+                      <source src={news.Image.asset.url} />
+                    </video>
+                  )}
+                  {news.Other.map((item: any) => {
+                    const format = item.asset.url.split(".")[3];
+                    return format === "jpg" ||
+                      format === "png" ||
+                      format === "webp" ? (
+                      <img
+                        src={item.asset.url}
+                        className="max-w-[50rem] max-[800px]:w-full max-[850px]:w-full w-[40rem] max-h-[35rem] rounded-[30px] items-center"
+                      ></img>
+                    ) : (
+                      <div></div>
+                    );
+                  })}
+                </Carousel>
+              ) : format === "jpg" || format === "png" || format === "webp" ? (
+                <img
+                  src={news.Image.asset.url}
+                  className="max-w-[50rem] w-[40rem] max-h-[35rem] rounded-[30px] items-center"
+                ></img>
+              ) : (
+                <video controls={true} className="rounded-[30px]">
+                  <source src={news.Image.asset.url} />
+                </video>
+              )}
+            </div>
+          )}
+          <div className="max-[850px]:hidden">
             <Area></Area>
           </div>
         </div>

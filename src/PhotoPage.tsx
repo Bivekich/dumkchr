@@ -18,18 +18,18 @@ export default function PhotoPage() {
   }, []);
 
   return (
-    <div className="flex gap-20 mb-52 w-full flex-col">
+    <div className="flex gap-20 mb-52 w-full flex-col max-[800px]:items-center ">
       {url.length > 0 &&
         url.map((url: any, index: number) => {
           return (
-            <div className="text-[20px] text-white font-bold gap-10 flex flex-col">
+            <div className="text-[20px] text-white font-bold gap-10 flex flex-col ">
               <div
                 key={index}
-                className="bg-black rounded-[30px] h-[35rem] w-[35rem]"
+                className="rounded-[30px] h-[35rem] w-[35rem] max-[800px]:size-[40rem] max-[680px]:size-[30rem] max-[550px]:size-[25rem] max-[500px]:size-[20rem]"
               >
                 <img
                   src={url.url}
-                  className="w-full h-full rounded-[30px] objcet-cover mb-2"
+                  className="w-full h-full rounded-[30px] objcet-cover mb-2 "
                 ></img>
                 <p>{url.name}</p>
               </div>

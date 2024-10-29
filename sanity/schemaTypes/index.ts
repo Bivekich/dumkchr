@@ -1,3 +1,4 @@
+import Appeals from '../schems/Appeals'
 import Contacts from '../schems/Contacts'
 import Decree from '../schems/Decree'
 import Documents from '../schems/Documents'
@@ -22,4 +23,5 @@ export const schemaTypes = [
   Section,
   Regions,
   Contacts,
+  Appeals,
 ]

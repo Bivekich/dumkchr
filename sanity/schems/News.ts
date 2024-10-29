@@ -23,6 +23,19 @@ export default {
               accept: 'image/*, video/*',
             },
             {
+              name: 'Other',
+              title: 'Остальной материал',
+              type: 'array',
+              of: [
+                {
+                  name: 'other',
+                  title: 'Материал',
+                  type: 'file',
+                  accept: 'image/*, video/*',
+                },
+              ],
+            },
+            {
               name: 'Date',
               title: 'Дата публикации',
               type: 'datetime',

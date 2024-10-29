@@ -10,7 +10,7 @@ export default function NavBar() {
     { title: "МУФТИЯТ", href: "/MuftiyaCHR" },
     { title: "УКАЗЫ", href: "/Decree" },
     { title: "НОВОСТИ", href: "/NewsPage" },
-    { title: "ОБРАЩЕНИЯ", href: "/Decree" },
+    { title: "ОБРАЩЕНИЯ", href: "/Appeals" },
     { title: "ОБРАТНАЯ СВЯЗЬ", href: "/FeedBack" },
     { title: "МЕДИАТЕКА", href: "" },
     { title: "КОНТАКТЫ", href: "/Contacts" },
@@ -18,8 +18,6 @@ export default function NavBar() {
   const firstMenuLinks: Array<{ title: string; href: string }> = [
     { title: "РУКОВОДСТВО", href: "#" },
     { title: "КОМИТЕТЫ", href: "#" },
-    { title: "МУФТИЙ", href: "/MuftiyaCHR" },
-    { title: "ЗАМЕСТИТЕЛЬ МУФТИЯ", href: "/MuftiyaDeputy" },
     { title: "ДОКУМЕНТЫ", href: "/Documents" },
   ];
   const secondMenuLinks: Array<{ title: string; href: string }> = [

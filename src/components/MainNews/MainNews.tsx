@@ -21,7 +21,7 @@ export default function MainNews() {
       <div className="w-full h-16 bg-[#177245] rounded-tl-[30px] rounded-tr-[30px] flex items-center justify-center">
         <p className="text-white font-bold text-[24px]">НОВОСТИ</p>
       </div>
-      <div className="grid grid-cols-3 grid-rows-2 gap-3 w-full max-[640px]:flex max-[640px]:flex-col">
+      <div className="grid grid-cols-3 max-[1650px]:grid-cols-2 max-[800px]:grid-cols-1 grid-rows-2 gap-3 w-full max-[640px]:flex max-[640px]:flex-col">
         {news &&
           news.map((item: any, index: number) => {
             if (index > 11) return;

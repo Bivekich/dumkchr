@@ -44,7 +44,10 @@ export default function MainNewsCard({
   const format = image?.asset.url.split(".")[3];
   return (
     <div className="w-full flex flex-col p-7 text-[#177245] gap-3">
-      <Link className="w-full " to={`/NewsPage/${NewsId}`}>
+      <Link
+        className="w-full h-[25rem] p-2 flex items-center justify-center"
+        to={`/NewsPage/${NewsId}`}
+      >
         {image !== null ? (
           format !== "mp4" &&
           format !== "mov" &&
@@ -53,7 +56,7 @@ export default function MainNewsCard({
           format !== "webm" ? (
             <img
               src={image.asset.url}
-              className="w-full max-[640px]:w-[25rem] max-[640px]:h-[25rem] h-[25rem] rounded-[30px] self-center max-[1280px]:h-[15rem] max-[1650px]:h-[15rem] max-[1920px]:h-[20rem] object-center"
+              className="w-full max-w-[30rem] h-full rounded-[30px] object-cover"
             ></img>
           ) : (
             <video

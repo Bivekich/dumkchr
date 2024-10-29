@@ -58,7 +58,8 @@ export default {
             {
               name: 'Description',
               title: 'Описание',
-              type: 'text',
+              type: 'array',
+              of: [{type: 'block'}],
             },
           ],
         },

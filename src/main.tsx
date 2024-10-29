@@ -20,7 +20,6 @@ import DecreePage from "./DecreePage.tsx";
 import ChiffOfStaffPage from "./ChiffOfStaffPage.tsx";
 import Kadie from "./Kadie.tsx";
 import FoundationPage from "./FoundationPage.tsx";
-import Maslahat from "./Maslahat.tsx";
 import Hajj from "./Hajj.tsx";
 import CommitetMedia from "./CommitetMedia.tsx";
 import CommitetYouth from "./CommitetYouth.tsx";
@@ -28,6 +27,7 @@ import DocumentPage from "./Documents.tsx";
 import SectionsPage from "./Sections.tsx";
 import RegionPage from "./RegionPage.tsx";
 import Contact from "./ContactsPage.tsx";
+import AppealsPage from "./AppealsPage.tsx";
 
 const router = createBrowserRouter([
   {
@@ -87,14 +87,6 @@ const router = createBrowserRouter([
     element: <FoundationPage></FoundationPage>,
   },
   {
-    path: "/Maslahat",
-    element: <Maslahat></Maslahat>,
-  },
-  {
-    path: "/Maslahat",
-    element: <Maslahat></Maslahat>,
-  },
-  {
     path: "/Hajj",
     element: <Hajj></Hajj>,
   },
@@ -111,7 +103,7 @@ const router = createBrowserRouter([
     element: <DocumentPage></DocumentPage>,
   },
   {
-    path: "/Sections",
+    path: "/Sections/:Section",
     element: <SectionsPage></SectionsPage>,
   },
   {
@@ -119,8 +111,12 @@ const router = createBrowserRouter([
     element: <RegionPage></RegionPage>,
   },
   {
-    path: "Contacts",
+    path: "/Contacts",
     element: <Contact></Contact>,
+  },
+  {
+    path: "/Appeals",
+    element: <AppealsPage></AppealsPage>,
   },
 ]);
 

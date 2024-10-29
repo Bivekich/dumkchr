@@ -1,4 +1,3 @@
-import Area from "../Hero/Area/Area";
 import MuftiyaCHRDeputy from "./MuftiyaCHRDeputy/MuftiyaCHRDeputy";
 interface dataInterface {
   data: {
@@ -16,7 +15,6 @@ export default function MuftiyaDeputy({ data }: dataInterface) {
   return (
     <div className="w-full h-[37rem] rounded-[30px] flex gap-2 overflow-x-hidden ">
       {data && <MuftiyaCHRDeputy data={data} />}
-      <Area></Area>
     </div>
   );
 }

@@ -12,13 +12,14 @@ interface dataInterface {
 }
 export default function MuftiyaCHRDeputy({ data }: dataInterface) {
   return (
-    <div className="flex max-[1800px]:w-[80%] w-[70%] h-full bg-[#E3E3E3] p-4 rounded-[30px] text-white flex-shrink-0">
-      {data && (
+    <div className="w-full h-[37rem] rounded-[30px] flex gap-2 overflow-x-hidden">
+      <div className="flex w-[100%] h-full bg-[#E3E3E3] p-4 rounded-[30px] text-white flex-shrink-0">
         <img
-          className="w-full rounded-[30px] "
+          className="w-full rounded-[30px] bg-[#004B2D] object-center"
+          alt="Муфтия Карачаево-Черкесской Республики"
           src={data[0].Image.asset.url}
         ></img>
-      )}
+      </div>
     </div>
   );
 }
