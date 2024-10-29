@@ -52,7 +52,7 @@ export default function NewsReadPage() {
                 </p>
               )}
               {news.Other !== null ? (
-                <Carousel slide={false} leftControl=" " rightControl=" ">
+                <Carousel slide={false}>
                   {format === "jpg" || format === "png" || format === "webp" ? (
                     <img
                       className="w-full rounded-[30px] items-center"
