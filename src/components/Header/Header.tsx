@@ -6,6 +6,7 @@ import { AiOutlineYoutube } from "react-icons/ai";
 import { ReactNode, useEffect, useState } from "react";
 import { client, getNews } from "../../sanity/sanity";
 import { useDebounce } from "use-debounce";
+import { Link } from "react-router-dom";
 
 const media = [
   {
@@ -45,17 +46,15 @@ const fetchTitleSuggestions = async (query: any, setResults: any) => {
       id: index,
     }));
 
-    const findNews = await client.fetch(fetchQuery, {
+    let findNews = await client.fetch(fetchQuery, {
       titleQuery: `${query}*` as any,
     });
-
-    const filteredNewsTitles = new Set(
-      findNews.map((news: any) => news.Items[0].Title)
-    );
-    console.log();
+    findNews = findNews[0].Items;
+    const matchedTitles = findNews.flat().map((item: any) => item.Title);
     const resultNews = dateNews.filter((news: any) =>
-      filteredNewsTitles.has(news.Title)
+      matchedTitles.includes(news.Title)
     );
+    console.log(resultNews);
     setResults(resultNews);
   } catch (err) {
     console.error("Ошибка при поиске:", err);
@@ -65,7 +64,7 @@ const fetchTitleSuggestions = async (query: any, setResults: any) => {
 
 export default function Header() {
   const [query, setQuery] = useState("");
-  const [debouncedQuery] = useDebounce(query, 300);
+  const [debouncedQuery] = useDebounce(query, 100);
   const [suggestions, setSuggestions] = useState([]);
 
   useEffect(() => {
@@ -109,11 +108,11 @@ export default function Header() {
           <IoMdSearch className="absolute max-[1280px]:right-6 max-[2560px]:right-20 max-[1920px]:right-12 right-12 w-8 h-8" />
         </div>
         {suggestions.length > 0 && (
-          <ul className="z-10 text-white mt-2 w-[90%] top-full rounded-lg overflow-hidden flex flex-col absolute">
+          <ul className="z-10 text-white mt-2 w-[90%] top-full rounded-lg overflow-hidden flex flex-col gap-1 absolute">
             {suggestions.map((item: any) => {
               return (
                 <li className="text-white font-inter text-[20px] text-wrap px-4 rounded-[30px] py-2 bg-[#1a7e56] hover:text-[#c9ffd7]">
-                  <a href={`NewsPage/${item.id}`}>{item.Title}</a>
+                  <a href={`/NewsPage/${item.id}`}>{item.Title}</a>
                 </li>
               );
             })}

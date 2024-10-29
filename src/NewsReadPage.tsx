@@ -34,7 +34,7 @@ export default function NewsReadPage() {
 
     return null;
   }
-  const swiperWrapperClasses = "relative flex w-full h-fit scale-103";
+  const swiperWrapperClasses = "relative flex w-full h-fit scale-103 mt-10";
   return (
     <div className="flex gap-2 mb-52 w-full max-[1280px]:ml-0 ml-10  text-white max-[850px]:items-center flex-col">
       <ScrollToTop></ScrollToTop>
@@ -47,12 +47,12 @@ export default function NewsReadPage() {
           {news && (
             <div className="w-full max-[850px]:mr-5 flex flex-col items-center h-fit max-[1800px]:mr-10">
               {news && (
-                <p className="font-bold text-[55px] max-[1280px]:text-[60px] max-[660px]:w-[90%] max-[660px]:text-[40px] text-wrap text-center mb-10">
+                <p className="font-bold text-[55px] max-[1700px]:text-[40px] max-[1440px]:text-[35px] max-[1280px]:text-[30px] max-[660px]:w-[100%] max-[660px]:text-[25px] text-wrap text-center mb-10 w-[100%]">
                   {news.Title}
                 </p>
               )}
               {news.Other !== null ? (
-                <Carousel slide={false}>
+                <Carousel slide={false} leftControl=" " rightControl=" ">
                   {format === "jpg" || format === "png" || format === "webp" ? (
                     <img
                       className="w-full rounded-[30px] items-center"
@@ -61,7 +61,7 @@ export default function NewsReadPage() {
                   ) : (
                     <video
                       controls={true}
-                      className="rounded-[30px] object-fill "
+                      className="rounded-[30px] object-fill w-[55rem]"
                     >
                       <source src={news.Image.asset.url} />
                     </video>
@@ -86,13 +86,13 @@ export default function NewsReadPage() {
                   className="w-[55rem] max-h-[45rem] rounded-[30px] items-center"
                 ></img>
               ) : (
-                <video controls={true} className="rounded-[30px]">
+                <video controls={true} className="rounded-[30px] w-[55rem]">
                   <source src={news.Image.asset.url} />
                 </video>
               )}
               <div className="font-inter flex flex-col mt-5 text-wrap items-center">
                 {news && (
-                  <div className="text-[25px] leading-8 font-inter text-wrap w-[82%] max-[850px]:w-[90%]">
+                  <div className="text-[25px] leading-8 font-inter text-wrap min-[2559px]:w-[100%] min-[1900px]:w-[90%] min-[1920px]:w-[90%] min-[1960px]:w-[82%] max-[850px]:w-[90%] self-center">
                     <PortableText
                       value={news.MainText}
                       components={{
