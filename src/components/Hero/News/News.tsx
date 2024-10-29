@@ -8,10 +8,10 @@ export default function News({ news }: any) {
   const mainIndex = filtredNews.findIndex((news: any) => news.isMain === true);
   const mainNews = filtredNews[mainIndex];
   return (
-    <div className="flex max-[1800px]:w-[80%] w-full max-[1280px]:w-[45rem] max-[640px]:w-full max-[1280px]:h-[45rem] bg-[#E3E3E3] p-4 rounded-[30px] text-white max-[1280px]:flex-col">
+    <div className="flex max-[1800px]:w-[70%] w-full max-[1280px]:w-[45rem] max-[640px]:w-full max-[1280px]:h-[45rem] bg-[#E3E3E3] p-4 rounded-[30px] text-white max-[1280px]:flex-col">
       {mainNews.Image !== null ? (
         <img
-          className="firefox-specific w-[70%] max-[1650px]:w-[65%] max-[1280px]:w-full max-[1280px]:h-[20rem] max-[1280px]:rounded-tr-[30px] max-[1280px]:rounded-tl-[30px] min-[1281px]:rounded-[30px] select-none"
+          className="firefox-specific w-[60%] max-[1650px]:w-[65%] max-[1280px]:w-full max-[1280px]:h-[20rem] max-[1280px]:rounded-tr-[30px] max-[1280px]:rounded-tl-[30px] min-[1281px]:rounded-[30px] select-none"
           src={mainNews.Image.asset.url}
         ></img>
       ) : (

@@ -17,7 +17,7 @@ export default function Area() {
       <p className="text-[20px] font-bold w-10 py-4 text-[#177245] max-[1300px]:w-full max-[1300px]:justify-center flex">
         РАЙОНЫ
       </p>
-      <div className="flex flex-col gap-3 ">
+      <div className="flex flex-col gap-3">
         {regions.map((region, index) => {
           return <AreaRow key={index} name={region}></AreaRow>;
         })}

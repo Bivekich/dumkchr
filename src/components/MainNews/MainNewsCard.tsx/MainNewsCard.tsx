@@ -17,7 +17,6 @@ export default function MainNewsCard({
     hour: "numeric",
     minute: "numeric",
   });
-
   useEffect(() => {
     const handleLoadedMetadata = () => {
       if (videoRef.current) {
