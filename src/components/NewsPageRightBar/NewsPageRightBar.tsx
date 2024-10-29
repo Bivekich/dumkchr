@@ -11,6 +11,7 @@ export default function NewsPageRightBar() {
         (a: any, b: any) =>
           new Date(b.Date).valueOf() - new Date(a.Date).valueOf()
       );
+
       setNews(filtredNews);
     };
     query();
@@ -30,6 +31,7 @@ export default function NewsPageRightBar() {
                 NewsId={index}
                 title={item.Title}
                 date={item.Date}
+                preview={item.preview}
                 image={item.Image}
                 mainText={item.MainText}
               />

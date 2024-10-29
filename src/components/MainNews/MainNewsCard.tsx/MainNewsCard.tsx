@@ -8,6 +8,7 @@ export default function MainNewsCard({
   date,
   image,
   mainText,
+  preview,
 }: any) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const NewDate = new Date(date).toLocaleString("ru", {
@@ -57,14 +58,13 @@ export default function MainNewsCard({
               src={image.asset.url}
               className="w-full max-w-[30rem] h-full rounded-[30px] object-cover"
             ></img>
+          ) : preview !== null ? (
+            <img
+              src={preview.asset.url}
+              className="w-full max-w-[30rem] h-full rounded-[30px] object-cover"
+            ></img>
           ) : (
-            <video
-              ref={videoRef}
-              className="w-full h-[25rem] max-[640px]:h-[25rem] max-[640px]:w-[25rem] rounded-[30px] self-center max-[1280px]:h-[15rem] max-[1650px]:h-[15rem] max-[1920px]:h-[20rem] object-fill"
-              poster={image.asset.url}
-            >
-              <source src={image.asset.url}></source>
-            </video>
+            <div className="w-full max-w-[30rem] h-full rounded-[30px] object-cover bg-black"></div>
           )
         ) : (
           <img className="w-full rounded-[30px] self-center max-[1280px]:h-[15rem] max-[1920px]:h-[20rem]"></img>

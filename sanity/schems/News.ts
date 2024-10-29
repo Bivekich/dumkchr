@@ -23,6 +23,12 @@ export default {
               accept: 'image/*, video/*',
             },
             {
+              name: 'preview',
+              title: 'Превью',
+              type: 'image',
+              accept: 'image/*',
+            },
+            {
               name: 'Other',
               title: 'Остальной материал',
               type: 'array',
