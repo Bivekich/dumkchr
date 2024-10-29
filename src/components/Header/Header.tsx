@@ -6,7 +6,6 @@ import { AiOutlineYoutube } from "react-icons/ai";
 import { ReactNode, useEffect, useState } from "react";
 import { client, getNews } from "../../sanity/sanity";
 import { useDebounce } from "use-debounce";
-import { Link } from "react-router-dom";
 
 const media = [
   {
