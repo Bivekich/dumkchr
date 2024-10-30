@@ -1,6 +1,7 @@
 import { PortableText } from "@portabletext/react";
-import MuftiyaSupport from "../MuftiyaSupport/MuftiyaSupport";
 import Area from "../Hero/Area/Area";
+import urlBuilder from "@sanity/image-url";
+import { client } from "../../sanity/sanity";
 interface dataInterface {
   data: {
     Image: {
@@ -15,30 +16,66 @@ interface dataInterface {
 }
 export default function MuftiyaSupportRightBar({ data }: dataInterface) {
   return (
-    <div className="w-full flex flex-col gap-y-3 overflow-x-hidden text-white text-[20px]">
-      <div className="flex max-[850px]:flex-col">
-        <div className="max-[850px]:ml-0 ml-3 max-[850px]:mt-5 max-[850px]:w-full items-center justify-center mb-10 min-[850px]:hidden">
+    <div className="flex gap-2 mb-52 w-full max-[1280px]:ml-0 ml-10  text-white max-[850px]:items-center flex-col">
+      <div className="relative w-full max-[660px]:w-[90%] font-inter text-white text-[20px] flex flex-col">
+        <div className="min-[850px]:hidden">
           <Area></Area>
         </div>
-        <MuftiyaSupport image={data.Image.asset.url} />
-        <div className="max-[850px]:ml-0 ml-3 max-[850px]:mt-5 max-[850px]:w-full items-center justify-center max-[850px]:hidden">
-          <Area></Area>
-        </div>
-      </div>
-      <div className="px-4 flex flex-col gap-5">
-        <p className="text-[20px] font-bold">{data.Name}</p>
-        <div className="font-inter text-wrap">
-          <PortableText
-            value={data.Description}
-            components={{
-              types: {
-                span: ({ value }: any) => <span>{value}</span>,
-              },
-              marks: {
-                strong: ({ children }) => <strong>{children}</strong>,
-              },
-            }}
-          ></PortableText>
+        <div className="relative flex w-full h-fit scale-103 mt-10">
+          {data && (
+            <div className="w-full max-[850px]:mr-0 flex flex-col h-fit max-[1800px]:mr-10">
+              <div className="flex items-center flex-col">
+                {data && (
+                  <p className="font-bold text-[55px] max-[1700px]:text-[40px] max-[1440px]:text-[35px] max-[1280px]:text-[30px] max-[660px]:w-[100%] max-[660px]:text-[25px] text-wrap text-center mb-10 w-[100%]">
+                    {data.Name}
+                  </p>
+                )}
+                {data &&
+                  (data.Image !== undefined ? (
+                    <img
+                      src={data.Image.asset.url}
+                      className="w-[55rem] max-h-[45rem] rounded-[30px] items-center"
+                    ></img>
+                  ) : (
+                    <div className="w-[55rem] max-h-[45rem] rounded-[30px] items-center bg-green-500" />
+                  ))}
+              </div>
+              <div className="font-inter flex flex-col mt-5 text-wrap">
+                {data && (
+                  <div className="text-[25px] leading-8 font-inter text-wrap min-[2559px]:w-[100%] min-[1900px]:w-[90%] min-[1920px]:w-[90%] min-[1960px]:w-[82%] max-[850px]:w-[90%]">
+                    <PortableText
+                      value={data.Description}
+                      components={{
+                        types: {
+                          span: ({ value }: any) => <span>{value}</span>,
+                          image: ({ value, isInline }) => (
+                            <img
+                              className="w-[50%]"
+                              src={urlBuilder(client)
+                                .image(value)
+                                .width(isInline ? 1000 : 10000)
+                                .fit("max")
+                                .auto("format")
+                                .url()}
+                            />
+                          ),
+                        },
+                        marks: {
+                          strong: ({ children }: any) => (
+                            <strong>{children}</strong>
+                          ),
+                        },
+                      }}
+                    ></PortableText>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+
+          <div className="max-[850px]:hidden">
+            <Area></Area>
+          </div>
         </div>
       </div>
     </div>

@@ -34,7 +34,6 @@ export default function NewsReadPage() {
 
     return null;
   }
-  const swiperWrapperClasses = "relative flex w-full h-fit scale-103 mt-10";
   return (
     <div className="flex gap-2 mb-52 w-full max-[1280px]:ml-0 ml-10  text-white max-[850px]:items-center flex-col">
       <ScrollToTop></ScrollToTop>
@@ -43,7 +42,7 @@ export default function NewsReadPage() {
         <div className="min-[850px]:hidden">
           <Area></Area>
         </div>
-        <div className={swiperWrapperClasses}>
+        <div className="relative flex w-full h-fit scale-103 mt-10">
           {news && (
             <div className="w-full max-[850px]:mr-5 flex flex-col items-center h-fit max-[1800px]:mr-10">
               {news && (
@@ -52,10 +51,10 @@ export default function NewsReadPage() {
                 </p>
               )}
               {news.Other !== null ? (
-                <Carousel slide={false} leftControl=" " rightControl=" ">
+                <Carousel slide={false} className="w-full h-[30rem]">
                   {format === "jpg" || format === "png" || format === "webp" ? (
                     <img
-                      className="w-full rounded-[30px] items-center"
+                      className="w-[55rem] max-h-[45rem] rounded-[30px] items-center"
                       src={news.Image.asset.url}
                     ></img>
                   ) : (
@@ -73,7 +72,7 @@ export default function NewsReadPage() {
                       format === "webp" ? (
                       <img
                         src={item.asset.url}
-                        className="w-full max-[800px]:w-full max-[850px]:w-full max-h-[35rem] rounded-[30px] items-center"
+                        className="w-[55rem] max-h-[45rem] rounded-[30px] items-center"
                       ></img>
                     ) : (
                       <div></div>
@@ -86,7 +85,10 @@ export default function NewsReadPage() {
                   className="w-[55rem] max-h-[45rem] rounded-[30px] items-center"
                 ></img>
               ) : (
-                <video controls={true} className="rounded-[30px] w-[55rem]">
+                <video
+                  controls={true}
+                  className="rounded-[30px] w-[55rem] max-h-[55rem] object-fill"
+                >
                   <source src={news.Image.asset.url} />
                 </video>
               )}
