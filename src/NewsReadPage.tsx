@@ -44,7 +44,7 @@ export default function NewsReadPage() {
         </div>
         <div className="relative flex w-full h-fit scale-103 mt-10">
           {news && (
-            <div className="w-full max-[850px]:mr-5 flex flex-col items-center h-fit max-[1800px]:mr-10">
+            <div className="w-full max-[850px]:mr-0 flex flex-col items-center h-fit max-[1800px]:mr-10">
               {news && (
                 <p className="font-bold text-[55px] max-[1700px]:text-[40px] max-[1440px]:text-[35px] max-[1280px]:text-[30px] max-[660px]:w-[100%] max-[660px]:text-[25px] text-wrap text-center mb-10 w-[100%]">
                   {news.Title}
@@ -53,10 +53,13 @@ export default function NewsReadPage() {
               {news.Other !== null ? (
                 <Carousel slide={false} className="w-full h-[30rem]">
                   {format === "jpg" || format === "png" || format === "webp" ? (
-                    <img
-                      className="w-[55rem] max-h-[45rem] rounded-[30px] items-center"
-                      src={news.Image.asset.url}
-                    ></img>
+                    <div
+                      className="max-[1650px]:w-full min-[1840px]:w-[90%] min-[1950px]:w-[80%] max-h-[45rem] h-full rounded-[30px] bg-top"
+                      style={{
+                        borderRadius: "30px",
+                        backgroundImage: `url(${news.Image.asset.url})`,
+                      }}
+                    ></div>
                   ) : (
                     <video
                       controls={true}
@@ -70,10 +73,13 @@ export default function NewsReadPage() {
                     return format === "jpg" ||
                       format === "png" ||
                       format === "webp" ? (
-                      <img
-                        src={item.asset.url}
-                        className="w-[55rem] max-h-[45rem] rounded-[30px] items-center"
-                      ></img>
+                      <div
+                        className="max-[1650px]:w-full min-[1840px]:w-[90%] min-[1950px]:w-[80%] max-h-[45rem] h-full rounded-[30px] bg-top"
+                        style={{
+                          borderRadius: "30px",
+                          backgroundImage: `url(${item.asset.url})`,
+                        }}
+                      ></div>
                     ) : (
                       <div></div>
                     );
@@ -82,7 +88,10 @@ export default function NewsReadPage() {
               ) : format === "jpg" || format === "png" || format === "webp" ? (
                 <img
                   src={news.Image.asset.url}
-                  className="w-[55rem] max-h-[45rem] rounded-[30px] items-center"
+                  className="w-[55rem] max-h-[45rem] rounded-[30px] items-center "
+                  style={{
+                    borderRadius: "30px",
+                  }}
                 ></img>
               ) : (
                 <video

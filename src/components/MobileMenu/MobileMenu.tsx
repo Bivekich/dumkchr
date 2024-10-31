@@ -13,7 +13,7 @@ export default function MobileMenu({ height }: { height: string }) {
   };
   const links: Array<{ title: string; href: string }> = [
     { title: "ГЛАВНАЯ", href: "/" },
-    { title: "МУФТИЯТ", href: "/MuftiyaCHR" },
+    { title: "МУФТИЯТ", href: "" },
     { title: "УКАЗЫ", href: "/Decree" },
     { title: "НОВОСТИ", href: "/NewsPage" },
     { title: "ОБРАЩЕНИЯ", href: "/Appeals" },
@@ -88,12 +88,38 @@ export default function MobileMenu({ height }: { height: string }) {
               className="flex flex-col items-center w-full justify-center"
             >
               <div className="flex items-center w-full justify-center gap-1">
-                <a
-                  href={link.href}
-                  className="font-medium max-[1550px]:items-center flex text-[20px] flex-shrink-0 items-center justify-center"
-                >
-                  {link.title}
-                </a>
+                {link.title === "МУФТИЯТ" || link.title === "МЕДИАТЕКА" ? (
+                  <div
+                    className="font-medium max-[1550px]:items-center flex text-[20px] flex-shrink-0 items-center justify-center select-none"
+                    onClick={
+                      link.title === "МУФТИЯТ" || link.title === "МЕДИАТЕКА"
+                        ? link.title === "МУФТИЯТ"
+                          ? handleFirstMenu
+                          : handleSecondMenu
+                        : () => {
+                            return;
+                          }
+                    }
+                  >
+                    {link.title}
+                  </div>
+                ) : (
+                  <a
+                    href={link.href}
+                    className="font-medium max-[1550px]:items-center flex text-[20px] flex-shrink-0 items-center justify-center select-none"
+                    onClick={
+                      link.title === "МУФТИЯТ" || link.title === "МЕДИАТЕКА"
+                        ? link.title === "МУФТИЯТ"
+                          ? handleFirstMenu
+                          : handleSecondMenu
+                        : () => {
+                            return;
+                          }
+                    }
+                  >
+                    {link.title}
+                  </a>
+                )}
 
                 {link.title === "МУФТИЯТ" || link.title === "МЕДИАТЕКА" ? (
                   <MdKeyboardArrowDown
@@ -142,13 +168,29 @@ export default function MobileMenu({ height }: { height: string }) {
                     return (
                       <div className="w-full items-center justify-center">
                         <div className="flex items-center justify-center">
-                          <a
-                            key={index}
-                            href={link.href}
-                            className="text-[18px] py-1 items-center self-center"
-                          >
-                            {link.title}
-                          </a>
+                          {link.title === "РУКОВОДСТВО" ||
+                          link.title === "КОМИТЕТЫ" ? (
+                            <div
+                              key={index}
+                              className="text-[18px] py-1 items-center self-center"
+                              onClick={
+                                link.title === "РУКОВОДСТВО"
+                                  ? handeleFirstSubMenu
+                                  : handleSecondSubMenu
+                              }
+                            >
+                              {link.title}
+                            </div>
+                          ) : (
+                            <a
+                              key={index}
+                              href={link.href}
+                              className="text-[18px] py-1 items-center self-center"
+                            >
+                              {link.title}
+                            </a>
+                          )}
+
                           {link.title === "РУКОВОДСТВО" ||
                           link.title === "КОМИТЕТЫ" ? (
                             <MdKeyboardArrowDown
@@ -165,8 +207,7 @@ export default function MobileMenu({ height }: { height: string }) {
                         </div>
 
                         <div className="bg-[#1e6240] w-full flex h-fit flex-col items-center justify-center text-center gap-5">
-                          {link.title === "КОМИТЕТЫ" &&
-                          link.title === "КОМИТЕТЫ"
+                          {link.title === "КОМИТЕТЫ"
                             ? secondSubMenu &&
                               secondAddMenuLinks.map((item, index) => (
                                 <a

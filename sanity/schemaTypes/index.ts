@@ -2,6 +2,7 @@ import Appeals from '../schems/Appeals'
 import Contacts from '../schems/Contacts'
 import Decree from '../schems/Decree'
 import Documents from '../schems/Documents'
+import Footer from '../schems/Footer'
 import Hadis from '../schems/Hadis'
 import Leaders from '../schems/Leaders'
 import News from '../schems/News'
@@ -24,4 +25,5 @@ export const schemaTypes = [
   Regions,
   Contacts,
   Appeals,
+  Footer,
 ]

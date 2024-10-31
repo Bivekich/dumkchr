@@ -17,7 +17,7 @@ export default function LeftBar() {
     query();
   }, []);
   return (
-    <div className="flex gap-3 flex-col w-96 max-[640px]:w-full max-[1440px]:w-64 max-[1280px]:w-fit">
+    <div className="flex gap-3 flex-col w-96 max-[640px]:w-full max-[1440px]:w-64 max-[1280px]:w-fit max-[850px]:w-full">
       {today && <NamazTime time={today}></NamazTime>}
       <PrayPlace></PrayPlace>
       <Hadis></Hadis>

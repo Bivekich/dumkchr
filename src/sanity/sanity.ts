@@ -121,3 +121,11 @@ export async function getContacts() {
     });
   return Contacts;
 }
+export async function getFooter() {
+  const Contacts = await client
+    .fetch('*[_type == "Footer"][0]{mediaArray[]}')
+    .then((item) => {
+      return item;
+    });
+  return Contacts;
+}

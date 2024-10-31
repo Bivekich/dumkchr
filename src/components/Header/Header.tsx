@@ -4,27 +4,9 @@ import { PiTelegramLogoLight } from "react-icons/pi";
 import { SlSocialVkontakte } from "react-icons/sl";
 import { AiOutlineYoutube } from "react-icons/ai";
 import { ReactNode, useEffect, useState } from "react";
-import { client, getNews } from "../../sanity/sanity";
+import { client, getFooter, getNews } from "../../sanity/sanity";
 import { useDebounce } from "use-debounce";
 
-const media = [
-  {
-    node: <FaWhatsapp className="size-7"></FaWhatsapp>,
-    href: "https://chat.whatsapp.com/Krl4SDwxYJr9GFbOYM5sjI",
-  },
-  {
-    node: <SlSocialVkontakte className="size-7" />,
-    href: "https://vk.com/dumkchr",
-  },
-  {
-    node: <PiTelegramLogoLight className="size-7"></PiTelegramLogoLight>,
-    href: "https://t.me/dum_kchr",
-  },
-  {
-    node: <AiOutlineYoutube className="size-7"></AiOutlineYoutube>,
-    href: "https://youtube.com/@dumkchr?si=VHmY3BiZGzg7f0Hh",
-  },
-];
 const fetchTitleSuggestions = async (query: any, setResults: any) => {
   const fetchQuery = `*[_type == "news"]{
     Items[@.Title match $titleQuery]{
@@ -53,7 +35,6 @@ const fetchTitleSuggestions = async (query: any, setResults: any) => {
     const resultNews = dateNews.filter((news: any) =>
       matchedTitles.includes(news.Title)
     );
-    console.log(resultNews);
     setResults(resultNews);
   } catch (err) {
     console.error("Ошибка при поиске:", err);
@@ -62,9 +43,40 @@ const fetchTitleSuggestions = async (query: any, setResults: any) => {
 };
 
 export default function Header() {
+  let media = [
+    {
+      node: <FaWhatsapp className="size-7"></FaWhatsapp>,
+      href: "https://chat.whatsapp.com/Krl4SDwxYJr9GFbOYM5sjI",
+    },
+    {
+      node: <SlSocialVkontakte className="size-7" />,
+      href: "https://vk.com/dumkchr",
+    },
+    {
+      node: <PiTelegramLogoLight className="size-7"></PiTelegramLogoLight>,
+      href: "https://t.me/dum_kchr",
+    },
+    {
+      node: <AiOutlineYoutube className="size-7"></AiOutlineYoutube>,
+      href: "https://youtube.com/@dumkchr?si=VHmY3BiZGzg7f0Hh",
+    },
+  ];
   const [query, setQuery] = useState("");
   const [debouncedQuery] = useDebounce(query, 100);
   const [suggestions, setSuggestions] = useState([]);
+  const [mediaNew, setMediaNew] = useState<{ node: ReactNode; href: string }[]>(
+    []
+  );
+  useEffect(() => {
+    const query = async () => {
+      const footer = await getFooter();
+      media = media.map((item, index) => {
+        return { ...item, href: footer.mediaArray[index] };
+      });
+      setMediaNew(media);
+    };
+    query();
+  }, []);
 
   useEffect(() => {
     if (debouncedQuery.length >= 2) {
@@ -73,7 +85,6 @@ export default function Header() {
       setSuggestions([]);
     }
   }, [debouncedQuery]);
-
   return (
     <header className="w-full flex text-white py-4 items-center  flex-shrink-0">
       <div className="flex">
@@ -124,7 +135,7 @@ export default function Header() {
           Мы в соц.сетях
         </p>
         <ul className="flex gap-1 justify-center items-center mb-5">
-          {media.map((item: { node: ReactNode; href: string }, index) => {
+          {mediaNew.map((item: { node: ReactNode; href: string }, index) => {
             return (
               <a
                 href={item.href}

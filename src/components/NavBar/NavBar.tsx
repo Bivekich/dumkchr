@@ -60,7 +60,7 @@ export default function NavBar() {
 
   return (
     <div className="w-full text-[#004B2D] font-medium">
-      <div className="w-full bg-white flex items-center rounded-[30px] px-10 h-16">
+      <div className="w-full bg-white flex items-center rounded-[30px] px-10 h-16 max-[900px]:justify-center">
         <ul className="min-[900px]:flex gap-20 max-[1550px]:gap-6 max-[1230px]:gap-5 max-[1130px]:gap-3 max-[1800px]:gap-12 text-[20px] font-medium hidden">
           {links.map((link, index) => {
             return link.title === "МУФТИЯТ" || link.title === "МЕДИАТЕКА" ? (
