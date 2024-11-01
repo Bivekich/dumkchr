@@ -77,7 +77,7 @@ const hijriMonth = [
 ];
 export default function PrayPlace() {
   return (
-    <div className="bg-[#E3E3E3] h-96 w-80 rounded-[30px] flex flex-col text-[#177245] max-[1440px]:w-full max-[1280px]:hidden">
+    <div className="bg-[#E3E3E3] h-96 w-80 rounded-[30px] flex flex-col text-[#177245] max-[1440px]:w-full max-[1440px]:hidden">
       <div className="w-full h-14 bg-green-500 rounded-tl-[30px] rounded-tr-[30px] flex p-4 items-center">
         <p className="text-[24px] max-[1300px]:text-[22px] max-[1000px]:text-[20px] text-white font-bold">
           {hijriMonth[hijriDate.hMonth - 1]}

@@ -25,7 +25,16 @@ export default function Form() {
       const data = await response.json();
       if (data.ok) {
         setColor("#11462c");
+        setName("");
+        setMessage("");
+        setPhone("");
+        alert("Сообщение было успешно отправлено");
         setTimeout(() => setColor("#177245"), 2000);
+      } else {
+        alert("Произошла ошибка");
+        setName("");
+        setMessage("");
+        setPhone("");
       }
     } catch (error) {
       console.log(error);
@@ -33,10 +42,10 @@ export default function Form() {
   };
   return (
     <div className="flex w-[68%] max-[800px]:w-full max-[1650px]:w-[60%] bg-[#E3E3E3] rounded-[30px] text-white flex-shrink-0 flex-col gap-5">
-      <div className="w-full bg-[#177245] text-[32px] flex items-center justify-center h-24 rounded-tl-[30px] rounded-tr-[30px] font-bold">
+      <div className="w-full bg-[#177245] text-[32px] flex items-center justify-center h-24 rounded-tl-[30px] rounded-tr-[30px] font-bold text-center">
         <p>ОСТАЛИСЬ ВОПРОСЫ?</p>
       </div>
-      <div className="w-full flex items-center justify-center text-center font-medium text-[24px] text-[#177245]">
+      <div className="w-full flex items-center justify-center text-center font-medium text-[24px] max-[650px]:text-[21px] text-[#177245]">
         <p className="w-[80%]">
           Если у вас остались вопросы или вам нужна дополнительная информация,
           не стесняйтесь обращаться к нам! Мы всегда рады помочь и готовы все
@@ -46,8 +55,8 @@ export default function Form() {
       </div>
       <form
         className="text-[#177245] w-full flex flex-col justify-center items-center mt-5 h-full"
-        onSubmit={(e) => handleSubmit(e)}
         method="post"
+        onSubmit={(e) => handleSubmit(e)}
       >
         <div className="w-[80%] flex flex-col gap-5">
           <input

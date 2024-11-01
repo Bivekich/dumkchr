@@ -51,19 +51,22 @@ export default function NewsReadPage() {
                 </p>
               )}
               {news.Other !== null ? (
-                <Carousel slide={false} className="w-full h-[30rem]">
+                <Carousel
+                  slide={false}
+                  className="w-full max-w-[50rem] h-auto aspect-[880/720]"
+                >
                   {format === "jpg" || format === "png" || format === "webp" ? (
-                    <div
-                      className="max-[1650px]:w-full min-[1840px]:w-[90%] min-[1950px]:w-[80%] max-h-[45rem] h-full rounded-[30px] bg-top"
+                    <img
+                      className="w-full h-full rounded-[30px] object-contain"
+                      src={news.Image.asset.url}
                       style={{
                         borderRadius: "30px",
-                        backgroundImage: `url(${news.Image.asset.url})`,
                       }}
-                    ></div>
+                    ></img>
                   ) : (
                     <video
                       controls={true}
-                      className="rounded-[30px] object-fill w-[55rem]"
+                      className="rounded-[30px] w-full h-auto max-w-[55rem] aspect-[880/720] object-cover"
                     >
                       <source src={news.Image.asset.url} />
                     </video>
@@ -73,22 +76,27 @@ export default function NewsReadPage() {
                     return format === "jpg" ||
                       format === "png" ||
                       format === "webp" ? (
-                      <div
-                        className="max-[1650px]:w-full min-[1840px]:w-[90%] min-[1950px]:w-[80%] max-h-[45rem] h-full rounded-[30px] bg-top"
+                      <img
+                        className="w-full h-full rounded-[30px] object-contain"
+                        src={item.asset.url}
                         style={{
                           borderRadius: "30px",
-                          backgroundImage: `url(${item.asset.url})`,
                         }}
-                      ></div>
+                      ></img>
                     ) : (
-                      <div></div>
+                      <video
+                        controls={true}
+                        className="rounded-[30px] w-full h-auto max-w-[55rem] aspect-[880/720] object-cover"
+                      >
+                        <source src={news.Image.asset.url} />
+                      </video>
                     );
                   })}
                 </Carousel>
               ) : format === "jpg" || format === "png" || format === "webp" ? (
                 <img
+                  className="w-full h-full rounded-[30px] object-contain"
                   src={news.Image.asset.url}
-                  className="w-[55rem] max-h-[45rem] rounded-[30px] items-center "
                   style={{
                     borderRadius: "30px",
                   }}
@@ -96,7 +104,7 @@ export default function NewsReadPage() {
               ) : (
                 <video
                   controls={true}
-                  className="rounded-[30px] w-[55rem] max-h-[55rem] object-fill"
+                  className="rounded-[30px] w-full h-auto max-w-[55rem] aspect-[880/720] object-cover"
                 >
                   <source src={news.Image.asset.url} />
                 </video>
