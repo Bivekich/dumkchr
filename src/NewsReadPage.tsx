@@ -34,6 +34,9 @@ export default function NewsReadPage() {
 
     return null;
   }
+  useEffect(() => {
+    console.log(format);
+  }, [format]);
   return (
     <div className="flex gap-2 mb-52 w-full max-[1280px]:ml-0 ml-10  text-white max-[850px]:items-center flex-col">
       <ScrollToTop></ScrollToTop>
@@ -55,7 +58,10 @@ export default function NewsReadPage() {
                   slide={false}
                   className="w-full max-w-[50rem] h-auto aspect-[880/720]"
                 >
-                  {format === "jpg" || format === "png" || format === "webp" ? (
+                  {format === "jpg" ||
+                  format === "png" ||
+                  format === "webp" ||
+                  format === "jpeg" ? (
                     <img
                       className="w-full h-full rounded-[30px] object-contain"
                       src={news.Image.asset.url}
@@ -73,9 +79,11 @@ export default function NewsReadPage() {
                   )}
                   {news.Other.map((item: any) => {
                     const format = item.asset.url.split(".")[3];
+
                     return format === "jpg" ||
                       format === "png" ||
-                      format === "webp" ? (
+                      format === "webp" ||
+                      format === "jpeg" ? (
                       <img
                         className="w-full h-full rounded-[30px] object-contain"
                         src={item.asset.url}
@@ -93,21 +101,28 @@ export default function NewsReadPage() {
                     );
                   })}
                 </Carousel>
-              ) : format === "jpg" || format === "png" || format === "webp" ? (
-                <img
-                  className="w-full h-full rounded-[30px] object-contain"
-                  src={news.Image.asset.url}
-                  style={{
-                    borderRadius: "30px",
-                  }}
-                ></img>
+              ) : format === "jpg" ||
+                format === "png" ||
+                format === "webp" ||
+                format === "jpeg" ? (
+                <div className="w-full max-w-[50rem] h-auto aspect-[880/720]">
+                  <img
+                    className="w-full h-full rounded-[30px] object-contain"
+                    src={news.Image.asset.url}
+                    style={{
+                      borderRadius: "30px",
+                    }}
+                  ></img>
+                </div>
               ) : (
-                <video
-                  controls={true}
-                  className="rounded-[30px] w-full h-auto max-w-[55rem] aspect-[880/720] object-cover"
-                >
-                  <source src={news.Image.asset.url} />
-                </video>
+                <div className="w-full max-w-[50rem] h-auto aspect-[880/720]">
+                  <video
+                    controls={true}
+                    className="rounded-[30px] w-full h-auto max-w-[55rem] aspect-[880/720] object-cover"
+                  >
+                    <source src={news.Image.asset.url} />
+                  </video>
+                </div>
               )}
               <div className="font-inter flex flex-col mt-5 text-wrap items-center">
                 {news && (
