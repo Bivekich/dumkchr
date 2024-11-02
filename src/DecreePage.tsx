@@ -23,14 +23,13 @@ export default function DecreePage() {
     <div className="flex mb-52 w-full">
       <div className="w-full grid grid-cols-3 grid-rows-1 max-[1650px]:grid-cols-2 max-[800px]:flex max-[800px]:flex-col max-[800px]:items-center gap-y-20 overflow-x-hidden text-white text-[20px]">
         {data &&
-          data.map((document) => {
+          data.map((document, index) => {
             return (
-              <div className="flex-wrap flex">
+              <div className="flex-wrap flex" key={index}>
                 <div>
                   <a href={document.Decree.asset.url}>
                     <Document
                       file={document.Decree.asset.url}
-                      onLoadError={console.error}
                       className="w-fit"
                     >
                       <Page pageNumber={1} scale={0.6}></Page>
