@@ -8,7 +8,10 @@ export default function LeftBar() {
   const [today, setToday] = useState([]);
   useEffect(() => {
     const date = new Date();
-    const currentDate = date.toISOString().split("T")[0];
+    const moscowOffset = 3 * 60 * 60 * 1000;
+    let moscowTime = new Date(date.getTime() + moscowOffset);
+    const currentDate = moscowTime.toISOString().split("T")[0];
+    console.log(currentDate);
     const query = async () => {
       const schedule = await getSchedule();
       const today = schedule.filter((item: any) => item.Date === currentDate);
