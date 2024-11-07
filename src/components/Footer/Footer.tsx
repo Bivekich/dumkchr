@@ -47,7 +47,7 @@ export default function Footer() {
       <div className="flex gap-32 w-full max-[1800px]:gap-40 max-[1700px]:gap-20 max-[1400px]:gap-5 max-[1300px]:gap-10 justify-between max-[1279px]:gap-10 max-[1279px]:flex-wrap  max-[1279px]:px-4">
         <div className="flex gap-4 w-[30%] max-[1200px]:w-[20%] max-[820px]:w-full">
           <div className="h-16 w-16 bg-[#004B2D] flex rounded-full flex-shrink-0">
-            <img src="лого(1).png"></img>
+            <img src="/лого(1).png"></img>
           </div>
           <p className="max-[1920px]:w-[100%] max-[1660px]:w-[100%] max-[1440px]:w-[25rem] w-[60%] font-medium text-[18px] max-[1279px]:text-[14px]">
             ДУХОВНОЕ УПРАВЛЕНИЕ МУСУЛЬМАН КАРАЧАЕВО-ЧЕРКЕССКОЙ РЕСПУБЛИКИ

@@ -29,7 +29,7 @@ export default function SectionsPage() {
             {data.map((item: any, index: any) => {
               return (
                 <div
-                  className="w-full max-[850px]:mr-0 flex flex-col items-center  h-fit max-[1800px]:mr-10"
+                  className="w-full max-[850px]:mr-0 flex flex-col items-center h-fit max-[1800px]:mr-10"
                   key={index}
                 >
                   <p className="font-bold text-[55px] max-[1700px]:text-[40px] max-[1440px]:text-[35px] max-[1280px]:text-[30px] max-[660px]:w-[100%] max-[660px]:text-[25px] text-wrap w-fit ">
@@ -38,7 +38,7 @@ export default function SectionsPage() {
                   {data && (
                     <img
                       src={item.image.asset.url}
-                      className="w-[55rem] max-h-[45rem] rounded-[30px] items-center"
+                      className="w-[55rem] max-h-[45rem] rounded-[30px] items-center object-center"
                     ></img>
                   )}
 

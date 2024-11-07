@@ -7,18 +7,17 @@ export default function News({ news }: any) {
   );
   const mainIndex = filtredNews.findIndex((news: any) => news.isMain === true);
   const mainNews = filtredNews[mainIndex];
-  console.log(mainNews);
   return (
     <div className="flex max-[1800px]:w-[70%] w-full max-[1280px]:w-[45rem] max-[850px]:w-full max-[850px]:h-[50rem] max-[1280px]:h-[45rem] bg-[#E3E3E3] p-4 rounded-[30px] text-white max-[1280px]:flex-col">
       {mainNews.Image !== null ? (
         mainNews.Image.asset.url.split(".")[3] === "png" ||
         mainNews.Image.asset.url.split(".")[3] === "jpg" ||
         mainNews.Image.asset.url.split(".")[3] === "webp" ? (
-          <img className="firefox-specific w-[60%] max-[1650px]:w-[65%] max-[1280px]:w-full max-[1280px]:h-[20rem] max-[1280px]:rounded-tr-[30px] max-[1280px]:rounded-tl-[30px] min-[1281px]:rounded-[30px] select-none"></img>
+          <img className="firefox-specific w-full max-w-[880px] max-h-[720px] max-[1650px]:w-[65%] max-[1280px]:w-full max-[1280px]:h-[20rem] max-[850px]:h-[26rem] max-[650px]:h-[20rem] max-[1280px]:rounded-tr-[30px] max-[1280px]:rounded-tl-[30px] min-[1281px]:rounded-[30px] select-none max-[850px]:object-cover object-center"></img>
         ) : (
           <img
             src={mainNews.preview.asset.url}
-            className="firefox-specific w-[60%] max-[1650px]:w-[65%] max-[1280px]:w-full max-[1280px]:h-[20rem] max-[850px]:h-[26rem] max-[650px]:h-[20rem] max-[1280px]:rounded-tr-[30px] max-[1280px]:rounded-tl-[30px] min-[1281px]:rounded-[30px] select-none"
+            className="firefox-specific w-full max-w-[880px] max-h-[720px] max-[1650px]:w-[65%] max-[1280px]:w-full max-[1280px]:h-[20rem] max-[850px]:h-[26rem] max-[650px]:h-[20rem] max-[1280px]:rounded-tr-[30px] max-[1280px]:rounded-tl-[30px] min-[1281px]:rounded-[30px] select-none max-[850px]:object-cover object-center"
           />
         )
       ) : (

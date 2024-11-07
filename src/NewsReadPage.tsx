@@ -34,9 +34,6 @@ export default function NewsReadPage() {
 
     return null;
   }
-  useEffect(() => {
-    console.log(format);
-  }, [format]);
   return (
     <div className="flex gap-2 mb-52 w-full max-[1280px]:ml-0 ml-10  text-white max-[850px]:items-center flex-col">
       <ScrollToTop></ScrollToTop>
@@ -63,7 +60,7 @@ export default function NewsReadPage() {
                   format === "webp" ||
                   format === "jpeg" ? (
                     <img
-                      className="w-full h-full rounded-[30px] object-contain"
+                      className="rounded-[30px] w-full h-auto max-w-[55rem] aspect-[880/720] object-cover"
                       src={news.Image.asset.url}
                       style={{
                         borderRadius: "30px",
@@ -85,7 +82,7 @@ export default function NewsReadPage() {
                       format === "webp" ||
                       format === "jpeg" ? (
                       <img
-                        className="w-full h-full rounded-[30px] object-contain"
+                        className="rounded-[30px] w-full h-auto max-w-[55rem] aspect-[880/720] object-cover"
                         src={item.asset.url}
                         style={{
                           borderRadius: "30px",
@@ -107,7 +104,7 @@ export default function NewsReadPage() {
                 format === "jpeg" ? (
                 <div className="w-full max-w-[50rem] h-auto aspect-[880/720]">
                   <img
-                    className="w-full h-full rounded-[30px] object-contain"
+                    className="rounded-[30px] w-full h-auto max-w-[55rem] aspect-[880/720] object-cover"
                     src={news.Image.asset.url}
                     style={{
                       borderRadius: "30px",

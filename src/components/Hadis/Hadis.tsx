@@ -12,7 +12,7 @@ export default function Hadis() {
   }, []);
   return (
     <div className="max-[1280px]:text-center max-[1280px]:mt-0 min-[1281px]:mt-36 w-fit [&>img]:opacity-50 max-[1280px]:flex">
-      <img src="ornamentTop.png" className="max-[1280px]:hidden"></img>
+      <img src="/ornamentTop.png" className="max-[1280px]:hidden"></img>
       {text && (
         <div className="bg-[#E3E3E3] rounded-[30px] flex flex-col text-[#177245] p-4 min-[900px]:w-fit max-[850px]:max-w-full max-w-[400px]">
           <p className="text-[24px] font-bold">ХАДИС</p>
@@ -22,7 +22,7 @@ export default function Hadis() {
         </div>
       )}
       <img
-        src="ornamentTop.png"
+        src="/ornamentTop.png"
         className="rotate-180 max-[1280px]:hidden"
       ></img>
     </div>

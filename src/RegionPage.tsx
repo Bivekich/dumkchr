@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { PortableText } from "@portabletext/react";
 import urlBuilder from "@sanity/image-url";
 import Area from "./components/Hero/Area/Area";
+import { Carousel } from "flowbite-react";
 
 export default function RegionPage() {
   const RegName = useParams().RegionName;
@@ -13,12 +14,75 @@ export default function RegionPage() {
       const Regions = await getRegions();
       const region = Regions.filter((item: any) => item.name === RegName);
       setData(region);
+      console.log(region);
     };
     query();
   }, []);
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
+
+  const chunkArray = (arr: any, chunkSize: any) => {
+    const result = [];
+    for (let i = 0; i < arr.length; i += chunkSize) {
+      result.push(arr.slice(i, i + chunkSize));
+    }
+    return result;
+  };
+
+  const GroupedPortableText = ({ value, components }: any) => {
+    const filteredValue = value
+      .map((item: any) => {
+        if (item._type === "block" && item.children) {
+          item.children = item.children
+            .map((child: any) => {
+              if (typeof child.text === "string") {
+                child.text = child.text
+                  .replace(/<br\s*\/?>/gi, "")
+                  .replace(/\n/g, "");
+              }
+              return child;
+            })
+            .filter((child: any) => child.text && child.text.trim() !== "");
+        }
+
+        return item;
+      })
+      .filter((item: any) => {
+        if (item._type === "block") {
+          return item.children.length > 0;
+        }
+        return true;
+      });
+    const groupedContent = chunkArray(filteredValue, 2);
+
+    return (
+      <div className="flex flex-col gap-10">
+        {groupedContent.map((group, index) => (
+          <div key={index} className="flex justify-between">
+            {group.map((item: any, i: any) => (
+              <PortableText
+                key={i}
+                value={item}
+                components={{
+                  ...components,
+                  block: ({ children }) => {
+                    // Проверка на пустые блоки также в компоненте
+                    if (
+                      Array.isArray(children) &&
+                      children.length === 1 &&
+                      children[0] === ""
+                    ) {
+                      return null;
+                    }
+                    return <p className="w-[50%] h-fit">{children}</p>;
+                  },
+                }}
+              />
+            ))}
+          </div>
+        ))}
+      </div>
+    );
+  };
+
   return (
     <div className="flex gap-2 mb-52 w-full max-[1280px]:ml-0 ml-10  text-white max-[850px]:items-center flex-col">
       <div className="relative w-full max-[660px]:w-[90%] font-inter text-white text-[20px] flex flex-col">
@@ -33,24 +97,42 @@ export default function RegionPage() {
                   className="w-full max-[850px]:mr-0 flex flex-col items-center  h-fit max-[1800px]:mr-10"
                   key={index}
                 >
-                  {item.image !== undefined ? (
+                  {item.Other !== null ? (
+                    item.Other.map((item: any, index: number) => {
+                      <Carousel>
+                        <img
+                          key={index}
+                          className="rounded-[30px] w-full h-auto max-w-[55rem] aspect-[880/720] object-cover"
+                          src={item.image.asset.url}
+                          style={{
+                            borderRadius: "30px",
+                          }}
+                        ></img>
+                      </Carousel>;
+                    })
+                  ) : item.image !== null ? (
                     <img
+                      key={index}
+                      className="rounded-[30px] w-full h-auto max-w-[55rem] aspect-[880/720] object-cover"
                       src={item.image.asset.url}
-                      className="w-[55rem] max-h-[45rem] rounded-[30px] items-center"
+                      style={{
+                        borderRadius: "30px",
+                      }}
                     ></img>
-                  ) : (
-                    <div className="w-[55rem] max-h-[45rem] rounded-[30px] items-center bg-green-700" />
-                  )}
-
+                  ) : null}
                   <div className="font-inter flex flex-col mt-5 text-wrap w-full">
-                    <div className="text-[25px] leading-8 font-inter text-wrap self-center w-full flex">
-                      <PortableText
+                    <div className="text-[25px] leading-8 font-inter text-wrap self-center w-full flex flex-col">
+                      <GroupedPortableText
                         value={item.info}
                         components={{
                           types: {
-                            span: ({ value }: any) => <span>{value}</span>,
-                            p: ({ value }: any) => <p>{value}</p>,
-                            image: ({ value, isInline }) => (
+                            span: ({ value }: any) => (
+                              <span className="w-full">{value}</span>
+                            ),
+                            p: ({ value }: any) => (
+                              <p className="w-full">{value}</p>
+                            ),
+                            image: ({ value, isInline }: any) => (
                               <img
                                 className="w-[50%]"
                                 src={urlBuilder(client)
@@ -64,11 +146,11 @@ export default function RegionPage() {
                           },
                           marks: {
                             strong: ({ children }: any) => (
-                              <strong>{children}</strong>
+                              <strong className="h-fit">{children}</strong>
                             ),
                           },
                         }}
-                      ></PortableText>
+                      />
                     </div>
                   </div>
                 </div>

@@ -106,7 +106,7 @@ export async function getSections() {
 export async function getRegions() {
   const Sections = await client
     .fetch(
-      '*[_type == "Regions"][0]{Array[]{"name": RegionName, "image":image{asset->{url}}, "info":info}}'
+      '*[_type == "Regions"][0]{Array[]{"name": RegionName, "image":image{asset->{url}}, "info":info, "Other":Other{asset->{url}}}}'
     )
     .then((item) => {
       return item.Array;
