@@ -14,7 +14,6 @@ export default function RegionPage() {
       const Regions = await getRegions();
       const region = Regions.filter((item: any) => item.name === RegName);
       setData(region);
-      console.log(region);
     };
     query();
   }, []);

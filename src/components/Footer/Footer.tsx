@@ -10,6 +10,8 @@ export default function Footer() {
   const [mediaNew, setMediaNew] = useState<{ node: ReactNode; href: string }[]>(
     []
   );
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [addres, setAdress] = useState("");
   let media = [
     {
       node: <FaWhatsapp className="size-7"></FaWhatsapp>,
@@ -31,6 +33,8 @@ export default function Footer() {
   useEffect(() => {
     const query = async () => {
       const footer = await getFooter();
+      setPhoneNumber(footer.ourContacts.phoneNumber);
+      setAdress(footer.ourContacts.adres);
       media = media.map((item, index) => {
         return { ...item, href: footer.mediaArray[index] };
       });
@@ -61,11 +65,8 @@ export default function Footer() {
         </div>
         <div className="flex flex-col gap-5 max-[1279px]:gap-1">
           <p className="font-bold text-[20px]">Наши контакты</p>
-          <p>+7 (878) 228-42-36</p>
-          <p className="w-80">
-            Россия, Карачаево-Черкесская Республика, Черкесск, проспект Ленина,
-            326
-          </p>
+          <p>{phoneNumber}</p>
+          <p className="w-80">{addres}</p>
         </div>
         <div className="flex flex-col gap-5 max-[1279px]:gap-1">
           <p className="font-bold text-[20px]">Как нас найти</p>
@@ -76,7 +77,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col justify-center items-center max-[428px]:flex mr-auto px-4 min-[429px]:hidden">
+      <div className="flex flex-col justify-center items-center max-[428px]:flex mr-auto px-4 min-[850px]:hidden">
         <p className="font-inter min-[1280px]:text-[20px] text-[14px] mr-auto">
           Мы в соц.сетях
         </p>

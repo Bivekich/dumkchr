@@ -81,12 +81,14 @@ export default function Form() {
             placeholder={phonePlaceholder}
             type="text"
             onChange={(e) => setPhone(e.target.value)}
+            required
           ></input>
           <input
             className="bg-inherit border border-[#177245]  rounded-full px-4 placeholder-[#177245] text-[20px]"
             placeholder={messagePlaceholder}
             type="text"
             onChange={(e) => setMessage(e.target.value)}
+            required
           ></input>
         </div>
 

@@ -107,9 +107,6 @@ export default function SectionsPage() {
               );
             })}
           </div>
-          <div className="max-[850px]:hidden ml-auto">
-            <Area></Area>
-          </div>
         </div>
       </div>
     </div>

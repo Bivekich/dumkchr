@@ -19,23 +19,25 @@ export default function AccountingPage() {
   }, []);
   return (
     <div className="flex mb-52 w-full">
-      <div className="w-full flex flex-col gap-24 overflow-x-hidden text-white text-[20px] ml-10">
+      <div className="w-full flex flex-col gap-24 overflow-x-hidden text-white text-[20px] max-[850px]:ml-0 ml-10 ">
         {data &&
           data.map((document) => {
             return (
-              <div className="flex-wrap flex flex-col">
-                <PortableText
-                  value={document.text}
-                  components={{
-                    types: {
-                      span: ({ value }) => <span>{value}</span>,
-                      p: ({ value }) => <p>{value}</p>,
-                    },
-                    marks: {
-                      strong: ({ children }) => <strong>{children}</strong>,
-                    },
-                  }}
-                ></PortableText>
+              <div className="flex flex-col max-[850px]:items-center max-[850px]:justify-center">
+                <div className="w-full flex flex-wrap break-all text-wrap">
+                  <PortableText
+                    value={document.text}
+                    components={{
+                      types: {
+                        span: ({ value }) => <span>{value}</span>,
+                        p: ({ value }) => <p>{value}</p>,
+                      },
+                      marks: {
+                        strong: ({ children }) => <strong>{children}</strong>,
+                      },
+                    }}
+                  ></PortableText>
+                </div>
                 <a href={document.doc.asset.url}>
                   <Document
                     file={document.doc.asset.url}

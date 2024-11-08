@@ -59,13 +59,13 @@ export default function NewsReadPage() {
                   format === "png" ||
                   format === "webp" ||
                   format === "jpeg" ? (
-                    <img
-                      className="rounded-[30px] w-full h-auto max-w-[55rem] aspect-[880/720] object-cover"
-                      src={news.Image.asset.url}
+                    <div
+                      className="rounded-[30px] w-full h-auto max-w-[55rem] aspect-[880/720] bg-cover bg-center"
                       style={{
                         borderRadius: "30px",
+                        backgroundImage: `url(${news.Image.asset.url})`,
                       }}
-                    ></img>
+                    ></div>
                   ) : (
                     <video
                       controls={true}
@@ -81,19 +81,19 @@ export default function NewsReadPage() {
                       format === "png" ||
                       format === "webp" ||
                       format === "jpeg" ? (
-                      <img
-                        className="rounded-[30px] w-full h-auto max-w-[55rem] aspect-[880/720] object-cover"
-                        src={item.asset.url}
+                      <div
+                        className="rounded-[30px] w-full h-auto max-w-[55rem] aspect-[880/720] bg-cover bg-center"
                         style={{
                           borderRadius: "30px",
+                          backgroundImage: `url(${item.asset.url})`,
                         }}
-                      ></img>
+                      ></div>
                     ) : (
                       <video
                         controls={true}
                         className="rounded-[30px] w-full h-auto max-w-[55rem] aspect-[880/720] object-cover"
                       >
-                        <source src={news.Image.asset.url} />
+                        <source src={item.asset.url} />
                       </video>
                     );
                   })}
@@ -103,13 +103,13 @@ export default function NewsReadPage() {
                 format === "webp" ||
                 format === "jpeg" ? (
                 <div className="w-full max-w-[50rem] h-auto aspect-[880/720]">
-                  <img
-                    className="rounded-[30px] w-full h-auto max-w-[55rem] aspect-[880/720] object-cover"
-                    src={news.Image.asset.url}
+                  <div
+                    className="rounded-[30px] w-full h-auto max-w-[55rem] aspect-[880/720] bg-center bg-cover"
                     style={{
                       borderRadius: "30px",
+                      backgroundImage: `url(${news.Image.asset.url})`,
                     }}
-                  ></img>
+                  ></div>
                 </div>
               ) : (
                 <div className="w-full max-w-[50rem] h-auto aspect-[880/720]">

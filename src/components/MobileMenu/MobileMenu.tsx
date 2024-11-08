@@ -25,6 +25,7 @@ export default function MobileMenu({ height }: { height: string }) {
     { title: "РУКОВОДСТВО", href: "" },
     { title: "КОМИТЕТЫ", href: "" },
     { title: "ДОКУМЕНТЫ", href: "/Documents" },
+    { title: "БУХГАЛТЕРИЯ", href: "/Accounting" },
   ];
   const secondMenuLinks: Array<{ title: string; href: string }> = [
     { title: "ФОТО", href: "/PhotoPage" },

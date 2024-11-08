@@ -123,7 +123,9 @@ export async function getContacts() {
 }
 export async function getFooter() {
   const Contacts = await client
-    .fetch('*[_type == "Footer"][0]{mediaArray[]}')
+    .fetch(
+      '*[_type == "Footer"][0]{mediaArray[], ourContacts{phoneNumber, adres}}'
+    )
     .then((item) => {
       return item;
     });
