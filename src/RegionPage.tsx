@@ -64,7 +64,6 @@ export default function RegionPage() {
                 components={{
                   ...components,
                   block: ({ children }) => {
-                    // Проверка на пустые блоки также в компоненте
                     if (
                       Array.isArray(children) &&
                       children.length === 1 &&
@@ -98,19 +97,34 @@ export default function RegionPage() {
                   key={index}
                 >
                   {item.Other !== null ? (
-                    item.Other.map((item: any, index: number) => {
-                      <Carousel>
+                    <Carousel
+                      slide={false}
+                      className="w-full max-w-[50rem] h-auto aspect-[880/720]"
+                    >
+                      {item.image && (
                         <img
                           key={index}
-                          className="rounded-[30px] w-full h-auto max-w-[55rem] aspect-[880/720] object-cover"
+                          className="rounded-[30px] max-w-[55rem] aspect-[880/720] object-cover w-full"
                           src={item.image.asset.url}
                           style={{
                             borderRadius: "30px",
                           }}
                         ></img>
-                      </Carousel>;
-                    })
-                  ) : item.image !== null ? (
+                      )}
+                      {item.Other.map((item: any, index: number) => {
+                        return (
+                          <img
+                            key={index}
+                            className="rounded-[30px] w-full h-auto max-w-[55rem] aspect-[880/720] object-cover"
+                            src={item.asset.url}
+                            style={{
+                              borderRadius: "30px",
+                            }}
+                          ></img>
+                        );
+                      })}
+                    </Carousel>
+                  ) : item.image ? (
                     <img
                       key={index}
                       className="rounded-[30px] w-full h-auto max-w-[55rem] aspect-[880/720] object-cover"
@@ -120,8 +134,9 @@ export default function RegionPage() {
                       }}
                     ></img>
                   ) : null}
+
                   <div className="font-inter flex flex-col mt-5 text-wrap w-full">
-                    <div className="text-[25px] leading-8 font-inter text-wrap self-center w-full flex flex-col">
+                    <div className="text-[25px] max-[850px]:text-[20px] leading-8 font-inter text-wrap self-center w-full flex flex-col">
                       <GroupedPortableText
                         value={item.info}
                         components={{

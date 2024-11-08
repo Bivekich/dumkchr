@@ -19,6 +19,7 @@ export default function NavBar() {
     { title: "РУКОВОДСТВО", href: "#" },
     { title: "КОМИТЕТЫ", href: "#" },
     { title: "ДОКУМЕНТЫ", href: "/Documents" },
+    { title: "БУХГАЛТЕРИЯ", href: "/Accounting" },
   ];
   const secondMenuLinks: Array<{ title: string; href: string }> = [
     { title: "ФОТО", href: "/PhotoPage" },

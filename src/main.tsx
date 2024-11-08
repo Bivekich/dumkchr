@@ -28,6 +28,7 @@ import SectionsPage from "./Sections.tsx";
 import RegionPage from "./RegionPage.tsx";
 import Contact from "./ContactsPage.tsx";
 import AppealsPage from "./AppealsPage.tsx";
+import AccountingPage from "./Accounting.tsx";
 
 const router = createBrowserRouter([
   {
@@ -117,6 +118,10 @@ const router = createBrowserRouter([
   {
     path: "/Appeals",
     element: <AppealsPage></AppealsPage>,
+  },
+  {
+    path: "/Accounting",
+    element: <AccountingPage></AccountingPage>,
   },
 ]);
 

@@ -96,7 +96,7 @@ export async function getAppeals() {
 export async function getSections() {
   const Sections = await client
     .fetch(
-      '*[_type == "Sections"][0]{Array[]{"image":image{asset->{url}}, "info":info, "sectionType":sectionType}}'
+      '*[_type == "Sections"][0]{Array[]{"image":image{asset->{url}}, "info":info, "sectionType":sectionType, "Other":Other[]{asset->{url}}}}'
     )
     .then((item) => {
       return item.Array;
@@ -106,7 +106,7 @@ export async function getSections() {
 export async function getRegions() {
   const Sections = await client
     .fetch(
-      '*[_type == "Regions"][0]{Array[]{"name": RegionName, "image":image{asset->{url}}, "info":info, "Other":Other{asset->{url}}}}'
+      '*[_type == "Regions"][0]{Array[]{"name": RegionName, "image":image{asset->{url}}, "info":info, Other[]{asset->{url}}}}'
     )
     .then((item) => {
       return item.Array;
@@ -128,4 +128,22 @@ export async function getFooter() {
       return item;
     });
   return Contacts;
+}
+export async function getAccounting() {
+  const Accounting = await client
+    .fetch(
+      '*[_type == "Accountings"][0]{Array[]{"doc":doc{asset->{url}}, "text": text}}'
+    )
+    .then((item) => {
+      return item;
+    });
+  return Accounting;
+}
+export async function getFeedBack() {
+  const FeedBack = await client
+    .fetch('*[_type == "FeedBack"]{mainText, request1, request2, request3}')
+    .then((item) => {
+      return item[0];
+    });
+  return FeedBack;
 }

@@ -1,10 +1,26 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getFeedBack } from "../../../sanity/sanity";
 
 export default function Form() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
   const [color, setColor] = useState("#177245");
+  const [namePlaceholder, setNamePlaceholder] = useState("");
+  const [phonePlaceholder, setPhonePlaceholder] = useState("");
+  const [messagePlaceholder, setMessagePlaceholder] = useState("");
+  const [titleText, setTitleText] = useState("");
+  useEffect(() => {
+    const query = async () => {
+      const feedback = await getFeedBack();
+      setNamePlaceholder(feedback.request1);
+      setPhonePlaceholder(feedback.request2);
+      setMessagePlaceholder(feedback.request3);
+      setTitleText(feedback.mainText);
+    };
+    query();
+  }, []);
+
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     const token = "7644164378:AAF3OQkf77N90TFKjPdATJmlxdvfmw--hpc";
@@ -46,12 +62,7 @@ export default function Form() {
         <p>ОСТАЛИСЬ ВОПРОСЫ?</p>
       </div>
       <div className="w-full flex items-center justify-center text-center font-medium text-[24px] max-[650px]:text-[21px] text-[#177245]">
-        <p className="w-[80%]">
-          Если у вас остались вопросы или вам нужна дополнительная информация,
-          не стесняйтесь обращаться к нам! Мы всегда рады помочь и готовы все
-          разъяснить. Пожалуйста, заполните форму обратной связи. Мы постараемся
-          ответить на ваши запросы в ближайшее время.
-        </p>
+        <p className="w-[80%]">{titleText}</p>
       </div>
       <form
         className="text-[#177245] w-full flex flex-col justify-center items-center mt-5 h-full"
@@ -61,19 +72,19 @@ export default function Form() {
         <div className="w-[80%] flex flex-col gap-5">
           <input
             className="bg-inherit border border-[#177245]  rounded-full px-4 placeholder-[#177245] text-[20px]"
-            placeholder="Ваше имя"
+            placeholder={namePlaceholder}
             type="text"
             onChange={(e) => setName(e.target.value)}
           ></input>
           <input
             className="bg-inherit border border-[#177245]  rounded-full px-4 placeholder-[#177245] text-[20px]"
-            placeholder="Телефон"
-            type="tel"
+            placeholder={phonePlaceholder}
+            type="text"
             onChange={(e) => setPhone(e.target.value)}
           ></input>
           <input
             className="bg-inherit border border-[#177245]  rounded-full px-4 placeholder-[#177245] text-[20px]"
-            placeholder="Ваш вопрос"
+            placeholder={messagePlaceholder}
             type="text"
             onChange={(e) => setMessage(e.target.value)}
           ></input>

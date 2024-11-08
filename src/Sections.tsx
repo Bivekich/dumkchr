@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { PortableText } from "@portabletext/react";
 import urlBuilder from "@sanity/image-url";
 import Area from "./components/Hero/Area/Area";
+import { Carousel } from "flowbite-react";
 
 export default function SectionsPage() {
   const param = useParams().Section;
@@ -15,6 +16,7 @@ export default function SectionsPage() {
         return sec.sectionType === param;
       });
       setData(section);
+      console.log(section);
     };
     query();
   }, []);
@@ -24,24 +26,54 @@ export default function SectionsPage() {
         <div className="min-[850px]:hidden">
           <Area></Area>
         </div>
-        <div className="relative flex w-full h-fit scale-103 mt-10">
-          <div className="flex flex-col max-[850px]:mr-0 mr-10 gap-12">
+        <div className="relative flex w-full h-fit scale-103 mt-10 ">
+          <div className="flex max-[850px]:mr-0 mr-10 gap-12 w-full">
             {data.map((item: any, index: any) => {
               return (
                 <div
-                  className="w-full max-[850px]:mr-0 flex flex-col items-center h-fit max-[1800px]:mr-10"
+                  className="w-full max-[850px]:mr-0 h-fit max-[1800px]:mr-10 flex flex-row-reverse"
                   key={index}
                 >
-                  <p className="font-bold text-[55px] max-[1700px]:text-[40px] max-[1440px]:text-[35px] max-[1280px]:text-[30px] max-[660px]:w-[100%] max-[660px]:text-[25px] text-wrap w-fit ">
-                    {item.Name}
-                  </p>
-                  {data && (
-                    <img
-                      src={item.image.asset.url}
-                      className="w-[55rem] max-h-[45rem] rounded-[30px] items-center object-center"
-                    ></img>
-                  )}
-
+                  <div className="w-full max-[850px]:mr-0 flex-col items-center h-fit max-[1800px]:mr-10 ">
+                    {item.Other !== null ? (
+                      <Carousel
+                        slide={false}
+                        className="w-full max-w-[50rem] h-auto aspect-[880/720]"
+                      >
+                        {item.image && (
+                          <img
+                            key={index}
+                            className="rounded-[30px] max-w-[55rem] aspect-[880/720] object-cover w-full"
+                            src={item.image.asset.url}
+                            style={{
+                              borderRadius: "30px",
+                            }}
+                          ></img>
+                        )}
+                        {item.Other.map((item: any, index: number) => {
+                          return (
+                            <img
+                              key={index}
+                              className="rounded-[30px] w-full h-auto max-w-[55rem] aspect-[880/720] object-cover"
+                              src={item.asset.url}
+                              style={{
+                                borderRadius: "30px",
+                              }}
+                            ></img>
+                          );
+                        })}
+                      </Carousel>
+                    ) : item.image ? (
+                      <img
+                        key={index}
+                        className="rounded-[30px] w-full h-auto max-w-[55rem] aspect-[880/720] object-cover"
+                        src={item.image.asset.url}
+                        style={{
+                          borderRadius: "30px",
+                        }}
+                      ></img>
+                    ) : null}
+                  </div>
                   <div className="font-inter flex flex-col mt-5 text-wrap w-full">
                     <div className="text-[25px] leading-8 font-inter text-wrap self-center w-full flex flex-col">
                       <PortableText
