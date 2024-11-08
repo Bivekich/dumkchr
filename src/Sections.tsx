@@ -27,14 +27,14 @@ export default function SectionsPage() {
           <Area></Area>
         </div>
         <div className="relative flex w-full h-fit scale-103 mt-10 ">
-          <div className="flex max-[850px]:mr-0 mr-10 gap-12 w-full">
+          <div className="flex max-[1280px]:mr-0 mr-10 gap-12 w-full">
             {data.map((item: any, index: any) => {
               return (
                 <div
-                  className="w-full max-[850px]:mr-0 h-fit max-[1800px]:mr-10 flex flex-row-reverse"
+                  className="w-full max-[850px]:mr-0 h-fit flex flex-row-reverse max-[850px]:flex-col"
                   key={index}
                 >
-                  <div className="w-full max-[850px]:mr-0 flex-col items-center h-fit max-[1800px]:mr-10 ">
+                  <div className="w-full max-[850px]:mr-0 flex-col items-center h-fit ">
                     {item.Other !== null ? (
                       <Carousel
                         slide={false}
