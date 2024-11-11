@@ -16,7 +16,6 @@ export default function SectionsPage() {
         return sec.sectionType === param;
       });
       setData(section);
-      console.log(section);
     };
     query();
   }, []);
