@@ -16,9 +16,9 @@ export default function Hadis() {
       {text && (
         <div className="bg-[#E3E3E3] rounded-[30px] flex flex-col text-[#177245] p-4 min-[1200px]:w-full min-[900px]:max-w-[400px]">
           <p className="text-[24px] font-bold">ХАДИС</p>
-          <pre className="flex flex-wrap max-[1200px]:w-full break-words text-wrap font-inter text-[18px]">
+          <p className="flex flex-wrap max-[1200px]:w-full break-words text-wrap font-inter text-[18px]">
             {text}
-          </pre>
+          </p>
         </div>
       )}
       <img
