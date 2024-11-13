@@ -1,5 +1,4 @@
 import { PortableText } from "@portabletext/react";
-import { Children } from "react";
 
 interface RegionPersonInterface {
   name: string;
