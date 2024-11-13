@@ -200,7 +200,7 @@ export default function RegionPage() {
                   key={index}
                   name={item.Name}
                   birth={item.Birth}
-                  image={item.Photo.asset.url}
+                  image={item.Photo !== null ? item.Photo.asset.url : ""}
                   description={item.Description}
                 />
               );
