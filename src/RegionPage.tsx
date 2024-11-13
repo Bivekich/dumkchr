@@ -187,7 +187,7 @@ export default function RegionPage() {
         </div>
       </div>
       <div className="w-full border-white border-t-2 items-center justify-center mt-10"></div>
-      <div className="grid grid-cols-3 max-[1751px]:grid-cols-2 max-[1280px]:grid-cols-2 max-[1280px]:w-full max-[1008px]:flex max-[1580px]:w-[35rem] max-[1280px]:grid max-[1580px]:flex max-[1580px]:flex-col max-[1580px]:items-center max-[1580px]:justify-center  gap-1 [&>div]:bg-white text-black [&>div]:min-h-[65rem] [&>div]:h-[65rem] text-[20px] mt-10">
+      <div className="grid grid-cols-3 max-[1751px]:grid-cols-2 max-[1280px]:grid-cols-2 max-[1280px]:w-full max-[1008px]:flex max-[1580px]:w-[35rem] max-[1280px]:grid max-[1580px]:flex max-[1580px]:flex-col max-[1580px]:items-center max-[1580px]:justify-center  gap-1 [&>div]:bg-white text-black [&>div]:h-fit text-[20px] mt-10">
         {data[0] &&
           data[0].Personal !== null &&
           data[0].Personal.map((item: any, index: any) => {
