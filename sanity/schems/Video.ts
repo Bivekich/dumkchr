@@ -9,13 +9,24 @@ export default {
       type: 'array',
       of: [
         {
-          name: 'Video',
-          title: 'Видео',
-          type: 'file',
-          options: {
-            accept: 'video/*',
-            storeOriginalFilename: true,
-          },
+          name: 'Item',
+          type: 'object',
+          fields: [
+            {
+              name: 'Video',
+              title: 'Видео',
+              type: 'file',
+              options: {
+                accept: 'video/*',
+                storeOriginalFilename: true,
+              },
+            },
+            {
+              name: 'VideoName',
+              title: 'Название видео',
+              type: 'string',
+            },
+          ],
         },
       ],
     },

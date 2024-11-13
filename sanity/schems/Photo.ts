@@ -9,12 +9,23 @@ export default {
       type: 'array',
       of: [
         {
-          name: 'Photo',
-          title: 'Фотография',
-          type: 'image',
-          options: {
-            storeOriginalFilename: true,
-          },
+          name: 'Item',
+          type: 'object',
+          fields: [
+            {
+              name: 'Photo',
+              title: 'Фотография',
+              type: 'image',
+              options: {
+                storeOriginalFilename: true,
+              },
+            },
+            {
+              name: 'PhotoName',
+              title: 'Название фото',
+              type: 'string',
+            },
+          ],
         },
       ],
     },

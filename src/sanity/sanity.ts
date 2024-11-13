@@ -32,9 +32,7 @@ export async function getNews() {
 }
 export async function getPhotos() {
   const Photos = await client
-    .fetch(
-      '*[_type == "photo"][0]{Photos[]{"url":asset->url, "fileName": asset->originalFilename}}'
-    )
+    .fetch('*[_type == "photo"][0]{Photos[]{Photo{asset->{url}}, PhotoName}}')
     .then((item) => {
       return item.Photos;
     });
@@ -43,7 +41,7 @@ export async function getPhotos() {
 export async function getVideo() {
   const Photos = await client
     .fetch(
-      '*[_type == "video"][0]{Videos[]{"url":asset->url, "fileName": asset->originalFilename}}'
+      '*[_type == "video"][0]{Videos[]{Video{asset->{url}}, "fileName": VideoName}}'
     )
     .then((item) => {
       return item.Videos;
@@ -106,7 +104,7 @@ export async function getSections() {
 export async function getRegions() {
   const Sections = await client
     .fetch(
-      '*[_type == "Regions"][0]{Array[]{"name": RegionName, "image":image{asset->{url}}, "info":info, Other[]{asset->{url}}}}'
+      '*[_type == "Regions"][0]{Array[]{"name": RegionName, "image":image{asset->{url}}, "info":info, Other[]{asset->{url}}, Personal[]{Name,Birth,Description,Photo{asset->{url}}}}}'
     )
     .then((item) => {
       return item.Array;
