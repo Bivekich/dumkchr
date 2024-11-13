@@ -1,7 +1,10 @@
+import { PortableText } from "@portabletext/react";
+import { Children } from "react";
+
 interface RegionPersonInterface {
   name: string;
   birth: string;
-  description: string;
+  description: any;
   image: string;
 }
 export default function RegionPersonalPage({
@@ -26,7 +29,20 @@ export default function RegionPersonalPage({
         <p className="w-full text-center">{birth} г.р</p>
       </div>
       <div className="w-full flex justify-between text-break h-fit text-ellipsis overflow-hidden">
-        <p className="text-start flex">{description}</p>
+        <div className="text-start flex">
+          <PortableText
+            value={description}
+            components={{
+              types: {
+                span: ({ value }) => <span>{value}</span>,
+                p: ({ value }) => <p>{value}</p>,
+              },
+              marks: {
+                strong: ({ children }) => <strong>{children}</strong>,
+              },
+            }}
+          ></PortableText>
+        </div>
       </div>
     </div>
   );
