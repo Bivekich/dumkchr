@@ -8,13 +8,23 @@ import { client, getFooter, getNews } from "../../sanity/sanity";
 import { useDebounce } from "use-debounce";
 
 const fetchTitleSuggestions = async (query: any, setResults: any) => {
-  const fetchQuery = `*[_type == "news"]{
+  const fetchQuery = `{
+  "news": *[_type == "news"] {
     Items[@.Title match $titleQuery]{
       Date,
       Title,
       MainText
     }
-  }`;
+  },
+  "regions": *[_type == "Regions"] {
+    Array[]{
+      RegionName,
+      "FilteredPersonal": Personal[@.Name match $titleQuery]{
+        Name
+      }
+    }[defined(FilteredPersonal[0])]
+  }
+}`;
 
   try {
     let allNews = await getNews();
@@ -30,11 +40,19 @@ const fetchTitleSuggestions = async (query: any, setResults: any) => {
     let findNews = await client.fetch(fetchQuery, {
       titleQuery: `${query}*` as any,
     });
-    findNews = findNews[0].Items;
+
+    let imais = findNews.regions[0].Array;
+
+    findNews = findNews.news[0].Items;
+
     const matchedTitles = findNews.flat().map((item: any) => item.Title);
     const resultNews = dateNews.filter((news: any) =>
       matchedTitles.includes(news.Title)
     );
+    if (imais.length > 0) {
+      resultNews.push({ imai: imais });
+    }
+
     setResults(resultNews);
   } catch (err) {
     console.error("Ошибка при поиске:", err);
@@ -120,6 +138,15 @@ export default function Header() {
         {suggestions.length > 0 && (
           <ul className="z-10 text-white mt-2 w-[90%] top-full rounded-lg overflow-hidden flex flex-col gap-1 absolute">
             {suggestions.map((item: any) => {
+              if (item.imai) {
+                return (
+                  <li className="text-white font-inter text-[20px] text-wrap px-4 rounded-[30px] py-2 bg-[#1a7e56] hover:text-[#c9ffd7]">
+                    <a href={`/Regions/${item.imai[0].RegionName}`}>
+                      {item.imai[0].FilteredPersonal[0].Name}
+                    </a>
+                  </li>
+                );
+              }
               return (
                 <li className="text-white font-inter text-[20px] text-wrap px-4 rounded-[30px] py-2 bg-[#1a7e56] hover:text-[#c9ffd7]">
                   <a href={`/NewsPage/${item.id}`}>{item.Title}</a>
