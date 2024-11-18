@@ -210,6 +210,11 @@ export default function RegionPage() {
             }
           })}
       </div>
+      {dataLen && Math.ceil(dataLen / 12) !== 1 && (
+        <p className="text-[20px] mt-5 w-full flex text-center items-center justify-center uppercase">
+          Страницы
+        </p>
+      )}
       <div className="w-full flex gap-10 cursor-pointer items-center justify-center mt-5">
         {dataLen &&
           Math.ceil(dataLen / 12) !== 1 &&
