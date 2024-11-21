@@ -3,10 +3,12 @@ import { getHadis } from "../../sanity/sanity";
 
 export default function Hadis() {
   const [text, setText] = useState<string>();
+  const [title, setTitle] = useState<string>();
   useEffect(() => {
     const query = async () => {
       const Hadis = await getHadis();
       setText(Hadis[0].text);
+      setTitle(Hadis[0].hadisName);
     };
     query();
   }, []);
@@ -15,7 +17,7 @@ export default function Hadis() {
       <img src="/ornamentTop.png" className="max-[1280px]:hidden"></img>
       {text && (
         <div className="bg-[#E3E3E3] rounded-[30px] flex flex-col text-[#177245] p-4 min-[1200px]:w-full min-[900px]:max-w-[400px]">
-          <p className="text-[24px] font-bold">ХАДИС</p>
+          <p className="text-[24px] font-bold">{title}</p>
           <p className="flex flex-wrap max-[1200px]:w-full break-words text-wrap font-inter text-[18px]">
             {text}
           </p>

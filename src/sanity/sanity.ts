@@ -14,9 +14,11 @@ export const client = createClient({
 // uses GROQ to query content: https://www.sanity.io/docs/groq
 export default async function getSchedule() {
   const schedule = await client
-    .fetch('*[_type == "schedule"][0]{Month[]{Date,List[]{Title,Time}}}')
+    .fetch(
+      '*[_type == "schedule"][0]{timeNamaz, Month[]{Date,List[]{Title,Time}}}'
+    )
     .then((schedule) => {
-      return schedule.Month;
+      return schedule;
     });
   return schedule;
 }
@@ -68,7 +70,7 @@ export async function getDecree() {
   return Decree;
 }
 export async function getHadis() {
-  const Hadis = await client.fetch('*[_type == "Hadis"]{text}');
+  const Hadis = await client.fetch('*[_type == "Hadis"]{text, hadisName}');
   return Hadis;
 }
 export async function getDocuments() {

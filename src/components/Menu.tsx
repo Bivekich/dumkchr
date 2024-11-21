@@ -35,7 +35,7 @@ export default function Menu({ Links }: PropsMenu) {
       href: "/Sections/Education",
     },
     {
-      title: "КОМИТЕТ ИНФОРМАЦИИ, ОБЩЕСТВЕННЫХ СВЯЗЕЙ СМИ",
+      title: "Комитет по связям с общественностью и СМИ",
       href: "/Sections/SmiCom",
     },
   ];
@@ -59,9 +59,9 @@ export default function Menu({ Links }: PropsMenu) {
     setShowFirstMenu(false);
   };
   return (
-    <div className="absolute w-[40%] mt-5 flex gap-3 select-none z-50">
+    <div className="absolute w-[40%] mt-5 flex gap-3 select-none z-50 uppercase">
       <div className="w-52 p-4 bg-[#177245] flex transition-all text-white rounded-[15px] select-none h-fit">
-        <ul className="flex flex-col text-[20px] gap-3 select-none">
+        <ul className="flex flex-col text-[20px] gap-3 select-none ">
           {Links.map((link) => {
             return (
               <div className="select-none">

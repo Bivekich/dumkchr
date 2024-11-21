@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { client, getNews } from "./sanity/sanity";
 import Area from "./components/Hero/Area/Area";
@@ -9,6 +9,7 @@ import { Carousel } from "flowbite-react";
 
 export default function NewsReadPage() {
   const id = useParams().NewsId;
+  const videoRef = useRef<HTMLVideoElement | null>(null);
   const [news, setNews] = useState<any>(null);
   const [format, setFormat] = useState("");
   useEffect(() => {
@@ -34,6 +35,30 @@ export default function NewsReadPage() {
 
     return null;
   }
+  const onFullScreenChange = () => {
+    if (videoRef.current) {
+      if (document.fullscreenElement) {
+        videoRef.current.style.objectFit = "contain";
+      } else {
+        videoRef.current.style.objectFit = "cover";
+      }
+    }
+  };
+  useEffect(() => {
+    document.addEventListener("fullscreenchange", onFullScreenChange);
+    document.addEventListener("webkitfullscreenchange", onFullScreenChange);
+    document.addEventListener("mozfullscreenchange", onFullScreenChange);
+    document.addEventListener("MSFullscreenChange", onFullScreenChange);
+    return () => {
+      document.removeEventListener("fullscreenchange", onFullScreenChange);
+      document.removeEventListener(
+        "webkitfullscreenchange",
+        onFullScreenChange
+      );
+      document.removeEventListener("mozfullscreenchange", onFullScreenChange);
+      document.removeEventListener("MSFullscreenChange", onFullScreenChange);
+    };
+  }, []);
   return (
     <div className="flex gap-2 mb-52 w-full max-[1280px]:ml-0 ml-10  text-white max-[850px]:items-center flex-col">
       <ScrollToTop></ScrollToTop>
@@ -53,26 +78,28 @@ export default function NewsReadPage() {
               {news.Other !== null ? (
                 <Carousel
                   slide={false}
-                  className="w-full max-w-[50rem] h-auto aspect-[880/720]"
+                  className="w-full max-w-[60rem] h-[40rem] max-[800px]:h-[20rem]"
                 >
                   {format === "jpg" ||
                   format === "png" ||
                   format === "webp" ||
                   format === "jpeg" ? (
-                    <div
-                      className="rounded-[30px] w-full h-auto max-w-[55rem] aspect-[880/720] bg-cover bg-center"
-                      style={{
-                        borderRadius: "30px",
-                        backgroundImage: `url(${news.Image.asset.url})`,
-                      }}
-                    ></div>
+                    <div className="w-full max-w-[60rem] h-fit">
+                      <img
+                        src={news.Image.asset.url}
+                        className="rounded-[30px] w-full h-full max-w-[90rem] max-h-[60rem] object-contain"
+                      ></img>
+                    </div>
                   ) : (
-                    <video
-                      controls={true}
-                      className="rounded-[30px] w-full h-auto max-w-[55rem] aspect-[880/720] object-cover"
-                    >
-                      <source src={news.Image.asset.url} />
-                    </video>
+                    <div className="w-full max-w-[60rem] h-fit">
+                      <video
+                        ref={videoRef}
+                        controls={true}
+                        className="rounded-[30px] w-full h-full max-w-[90rem] max-h-[60rem] object-cover"
+                      >
+                        <source src={news.Image.asset.url} />
+                      </video>
+                    </div>
                   )}
                   {news.Other.map((item: any) => {
                     const format = item.asset.url.split(".")[3];
@@ -81,20 +108,22 @@ export default function NewsReadPage() {
                       format === "png" ||
                       format === "webp" ||
                       format === "jpeg" ? (
-                      <div
-                        className="rounded-[30px] w-full h-auto max-w-[55rem] aspect-[880/720] bg-cover bg-center"
-                        style={{
-                          borderRadius: "30px",
-                          backgroundImage: `url(${item.asset.url})`,
-                        }}
-                      ></div>
+                      <div className="w-full max-w-[60rem] h-fit">
+                        <img
+                          src={news.Image.asset.url}
+                          className="rounded-[30px] w-full h-full max-w-[90rem] max-h-[60rem]"
+                        ></img>
+                      </div>
                     ) : (
-                      <video
-                        controls={true}
-                        className="rounded-[30px] w-full h-auto max-w-[55rem] aspect-[880/720] object-cover"
-                      >
-                        <source src={item.asset.url} />
-                      </video>
+                      <div className="w-full max-w-[60rem] h-fit">
+                        <video
+                          ref={videoRef}
+                          controls={true}
+                          className="rounded-[30px] w-full h-full max-w-[90rem] max-h-[60rem] object-cover"
+                        >
+                          <source src={news.Image.asset.url} />
+                        </video>
+                      </div>
                     );
                   })}
                 </Carousel>
@@ -102,20 +131,18 @@ export default function NewsReadPage() {
                 format === "png" ||
                 format === "webp" ||
                 format === "jpeg" ? (
-                <div className="w-full max-w-[50rem] h-auto aspect-[880/720]">
-                  <div
-                    className="rounded-[30px] w-full h-auto max-w-[55rem] aspect-[880/720] bg-center bg-cover"
-                    style={{
-                      borderRadius: "30px",
-                      backgroundImage: `url(${news.Image.asset.url})`,
-                    }}
-                  ></div>
+                <div className="w-full max-w-[60rem] h-fit">
+                  <img
+                    src={news.Image.asset.url}
+                    className="rounded-[30px] w-full h-full max-w-[90rem] max-h-[60rem] object-contain"
+                  ></img>
                 </div>
               ) : (
-                <div className="w-full max-w-[50rem] h-auto aspect-[880/720]">
+                <div className="w-full max-w-[60rem] h-fit">
                   <video
+                    ref={videoRef}
                     controls={true}
-                    className="rounded-[30px] w-full h-auto max-w-[55rem] aspect-[880/720] object-cover"
+                    className="rounded-[30px] w-full h-full max-w-[90rem] max-h-[60rem] object-cover"
                   >
                     <source src={news.Image.asset.url} />
                   </video>

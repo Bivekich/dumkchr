@@ -45,7 +45,7 @@ export default function MainNewsCard({
   return (
     <div className="w-full flex flex-col p-7 text-[#177245] gap-3">
       <Link
-        className="w-full h-[25rem] p-2 flex items-center justify-center"
+        className="w-full h-fit p-2 flex items-center justify-center"
         to={`/NewsPage/${NewsId}`}
       >
         {image !== null ? (
@@ -54,15 +54,19 @@ export default function MainNewsCard({
           format !== "wmv" &&
           format !== "avi" &&
           format !== "webm" ? (
-            <img
-              src={image.asset.url}
-              className="w-full max-w-[30rem] h-full rounded-[30px] object-cover"
-            ></img>
+            <div className="w-full h-full rounded-[30px]">
+              <img
+                src={image.asset.url}
+                className="w-fit h-fit rounded-[30px] object-contain"
+              ></img>
+            </div>
           ) : preview !== null ? (
-            <img
-              src={preview.asset.url}
-              className="w-full max-w-[30rem] h-full rounded-[30px] object-cover"
-            ></img>
+            <div className="w-full h-full rounded-[30px]">
+              <img
+                src={preview.asset.url}
+                className="w-fit h-fit rounded-[30px] object-contain"
+              ></img>
+            </div>
           ) : (
             <div className="w-full max-w-[30rem] h-full rounded-[30px] object-cover bg-black"></div>
           )

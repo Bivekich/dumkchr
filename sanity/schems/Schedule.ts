@@ -4,6 +4,11 @@ export default {
   type: 'document',
   fields: [
     {
+      name: 'timeNamaz',
+      title: 'Название',
+      type: 'string',
+    },
+    {
       name: 'Month',
       type: 'array',
       of: [
