@@ -108,9 +108,9 @@ export default function Header() {
       <div className="flex">
         <a href="/" className="cursor-pointer">
           <img
-            src="/лого.png"
+            src="/dumChr.png"
             alt="Дум кчр"
-            className="flex-shrink-0 w-20 h-16 min-[1280px]:w-auto min-[1280px]:h-auto"
+            className="flex-shrink-0 w-20 h-16 min-[1280px]:w-32 min-[1280px]:h-auto"
           ></img>
         </a>
 
