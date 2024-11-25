@@ -13,18 +13,34 @@ export default function News({ news }: any) {
         mainNews.Image.asset.url.split(".")[3] === "png" ||
         mainNews.Image.asset.url.split(".")[3] === "jpeg" ||
         mainNews.Image.asset.url.split(".")[3] === "webp" ? (
+          mainNews.previewMain !== null ? (
+            <div className="w-[65%] flex-none max-[1280px]:w-full">
+              <img
+                src={mainNews.previewMain.asset.url}
+                className="firefox-specific w-full h-full max-w-[880px] max-h-[720px] max-[1280px]:h-[20rem] max-[850px]:h-[26rem] max-[650px]:h-[20rem] max-[1280px]:rounded-tr-[30px] max-[1280px]:rounded-tl-[30px] min-[1281px]:rounded-[30px] select-none max-[850px]:object-center object-cover"
+              ></img>
+            </div>
+          ) : (
+            <div className="w-[65%] flex-none max-[1280px]:w-full">
+              <img
+                src={mainNews.preview.asset.url}
+                className="firefox-specific w-full h-full max-w-[880px] max-h-[720px] max-[1280px]:h-[20rem] max-[850px]:h-[26rem] max-[650px]:h-[20rem] max-[1280px]:rounded-tr-[30px] max-[1280px]:rounded-tl-[30px] min-[1281px]:rounded-[30px] select-none max-[850px]:object-center object-cover"
+              ></img>
+            </div>
+          )
+        ) : mainNews.previewMain !== null ? (
           <div className="w-[65%] flex-none max-[1280px]:w-full">
             <img
-              src={mainNews.preview.asset.url}
-              className="firefox-specific w-full h-full max-w-[880px] max-h-[720px] max-[1280px]:h-[20rem] max-[850px]:h-[26rem] max-[650px]:h-[20rem] max-[1280px]:rounded-tr-[30px] max-[1280px]:rounded-tl-[30px] min-[1281px]:rounded-[30px] select-none max-[850px]:object-center object-center"
+              src={mainNews.previewMain.asset.url}
+              className="firefox-specific w-full h-full max-w-[880px] max-h-[720px] max-[1280px]:h-[20rem] max-[850px]:h-[26rem] max-[650px]:h-[20rem] max-[1280px]:rounded-tr-[30px] max-[1280px]:rounded-tl-[30px] min-[1281px]:rounded-[30px] select-none max-[850px]:object-center object-cover"
             ></img>
           </div>
         ) : (
-          <div className="w-[65%] max-[1280px]:w-full  flex-none">
+          <div className="w-[65%] flex-none max-[1280px]:w-full">
             <img
               src={mainNews.preview.asset.url}
-              className="firefox-specific max-w-[880px] max-h-[720px] w-full h-full max-[1280px]:h-[20rem] max-[850px]:h-[26rem] max-[650px]:h-[20rem] max-[1280px]:rounded-tr-[30px] max-[1280px]:rounded-tl-[30px] min-[1281px]:rounded-[30px] select-none max-[850px]:object-center object-center"
-            />
+              className="firefox-specific w-full h-full max-w-[880px] max-h-[720px] max-[1280px]:h-[20rem] max-[850px]:h-[26rem] max-[650px]:h-[20rem] max-[1280px]:rounded-tr-[30px] max-[1280px]:rounded-tl-[30px] min-[1281px]:rounded-[30px] select-none max-[850px]:object-center object-cover"
+            ></img>
           </div>
         )
       ) : (

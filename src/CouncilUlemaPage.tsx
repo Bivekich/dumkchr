@@ -1,23 +1,19 @@
 import { useEffect, useState } from "react";
-import { client, getRegions } from "./sanity/sanity";
-import { useParams } from "react-router-dom";
+import { client, getUlims } from "./sanity/sanity";
 import { PortableText } from "@portabletext/react";
 import urlBuilder from "@sanity/image-url";
 import Area from "./components/Hero/Area/Area";
 import { Carousel } from "flowbite-react";
 import RegionPersonalPage from "./components/RegionPersonalCard/RegionPersonalCard";
 
-export default function RegionPage() {
-  const RegName = useParams().RegionName;
+export default function CouncilofUlema() {
   const [data, setData] = useState<any>([]);
   const [dataLen, setDataLen] = useState();
   useEffect(() => {
     const query = async () => {
-      const Regions = await getRegions();
-      const region = Regions.filter((item: any) => item.name === RegName);
-      setData(region);
-      console.log(region);
-      setDataLen(region[0].Personal.length);
+      const Ulims = await getUlims();
+      setData([Ulims]);
+      setDataLen(Ulims.Personal.length);
     };
     query();
   }, []);
@@ -98,59 +94,47 @@ export default function RegionPage() {
           <Area></Area>
         </div>
         <div className="relative flex w-full h-fit scale-103 mt-10">
-          <div className="flex flex-col max-[850px]:mr-0 mr-10 gap-12">
+          <div className="flex flex-col max-[850px]:mr-0 mr-10 gap-12 w-full">
             {data.map((item: any, index: any) => {
+              console.log(item);
               return (
                 <div
-                  className="w-full max-[850px]:mr-0 flex flex-col items-center  h-fit max-[1800px]:mr-10"
+                  className="w-full max-[850px]:mr-0 flex flex-col items-center h-fit max-[1800px]:mr-10"
                   key={index}
                 >
                   {item.Other !== null ? (
                     <Carousel
                       slide={false}
-                      className="w-full max-w-[50rem] h-auto aspect-[880/720]"
+                      className="w-full max-w-[60rem] h-[55rem] max-[800px]:h-[30rem]"
                     >
-                      {item.image && (
+                      <div className="w-full max-w-[60rem] h-fit">
                         <img
-                          key={index}
-                          className="rounded-[30px] max-w-[55rem] aspect-[880/720] object-cover w-full"
                           src={item.image.asset.url}
-                          style={{
-                            borderRadius: "30px",
-                          }}
+                          className="rounded-[30px] w-full h-full max-w-[90rem] max-h-[60rem] object-contain"
                         ></img>
-                      )}
-                      {item.Other.map((item: any, index: number) => {
-                        return (
-                          <img
-                            key={index}
-                            className="rounded-[30px] w-full h-auto max-w-[55rem] aspect-[880/720] object-cover"
-                            src={item.asset.url}
-                            style={{
-                              borderRadius: "30px",
-                            }}
-                          ></img>
-                        );
+                      </div>
+                      {item.Other.map((item: any) => {
+                        const format = item.asset.url.split(".")[3];
+                        return format === "jpg" ||
+                          format === "png" ||
+                          format === "webp" ||
+                          format === "jpeg" ? (
+                          <div className="w-full max-w-[60rem] h-fit">
+                            <img
+                              src={item.asset.url}
+                              className="rounded-[30px] w-full h-full max-w-[90rem] max-h-[60rem] object-contain"
+                            ></img>
+                          </div>
+                        ) : null;
                       })}
                     </Carousel>
                   ) : item.image ? (
                     <img
                       key={index}
-                      className="rounded-[30px] w-full h-auto max-w-[45rem] object-contain max-[340px]:w-[90%]"
+                      className="rounded-[30px] w-full h-auto max-w-[55rem] object-contain"
                       src={item.image.asset.url}
                       style={{
                         borderRadius: "30px",
-                        maxWidth:
-                          item.image.asset.url
-                            .split("-")[1]
-                            .split(".")[0]
-                            .split("x")[0] >
-                          item.image.asset.url
-                            .split("-")[1]
-                            .split(".")[0]
-                            .split("x")[1]
-                            ? "45rem"
-                            : "55rem",
                       }}
                     ></img>
                   ) : null}
@@ -198,9 +182,7 @@ export default function RegionPage() {
           </div>
         </div>
       </div>
-      <div className="w-full uppercase border-white items-center justify-center mt-14 text-[32px] font-bold flex">
-        Действующие имамы
-      </div>
+      <div className="w-full uppercase border-white items-center justify-center mt-14 text-[32px] font-bold flex border"></div>
       <div className="grid grid-cols-3 max-[1751px]:grid-cols-3 max-[1280px]:grid-cols-2 max-[850px]:w-full max-[850px]:px-0 max-[1280px]:w-full max-[1008px]:flex max-[1008px]:px-24 max-[1008px]:w-[80%] max-[1580px]:w-[35rem] max-[1280px]:grid max-[1580px]:flex max-[1580px]:flex-col max-[1580px]:items-center max-[1580px]:justify-center gap-2 [&>div]:bg-white text-black text-[20px] mt-10">
         {data[0] &&
           data[0].Personal !== null &&

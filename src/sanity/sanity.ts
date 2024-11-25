@@ -25,7 +25,7 @@ export default async function getSchedule() {
 export async function getNews() {
   const News = await client
     .fetch(
-      '*[_type == "news"][0]{Items[]{Title,Date,Image{asset->{url}},MainText, isMain, Other[]{asset->{url}}, preview{asset->{url}}}}'
+      '*[_type == "news"][0]{Items[]{Title,Date,Image{asset->{url}},MainText, isMain, previewMain{asset->{url}}, Other[]{asset->{url}}, preview{asset->{url}}}}'
     )
     .then((item) => {
       return item.Items;
@@ -110,6 +110,21 @@ export async function getRegions() {
     )
     .then((item) => {
       return item.Array;
+    });
+  return Sections;
+}
+export async function getUlims() {
+  const Sections = await client
+    .fetch(
+      '*[_type == "Ulems"][0]{info, image{asset->{url}}, Other[]{asset->{url}}, Personal[]{Name,Birth,Description,Photo{asset->{url}}}}'
+    )
+    .then((item) => {
+      return {
+        image: item.image,
+        info: item.info,
+        Other: item.Other,
+        Personal: item.Personal,
+      };
     });
   return Sections;
 }

@@ -29,6 +29,12 @@ export default {
               accept: 'image/*',
             },
             {
+              name: 'previewMain',
+              title: 'Превью главной новости',
+              type: 'image',
+              accept: 'image/*',
+            },
+            {
               name: 'Other',
               title: 'Остальной материал',
               type: 'array',

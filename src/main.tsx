@@ -29,6 +29,7 @@ import RegionPage from "./RegionPage.tsx";
 import Contact from "./ContactsPage.tsx";
 import AppealsPage from "./AppealsPage.tsx";
 import AccountingPage from "./Accounting.tsx";
+import CouncilofUlema from "./CouncilUlemaPage.tsx";
 
 const router = createBrowserRouter([
   {
@@ -122,6 +123,10 @@ const router = createBrowserRouter([
   {
     path: "/Accounting",
     element: <AccountingPage></AccountingPage>,
+  },
+  {
+    path: "/CouncilofUlema",
+    element: <CouncilofUlema></CouncilofUlema>,
   },
 ]);
 

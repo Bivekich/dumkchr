@@ -78,7 +78,7 @@ export default function NewsReadPage() {
               {news.Other !== null ? (
                 <Carousel
                   slide={false}
-                  className="w-full max-w-[60rem] h-[40rem] max-[800px]:h-[20rem]"
+                  className="w-full max-w-[60rem] h-[55rem] max-[800px]:h-[20rem]"
                 >
                   {format === "jpg" ||
                   format === "png" ||
@@ -110,7 +110,7 @@ export default function NewsReadPage() {
                       format === "jpeg" ? (
                       <div className="w-full max-w-[60rem] h-fit">
                         <img
-                          src={news.Image.asset.url}
+                          src={item.asset.url}
                           className="rounded-[30px] w-full h-full max-w-[90rem] max-h-[60rem]"
                         ></img>
                       </div>
@@ -121,7 +121,7 @@ export default function NewsReadPage() {
                           controls={true}
                           className="rounded-[30px] w-full h-full max-w-[90rem] max-h-[60rem] object-cover"
                         >
-                          <source src={news.Image.asset.url} />
+                          <source src={item.asset.url} />
                         </video>
                       </div>
                     );

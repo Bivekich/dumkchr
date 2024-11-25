@@ -1,6 +1,7 @@
 import Accounting from '../schems/Accounting'
 import Appeals from '../schems/Appeals'
 import Contacts from '../schems/Contacts'
+import CouncilUlema from '../schems/CouncilUlema'
 import Decree from '../schems/Decree'
 import Documents from '../schems/Documents'
 import FeedBack from '../schems/FeedBack'
@@ -30,4 +31,5 @@ export const schemaTypes = [
   Footer,
   Accounting,
   FeedBack,
+  CouncilUlema,
 ]

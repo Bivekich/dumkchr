@@ -22,6 +22,7 @@ export default function Menu({ Links }: PropsMenu) {
       href: "/Foundation",
     },
     { title: "СОВЕТНИК МУФТИЯ КЧР", href: "/MuftiyaSupport" },
+    { title: "Совет Улемов", href: "/CouncilofUlema" },
   ];
   const secondAddMenuLinks: Array<{ title: string; href: string }> = [
     { title: "ОТДЕЛ ПРИМИРЕНИЯ (МАСЛАХАТ)", href: "/Sections/Maslahat" },
