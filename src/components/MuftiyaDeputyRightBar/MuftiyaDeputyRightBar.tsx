@@ -35,11 +35,11 @@ export default function MuftiyaDeputyRightBar({ data }: dataInterface) {
                   </p>
                   <img
                     src={item.Image.asset.url}
-                    className="w-[55rem] max-h-[45rem] rounded-[30px] items-center"
+                    className="w-[45rem] h-fit rounded-[30px] items-center"
                   ></img>
 
                   <div className="font-inter flex flex-col mt-5 text-wrap w-full">
-                    <div className="text-[25px] leading-8 font-inter text-wrap self-center w-full flex">
+                    <div className="text-[25px] leading-8 font-inter text-wrap min-[2559px]:w-[100%] min-[1900px]:w-[90%] min-[1920px]:w-[90%] min-[1960px]:w-[82%] max-[850px]:w-[90%]">
                       <PortableText
                         value={item.Description}
                         components={{

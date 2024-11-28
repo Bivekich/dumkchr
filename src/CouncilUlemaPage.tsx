@@ -125,7 +125,9 @@ export default function CouncilofUlema() {
                               className="rounded-[30px] w-full h-full max-w-[90rem] max-h-[60rem] object-contain"
                             ></img>
                           </div>
-                        ) : null;
+                        ) : (
+                          <div />
+                        );
                       })}
                     </Carousel>
                   ) : item.image ? (
@@ -137,39 +139,43 @@ export default function CouncilofUlema() {
                         borderRadius: "30px",
                       }}
                     ></img>
-                  ) : null}
+                  ) : (
+                    <div />
+                  )}
 
                   <div className="font-inter flex flex-col mt-5 text-wrap w-full">
                     <div className="text-[25px] max-[850px]:text-[20px] leading-8 font-inter text-wrap self-center w-full flex flex-col">
-                      <GroupedPortableText
-                        value={item.info}
-                        components={{
-                          types: {
-                            span: ({ value }: any) => (
-                              <span className="w-full">{value}</span>
-                            ),
-                            p: ({ value }: any) => (
-                              <p className="w-full">{value}</p>
-                            ),
-                            image: ({ value, isInline }: any) => (
-                              <img
-                                className="w-[50%]"
-                                src={urlBuilder(client)
-                                  .image(value)
-                                  .width(isInline ? 1000 : 10000)
-                                  .fit("max")
-                                  .auto("format")
-                                  .url()}
-                              />
-                            ),
-                          },
-                          marks: {
-                            strong: ({ children }: any) => (
-                              <strong className="h-fit">{children}</strong>
-                            ),
-                          },
-                        }}
-                      />
+                      {item.info !== null && (
+                        <GroupedPortableText
+                          value={item.info}
+                          components={{
+                            types: {
+                              span: ({ value }: any) => (
+                                <span className="w-full">{value}</span>
+                              ),
+                              p: ({ value }: any) => (
+                                <p className="w-full">{value}</p>
+                              ),
+                              image: ({ value, isInline }: any) => (
+                                <img
+                                  className="w-[50%]"
+                                  src={urlBuilder(client)
+                                    .image(value)
+                                    .width(isInline ? 1000 : 10000)
+                                    .fit("max")
+                                    .auto("format")
+                                    .url()}
+                                />
+                              ),
+                            },
+                            marks: {
+                              strong: ({ children }: any) => (
+                                <strong className="h-fit">{children}</strong>
+                              ),
+                            },
+                          }}
+                        />
+                      )}
                     </div>
                   </div>
                 </div>

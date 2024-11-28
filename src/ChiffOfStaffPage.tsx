@@ -44,7 +44,7 @@ export default function ChiffOfStaffPage() {
                   (data.Image !== undefined ? (
                     <img
                       src={data.Image.asset.url}
-                      className="w-[55rem] max-h-[45rem] rounded-[30px] items-center"
+                      className="w-[45rem] h-fit rounded-[30px] items-center"
                     ></img>
                   ) : (
                     <div className="w-[55rem] max-h-[45rem] rounded-[30px] items-center bg-green-500" />
