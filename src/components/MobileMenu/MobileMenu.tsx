@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { MdKeyboardArrowDown } from "react-icons/md";
+import { useState } from 'react';
+import { MdKeyboardArrowDown } from 'react-icons/md';
 export default function MobileMenu({ height }: { height: string }) {
   const [firstSubMenu, setFirstSubMenu] = useState(false);
   const [secondSubMenu, setSecondSubMenu] = useState(false);
@@ -12,53 +12,55 @@ export default function MobileMenu({ height }: { height: string }) {
     setFirstSubMenu(false);
   };
   const links: Array<{ title: string; href: string }> = [
-    { title: "ГЛАВНАЯ", href: "/" },
-    { title: "МУФТИЯТ", href: "" },
-    { title: "УКАЗЫ", href: "/Decree" },
-    { title: "НОВОСТИ", href: "/NewsPage" },
-    { title: "ОБРАЩЕНИЯ", href: "/Appeals" },
-    { title: "ОБРАТНАЯ СВЯЗЬ", href: "/FeedBack" },
-    { title: "МЕДИАТЕКА", href: "" },
-    { title: "КОНТАКТЫ", href: "/Contacts" },
+    { title: 'ГЛАВНАЯ', href: '/' },
+    { title: 'МУФТИЯТ', href: '' },
+    { title: 'УКАЗЫ', href: '/Decree' },
+    { title: 'НОВОСТИ', href: '/NewsPage' },
+    { title: 'ОБРАЩЕНИЯ', href: '/Appeals' },
+    { title: 'ОБРАТНАЯ СВЯЗЬ', href: '/FeedBack' },
+    { title: 'МЕДИАТЕКА', href: '' },
+    { title: 'КОНТАКТЫ', href: '/Contacts' },
+    { title: 'ХАЛЯЛЬ', href: '/Halal' },
+    { title: 'ФЕТВЫ', href: '/Fetvy' },
   ];
   const firstMenuLinks: Array<{ title: string; href: string }> = [
-    { title: "РУКОВОДСТВО", href: "" },
-    { title: "КОМИТЕТЫ", href: "" },
-    { title: "ДОКУМЕНТЫ", href: "/Documents" },
-    { title: "БУХГАЛТЕРИЯ", href: "/Accounting" },
+    { title: 'РУКОВОДСТВО', href: '' },
+    { title: 'КОМИТЕТЫ', href: '' },
+    { title: 'ДОКУМЕНТЫ', href: '/Documents' },
+    { title: 'БУХГАЛТЕРИЯ', href: '/Accounting' },
   ];
   const secondMenuLinks: Array<{ title: string; href: string }> = [
-    { title: "ФОТО", href: "/PhotoPage" },
-    { title: "ВИДЕО", href: "/VideoPage" },
+    { title: 'ФОТО', href: '/PhotoPage' },
+    { title: 'ВИДЕО', href: '/VideoPage' },
   ];
   const firstAddMenuLinks: Array<{ title: string; href: string }> = [
-    { title: "МУФТИЙ КЧР", href: "/MuftiyaCHR" },
-    { title: "РУКОВОДИТЕЛЬ АППАРАТА МУФТИЯ КЧР", href: "/ChiffOfStaff" },
-    { title: "КАДИЙ", href: "/Kadie" },
+    { title: 'МУФТИЙ КЧР', href: '/MuftiyaCHR' },
+    { title: 'РУКОВОДИТЕЛЬ АППАРАТА МУФТИЯ КЧР', href: '/ChiffOfStaff' },
+    { title: 'КАДИЙ', href: '/Kadie' },
     {
-      title: "ЗАМЕСТИТЕЛИ МУФТИЯ КЧР",
-      href: "/MuftiyaDeputy",
+      title: 'ЗАМЕСТИТЕЛИ МУФТИЯ КЧР',
+      href: '/MuftiyaDeputy',
     },
     {
-      title: "ФОНДЫ ДУМ КЧР",
-      href: "/Foundation",
+      title: 'ФОНДЫ ДУМ КЧР',
+      href: '/Foundation',
     },
-    { title: "СОВЕТНИК МУФТИЯ КЧР", href: "/MuftiyaSupport" },
+    { title: 'СОВЕТНИК МУФТИЯ КЧР', href: '/MuftiyaSupport' },
   ];
   const secondAddMenuLinks: Array<{ title: string; href: string }> = [
-    { title: "ОТДЕЛ ПРИМИРЕНИЯ (МАСЛАХАТ)", href: "/Sections/Maslahat" },
+    { title: 'ОТДЕЛ ПРИМИРЕНИЯ (МАСЛАХАТ)', href: '/Sections/Maslahat' },
     {
-      title: "КОМИТЕТ ПО ДЕЛАМ МОЛОДЕЖИ И ПРОСВЕЩЕНИЯ",
-      href: "/Sections/Young",
+      title: 'КОМИТЕТ ПО ДЕЛАМ МОЛОДЕЖИ И ПРОСВЕЩЕНИЯ',
+      href: '/Sections/Young',
     },
-    { title: "КОМИТЕТ ХАДЖА", href: "/Sections/Hajj" },
+    { title: 'КОМИТЕТ ХАДЖА', href: '/Sections/Hajj' },
     {
-      title: "КОМИТЕТ ПО КОНТРОЛЮ ИСЛАМСКОГО РЕЛИГИОЗНОГО ОБРАЗОВАНИЯ",
-      href: "/Sections/Education",
+      title: 'КОМИТЕТ ПО КОНТРОЛЮ ИСЛАМСКОГО РЕЛИГИОЗНОГО ОБРАЗОВАНИЯ',
+      href: '/Sections/Education',
     },
     {
-      title: "КОМИТЕТ ИНФОРМАЦИИ, ОБЩЕСТВЕННЫХ СВЯЗЕЙ СМИ",
-      href: "/Sections/SmiCom",
+      title: 'КОМИТЕТ ИНФОРМАЦИИ, ОБЩЕСТВЕННЫХ СВЯЗЕЙ СМИ',
+      href: '/Sections/SmiCom',
     },
   ];
   const [firstMenuOpen, isFirstMenuOpen] = useState<boolean>(false);
@@ -77,8 +79,8 @@ export default function MobileMenu({ height }: { height: string }) {
       className={`w-full bg-white
       min-[1281px]:hidden mt-5 rounded-[30px] duration-500 ease-in-out transition-[height] items-center justify-center `}
       style={{
-        height: height === "fit" ? "fit-content" : "0",
-        padding: height === "fit" ? "10px 5px 10px 5px" : "0",
+        height: height === 'fit' ? 'fit-content' : '0',
+        padding: height === 'fit' ? '10px 5px 10px 5px' : '0',
       }}
     >
       <ul className="w-full flex flex-col justify-center items-center gap-4">
@@ -89,12 +91,12 @@ export default function MobileMenu({ height }: { height: string }) {
               className="flex flex-col items-center w-full justify-center"
             >
               <div className="flex items-center w-full justify-center gap-1">
-                {link.title === "МУФТИЯТ" || link.title === "МЕДИАТЕКА" ? (
+                {link.title === 'МУФТИЯТ' || link.title === 'МЕДИАТЕКА' ? (
                   <div
                     className="font-medium max-[1550px]:items-center flex text-[20px] flex-shrink-0 items-center justify-center select-none"
                     onClick={
-                      link.title === "МУФТИЯТ" || link.title === "МЕДИАТЕКА"
-                        ? link.title === "МУФТИЯТ"
+                      link.title === 'МУФТИЯТ' || link.title === 'МЕДИАТЕКА'
+                        ? link.title === 'МУФТИЯТ'
                           ? handleFirstMenu
                           : handleSecondMenu
                         : () => {
@@ -109,8 +111,8 @@ export default function MobileMenu({ height }: { height: string }) {
                     href={link.href}
                     className="font-medium max-[1550px]:items-center flex text-[20px] flex-shrink-0 items-center justify-center select-none"
                     onClick={
-                      link.title === "МУФТИЯТ" || link.title === "МЕДИАТЕКА"
-                        ? link.title === "МУФТИЯТ"
+                      link.title === 'МУФТИЯТ' || link.title === 'МЕДИАТЕКА'
+                        ? link.title === 'МУФТИЯТ'
                           ? handleFirstMenu
                           : handleSecondMenu
                         : () => {
@@ -122,21 +124,21 @@ export default function MobileMenu({ height }: { height: string }) {
                   </a>
                 )}
 
-                {link.title === "МУФТИЯТ" || link.title === "МЕДИАТЕКА" ? (
+                {link.title === 'МУФТИЯТ' || link.title === 'МЕДИАТЕКА' ? (
                   <MdKeyboardArrowDown
                     size={20}
                     onClick={
-                      link.title === "МЕДИАТЕКА"
+                      link.title === 'МЕДИАТЕКА'
                         ? handleSecondMenu
                         : handleFirstMenu
                     }
                   />
                 ) : (
-                  ""
+                  ''
                 )}
               </div>
 
-              {link.title === "МЕДИАТЕКА" && secondMenuOpen && (
+              {link.title === 'МЕДИАТЕКА' && secondMenuOpen && (
                 <div className="flex flex-col py-4 items-center bg-[#177245] justify-center w-full text-white rounded-[15px]">
                   {secondMenuLinks.map((link, index) => {
                     return (
@@ -149,13 +151,13 @@ export default function MobileMenu({ height }: { height: string }) {
                           >
                             {link.title}
                           </a>
-                          {link.title === "РУКОВОДСТВО" ||
-                          link.title === "КОМИТЕТЫ" ? (
+                          {link.title === 'РУКОВОДСТВО' ||
+                          link.title === 'КОМИТЕТЫ' ? (
                             <MdKeyboardArrowDown
                               size={20}
                             ></MdKeyboardArrowDown>
                           ) : (
-                            ""
+                            ''
                           )}
                         </div>
                       </div>
@@ -163,19 +165,19 @@ export default function MobileMenu({ height }: { height: string }) {
                   })}
                 </div>
               )}
-              {link.title === "МУФТИЯТ" && firstMenuOpen && (
+              {link.title === 'МУФТИЯТ' && firstMenuOpen && (
                 <div className="flex flex-col py-4 items-center bg-[#177245] justify-center w-full text-white rounded-[15px]">
                   {firstMenuLinks.map((link, index) => {
                     return (
                       <div className="w-full items-center justify-center">
                         <div className="flex items-center justify-center">
-                          {link.title === "РУКОВОДСТВО" ||
-                          link.title === "КОМИТЕТЫ" ? (
+                          {link.title === 'РУКОВОДСТВО' ||
+                          link.title === 'КОМИТЕТЫ' ? (
                             <div
                               key={index}
                               className="text-[18px] py-1 items-center self-center"
                               onClick={
-                                link.title === "РУКОВОДСТВО"
+                                link.title === 'РУКОВОДСТВО'
                                   ? handeleFirstSubMenu
                                   : handleSecondSubMenu
                               }
@@ -192,23 +194,23 @@ export default function MobileMenu({ height }: { height: string }) {
                             </a>
                           )}
 
-                          {link.title === "РУКОВОДСТВО" ||
-                          link.title === "КОМИТЕТЫ" ? (
+                          {link.title === 'РУКОВОДСТВО' ||
+                          link.title === 'КОМИТЕТЫ' ? (
                             <MdKeyboardArrowDown
                               size={20}
                               onClick={
-                                link.title === "РУКОВОДСТВО"
+                                link.title === 'РУКОВОДСТВО'
                                   ? handeleFirstSubMenu
                                   : handleSecondSubMenu
                               }
                             ></MdKeyboardArrowDown>
                           ) : (
-                            ""
+                            ''
                           )}
                         </div>
 
                         <div className="bg-[#1e6240] w-full flex h-fit flex-col items-center justify-center text-center gap-5">
-                          {link.title === "КОМИТЕТЫ"
+                          {link.title === 'КОМИТЕТЫ'
                             ? secondSubMenu &&
                               secondAddMenuLinks.map((item, index) => (
                                 <a
@@ -219,7 +221,7 @@ export default function MobileMenu({ height }: { height: string }) {
                                   {item.title}
                                 </a>
                               ))
-                            : link.title === "РУКОВОДСТВО"
+                            : link.title === 'РУКОВОДСТВО'
                             ? firstSubMenu &&
                               firstAddMenuLinks.map((item, index) => (
                                 <a
@@ -230,7 +232,7 @@ export default function MobileMenu({ height }: { height: string }) {
                                   {item.title}
                                 </a>
                               ))
-                            : ""}
+                            : ''}
                         </div>
                       </div>
                     );
