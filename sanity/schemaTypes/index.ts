@@ -14,6 +14,8 @@ import Regions from '../schems/Regions'
 import Schedule from '../schems/Schedule'
 import Section from '../schems/Section'
 import Video from '../schems/Video'
+import Fatwa from '../schems/Fatwa'
+import Halal from '../schems/Halal'
 
 export const schemaTypes = [
   Schedule,
@@ -32,4 +34,6 @@ export const schemaTypes = [
   Accounting,
   FeedBack,
   CouncilUlema,
+  Fatwa,
+  Halal,
 ]
