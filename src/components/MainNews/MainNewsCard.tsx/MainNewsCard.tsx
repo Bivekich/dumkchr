@@ -43,7 +43,7 @@ export default function MainNewsCard({
   }, []);
   const format = image?.asset.url.split(".")[3];
   return (
-    <div className="w-full flex flex-col p-7 max-[850px]:p-1 text-[#177245] gap-3">
+    <div className="w-full flex flex-col p-7 max-[850px]:p-0 text-[#177245] gap-3">
       <Link
         className="w-full h-fit p-2 flex items-center justify-center"
         to={`/NewsPage/${NewsId}`}
