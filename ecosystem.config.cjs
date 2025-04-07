@@ -3,7 +3,7 @@ module.exports = {
     {
       name: 'dumkchr', // Название вашего приложения
       script: 'npm',
-      args: 'run preview', // Команда для запуска preview сервера Vite
+      args: 'run preview -- --host', // Команда для запуска preview сервера Vite с флагом --host
       env: {
         NODE_ENV: 'production',
       },
