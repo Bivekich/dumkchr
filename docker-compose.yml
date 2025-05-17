@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: dumkchr-frontend
+    restart: unless-stopped
+    ports:
+      - '3005:3000'
+    env_file:
+      - stack.env
+    # Для продакшена рекомендуется использовать healthcheck
+    healthcheck:
+      test: ['CMD', 'wget', '-qO-', 'http://localhost:3000']
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
