@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
-import { client } from './sanity/sanity';
+import { getFatwa } from './sanity/sanity';
 
 interface FatwaContent {
-  _id: string;
   title?: string;
   images?: Array<{
     _key: string;
@@ -20,18 +19,7 @@ export default function FetvaPage() {
   useEffect(() => {
     const fetchFatwaContent = async () => {
       try {
-        const query = `*[_type == "fatwa"][0] {
-          _id,
-          title,
-          "images": images[]{
-            _key,
-            "asset": asset->{
-              "url": url
-            },
-            caption
-          }
-        }`;
-        const result = await client.fetch(query);
+        const result = await getFatwa();
         setContent(result);
       } catch (error) {
         console.error('Error fetching fatwa content:', error);
@@ -57,27 +45,34 @@ export default function FetvaPage() {
         {content?.title || 'ФЕТВЫ'}
       </h1>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {content?.images?.map((fatwa) => (
-          <div
-            key={fatwa._key}
-            className="bg-gray-50 rounded-lg p-4 flex flex-col h-full"
-          >
-            {fatwa.asset?.url && (
-              <div className="flex-grow">
-                <img
-                  src={fatwa.asset.url}
-                  alt={fatwa.caption || ''}
-                  className="w-full h-full object-contain rounded-lg"
-                />
-              </div>
-            )}
-            {fatwa.caption && (
-              <p className="text-center text-gray-700 mt-2">{fatwa.caption}</p>
-            )}
-          </div>
-        ))}
-      </div>
+      {content?.images && content.images.length > 0 ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {content.images.map((fatwa) => (
+            <div
+              key={fatwa._key}
+              className="bg-gray-50 rounded-lg p-4 flex flex-col h-full"
+            >
+              {fatwa.asset?.url && (
+                <div className="flex-grow">
+                  <img
+                    src={fatwa.asset.url}
+                    alt={fatwa.caption || ''}
+                    className="w-full h-full object-contain rounded-lg"
+                  />
+                </div>
+              )}
+              {fatwa.caption && (
+                <p className="text-center text-gray-700 mt-2">{fatwa.caption}</p>
+              )}
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className="text-center text-gray-500 py-8">
+          <p className="text-lg">Фетвы пока не добавлены.</p>
+          <p className="text-sm mt-2">Контент будет добавлен позднее.</p>
+        </div>
+      )}
     </div>
   );
 }

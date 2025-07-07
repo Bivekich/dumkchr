@@ -14,14 +14,13 @@ export default function MobileMenu({ height }: { height: string }) {
   const links: Array<{ title: string; href: string }> = [
     { title: 'ГЛАВНАЯ', href: '/' },
     { title: 'МУФТИЯТ', href: '' },
-    { title: 'УКАЗЫ', href: '/Decree' },
+    { title: 'ФЕТВЫ', href: '/Fetvy' },
     { title: 'НОВОСТИ', href: '/NewsPage' },
     { title: 'ОБРАЩЕНИЯ', href: '/Appeals' },
     { title: 'ОБРАТНАЯ СВЯЗЬ', href: '/FeedBack' },
     { title: 'МЕДИАТЕКА', href: '' },
     { title: 'КОНТАКТЫ', href: '/Contacts' },
     { title: 'ХАЛЯЛЬ', href: '/Halal' },
-    { title: 'ФЕТВЫ', href: '/Fetvy' },
   ];
   const firstMenuLinks: Array<{ title: string; href: string }> = [
     { title: 'РУКОВОДСТВО', href: '' },
