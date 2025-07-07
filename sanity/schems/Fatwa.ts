@@ -9,20 +9,27 @@ export default {
       title: 'Заголовок страницы',
     },
     {
-      name: 'images',
+      name: 'pdfFiles',
       type: 'array',
-      title: 'Фетвы',
+      title: 'PDF файлы фетв',
       of: [
         {
-          type: 'image',
+          type: 'file',
+          options: {
+            accept: '.pdf'
+          },
           fields: [
             {
-              name: 'caption',
+              name: 'title',
               type: 'string',
-              title: 'Подпись',
-              options: {
-                isHighlighted: true,
-              },
+              title: 'Название файла',
+              description: 'Название для отображения в списке',
+            },
+            {
+              name: 'description',
+              type: 'text',
+              title: 'Описание',
+              description: 'Краткое описание содержания PDF',
             },
           ],
         },

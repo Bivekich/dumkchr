@@ -164,12 +164,3 @@ export async function getFeedBack() {
     });
   return FeedBack;
 }
-
-export async function getFatwa() {
-  const Fatwa = await client
-    .fetch('*[_type == "fatwa"][0]{title, images[]{_key, asset->{url}, caption}}')
-    .then((item) => {
-      return item;
-    });
-  return Fatwa;
-}
