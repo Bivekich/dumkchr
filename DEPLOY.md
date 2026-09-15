@@ -1,69 +1,42 @@
-# Инструкция по деплою приложения
+# Деплой через Coolify (Docker Compose)
 
-## Необходимые требования
+## Что деплоится
 
-- Docker
-- Docker Compose
+Статический фронтенд (Vite + React), раздаётся через `serve` на порту **3000**.
+Sanity (`projectId` / `dataset`) зашиты в код — отдельных секретов для фронта не нужно.
 
-## Настройка переменных окружения
+## Настройка в Coolify
 
-Файл `stack.env` содержит переменные окружения для работы приложения. Отредактируйте его перед деплоем:
+1. Resource type: **Docker Compose**
+2. Репозиторий / ветка: `main`
+3. Compose file: `docker-compose.yml`
+4. Порт приложения: **3000**
+5. Домен: `dumkchr.ru` (или ваш)
+
+### Переменные окружения
+
+Обязательных env нет.
+
+Опционально (только **Runtime**, не Build-time):
 
 ```
 NODE_ENV=production
-VITE_ENABLE_PWA=true
-VITE_PUBLIC_URL=https://yourdomain.com
 ```
 
-## Деплой приложения
+`VITE_*` в этом проекте не используются. Если добавите их позже — задавайте как **build args** в Dockerfile, а не только runtime.
 
-1. Клонируйте репозиторий на сервер
+**Важно:** не ставьте `NODE_ENV=production` с галочкой «Available at Buildtime» в Coolify. Dockerfile уже защищён (`npm ci --include=dev`), но runtime-only — правильнее.
+
+## Локальная проверка
 
 ```bash
-git clone <url-репозитория>
-cd dumkchr
+docker compose build
+docker compose up -d
+# http://localhost:<назначенный_порт>
 ```
 
-2. Сборка и запуск приложения
+## Файлы
 
-```bash
-# Сборка образа
-./deploy.sh build
-
-# Запуск приложения
-./deploy.sh start
-```
-
-3. Проверка статуса
-
-```bash
-docker-compose ps
-```
-
-4. Просмотр логов
-
-```bash
-./deploy.sh logs
-```
-
-## Управление приложением
-
-- Запуск: `./deploy.sh start`
-- Остановка: `./deploy.sh stop`
-- Перезапуск: `./deploy.sh restart`
-- Просмотр логов: `./deploy.sh logs`
-- Сборка: `./deploy.sh build`
-
-## Доступ к приложению
-
-После успешного запуска приложение будет доступно по адресу:
-
-```
-http://ваш-сервер:3000
-```
-
-## Особенности
-
-- Приложение настроено на использование порта 3000
-- Для продакшена рекомендуется настроить Nginx или другой обратный прокси-сервер перед контейнером
-- В docker-compose.yml установлены ограничения по ресурсам, отредактируйте их при необходимости
+- `Dockerfile` — multi-stage: build → `serve`
+- `docker-compose.yml` — сервис `app`
+- `stack.env` — runtime env для compose
